@@ -84,15 +84,21 @@
 
 
 
-<meta name="description" content="Build Something They Need">
-<meta property="og:type" content="website">
-<meta property="og:title" content="One">
-<meta property="og:url" content="http://www.yoursite.com/index.html">
+<meta name="description" content="Question: Vertically align text to top within a UILabel
+I have a UILabel with space for two lines of text. Sometimes, when the text is too short, this text is displayed in the vertical center of the l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Daily Stackoverflow For iOS">
+<meta property="og:url" content="http://www.yoursite.com/2016/06/29/Daily Stackoverflow For iOS/index.html">
 <meta property="og:site_name" content="One">
-<meta property="og:description" content="Build Something They Need">
+<meta property="og:description" content="Question: Vertically align text to top within a UILabel
+I have a UILabel with space for two lines of text. Sometimes, when the text is too short, this text is displayed in the vertical center of the l">
+<meta property="og:image" content="http://7xk7a9.com1.z0.glb.clouddn.com/14672086182163.jpg">
+<meta property="og:updated_time" content="2016-06-29T14:25:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="One">
-<meta name="twitter:description" content="Build Something They Need">
+<meta name="twitter:title" content="Daily Stackoverflow For iOS">
+<meta name="twitter:description" content="Question: Vertically align text to top within a UILabel
+I have a UILabel with space for two lines of text. Sometimes, when the text is too short, this text is displayed in the vertical center of the l">
+<meta name="twitter:image" content="http://7xk7a9.com1.z0.glb.clouddn.com/14672086182163.jpg">
 
 
 
@@ -113,9 +119,9 @@
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2016/06/29/Daily Stackoverflow For iOS/"/>
 
-  <title> One </title>
+  <title> Daily Stackoverflow For iOS | One </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +142,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -215,9 +219,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -237,10 +241,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/06/29/Daily Stackoverflow For iOS/" itemprop="url">
-                  Daily Stackoverflow For iOS
-                </a>
+                Daily Stackoverflow For iOS
               
             
           </h1>
@@ -280,9 +281,7 @@
       
 
       
-        
-          
-            <h3 id="Question-Vertically-align-text-to-top-within-a-UILabel"><a href="#Question-Vertically-align-text-to-top-within-a-UILabel" class="headerlink" title="Question: Vertically align text to top within a UILabel"></a>Question: <a href="http://stackoverflow.com/questions/1054558/vertically-align-text-to-top-within-a-uilabel" target="_blank" rel="external">Vertically align text to top within a UILabel</a></h3><blockquote>
+        <h3 id="Question-Vertically-align-text-to-top-within-a-UILabel"><a href="#Question-Vertically-align-text-to-top-within-a-UILabel" class="headerlink" title="Question: Vertically align text to top within a UILabel"></a>Question: <a href="http://stackoverflow.com/questions/1054558/vertically-align-text-to-top-within-a-uilabel" target="_blank" rel="external">Vertically align text to top within a UILabel</a></h3><blockquote>
 <p>I have a UILabel with space for two lines of text. Sometimes, when the text is too short, this text is displayed in the vertical center of the label. How do I vertically align the text to always be at the top of the UILabel? <img src="http://7xk7a9.com1.z0.glb.clouddn.com/14672086182163.jpg" alt="a"></p>
 <h3 id="Answer-使用UILable的sizeToFit进行尺寸自我适应"><a href="#Answer-使用UILable的sizeToFit进行尺寸自我适应" class="headerlink" title="Answer: 使用UILable的sizeToFit进行尺寸自我适应"></a>Answer: 使用<code>UILable</code>的<code>sizeToFit</code>进行尺寸自我适应</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[myLabel sizeToFit];</span><br></pre></td></tr></table></figure>
 </blockquote>
@@ -294,16 +293,19 @@
 <h3 id="Code-对Label的文字进行算高"><a href="#Code-对Label的文字进行算高" class="headerlink" title="Code: 对Label的文字进行算高"></a>Code: 对Label的文字进行算高</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CGSize maximumSize = CGSizeMake(300, 9999);</span><br><span class="line">NSString *dateString = @"The date today is January 1st, </span><br><span class="line">1999";</span><br><span class="line">UIFont *dateFont = [UIFont fontWithName:@"Helvetica" size:14];</span><br><span class="line">CGSize dateStringSize = [dateString sizeWithFont:dateFont </span><br><span class="line">        constrainedToSize:maximumSize </span><br><span class="line">        lineBreakMode:self.dateLabel.lineBreakMode];</span><br><span class="line"></span><br><span class="line">CGRect dateFrame = CGRectMake(10, 10, 300, dateStringSize.height);</span><br><span class="line"></span><br><span class="line">self.dateLabel.frame = dateFrame;</span><br></pre></td></tr></table></figure>
 <hr>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -311,121 +313,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/06/17/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/06/17/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-17T20:42:19+08:00" content="2016-06-17">
-              2016-06-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -433,6 +346,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -452,8 +369,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xk7a9.com1.z0.glb.clouddn.com/avater.png"
@@ -489,6 +415,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-Vertically-align-text-to-top-within-a-UILabel"><span class="nav-number">1.</span> <span class="nav-text">Question: Vertically align text to top within a UILabel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Answer-使用UILable的sizeToFit进行尺寸自我适应"><span class="nav-number">2.</span> <span class="nav-text">Answer: 使用UILable的sizeToFit进行尺寸自我适应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-对Label的文字进行算高"><span class="nav-number">3.</span> <span class="nav-text">Code: 对Label的文字进行算高</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -592,6 +529,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
