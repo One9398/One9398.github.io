@@ -238,8 +238,125 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/02/0702 Stackoverflow For iOS/" itemprop="url">
+                  Stackoverflow For iOS [2]
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-02T13:00:10+08:00" content="2016-07-02">
+              2016-07-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p><a href="Passing Data between View Controllers">Passing Data between View Controllers</a></p>
+<blockquote>
+<p>how do I transfer the data from one view to another? I will be holding the selections on the UITableView in an array, but how do I then pass that back to the previous data entry form view so it can be saved along with the other data to core data on submission of the form?</p>
+</blockquote>
+<h3 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h3><ul>
+<li><strong>Passing Data Forward by general</strong></li>
+</ul>
+<p>Controller直接暴露属性,在Controller之间切换时直接设置属性</p>
+<ul>
+<li><strong>Passing Data Forward using Segues</strong></li>
+</ul>
+<p>使用在UIStoryboard中的Segue进行控制器跳转时,在<code>-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender</code>方法中进行对目标控制器的数据传递</p>
+<ul>
+<li><strong>Passing Data Back by Delegate, Block, Notification</strong></li>
+</ul>
+<ul>
+<li><strong>使用NSUserDefaults</strong></li>
+</ul>
+<ul>
+<li><strong>使用单例对象</strong></li>
+</ul>
+<ul>
+<li><strong>数据库/文件访问</strong></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/29/Daily Stackoverflow For iOS/" itemprop="url">
-                  Daily Stackoverflow For iOS
+                  Stackoverflow For iOS [1]
                 </a>
               
             
@@ -464,13 +581,20 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
