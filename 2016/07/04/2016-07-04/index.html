@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, Word" />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -84,15 +84,24 @@
 
 
 
-<meta name="description" content="Build Something They Need">
-<meta property="og:type" content="website">
-<meta property="og:title" content="One">
-<meta property="og:url" content="http://www.yoursite.com/index.html">
+<meta name="description" content="View and Window ArchitectureUIVIew和UIWindow类,在管理布局和内容呈现上提供了复杂的实现,理解这些实现是怎么回事,更有利于明白自定义视图在程序中的表现以及如何正确地响应程序变化.
+View Architecture FundamentalsUIKit视图的内容渲染和动画其实是由Core Animation Layers 处理,每一个UIKit的视图对象都依靠">
+<meta property="og:type" content="article">
+<meta property="og:title" content="View Programming Guide For iOS (2)">
+<meta property="og:url" content="http://www.yoursite.com/2016/07/04/2016-07-04/index.html">
 <meta property="og:site_name" content="One">
-<meta property="og:description" content="Build Something They Need">
+<meta property="og:description" content="View and Window ArchitectureUIVIew和UIWindow类,在管理布局和内容呈现上提供了复杂的实现,理解这些实现是怎么回事,更有利于明白自定义视图在程序中的表现以及如何正确地响应程序变化.
+View Architecture FundamentalsUIKit视图的内容渲染和动画其实是由Core Animation Layers 处理,每一个UIKit的视图对象都依靠">
+<meta property="og:image" content="http://www.yoursite.com/media/14675210454265.jpg">
+<meta property="og:image" content="http://www.yoursite.com/media/14675508348796.jpg">
+<meta property="og:image" content="http://www.yoursite.com/media/14675514286963.jpg">
+<meta property="og:image" content="http://www.yoursite.com/media/14676403006202.jpg">
+<meta property="og:updated_time" content="2016-07-04T14:49:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="One">
-<meta name="twitter:description" content="Build Something They Need">
+<meta name="twitter:title" content="View Programming Guide For iOS (2)">
+<meta name="twitter:description" content="View and Window ArchitectureUIVIew和UIWindow类,在管理布局和内容呈现上提供了复杂的实现,理解这些实现是怎么回事,更有利于明白自定义视图在程序中的表现以及如何正确地响应程序变化.
+View Architecture FundamentalsUIKit视图的内容渲染和动画其实是由Core Animation Layers 处理,每一个UIKit的视图对象都依靠">
+<meta name="twitter:image" content="http://www.yoursite.com/media/14675210454265.jpg">
 
 
 
@@ -113,9 +122,9 @@
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2016/07/04/2016-07-04/"/>
 
-  <title> One </title>
+  <title> View Programming Guide For iOS (2) | One </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +145,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -215,9 +222,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -237,10 +244,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/07/04/2016-07-04/" itemprop="url">
-                  View Programming Guide For iOS (2)
-                </a>
+                View Programming Guide For iOS (2)
               
             
           </h1>
@@ -280,9 +284,7 @@
       
 
       
-        
-          
-            <h1 id="View-and-Window-Architecture"><a href="#View-and-Window-Architecture" class="headerlink" title="View and Window Architecture"></a>View and Window Architecture</h1><p>UIVIew和UIWindow类,在管理布局和内容呈现上提供了复杂的实现,理解这些实现是怎么回事,更有利于明白自定义视图在程序中的表现以及如何正确地响应程序变化.</p>
+        <h1 id="View-and-Window-Architecture"><a href="#View-and-Window-Architecture" class="headerlink" title="View and Window Architecture"></a>View and Window Architecture</h1><p>UIVIew和UIWindow类,在管理布局和内容呈现上提供了复杂的实现,理解这些实现是怎么回事,更有利于明白自定义视图在程序中的表现以及如何正确地响应程序变化.</p>
 <h2 id="View-Architecture-Fundamentals"><a href="#View-Architecture-Fundamentals" class="headerlink" title="View Architecture Fundamentals"></a>View Architecture Fundamentals</h2><p>UIKit视图的内容渲染和动画其实是由Core Animation Layers 处理,每一个UIKit的视图对象都依靠对应一个layer对象来管理视图的后备存储器<em>(backing store)</em>和动画处理.当你需要对动画或者渲染需要进一步控制和自定义时,就需要在视图的layer上进行操作.</p>
 <p>涉及视图绘制时,Core Animation layer对象hi执行绘制代码时会产生一定性能消耗,应该尽可能地少使用绘制相关的代码,而绘制后的结果会被Core Animation缓存起来,尽可能地重用.这样的重用机制主要是避免绘制周期时更新视图内容时重复绘制生成的昂贵性能代价.并且绘制内容的重用在执行动画中也十分重要,因为重用比创建内容的耗费的性能要小得多.</p>
 <h3 id="View-Hierachies-and-SubView-Management"><a href="#View-Hierachies-and-SubView-Management" class="headerlink" title="View Hierachies and SubView Management"></a>View Hierachies and SubView Management</h3><p>View除了提供自身内容,也能作为其他视图对象的容器,提供其他视图的内容,成为自己的子视图,形成子父级的视图层次关系.</p>
@@ -355,359 +357,58 @@
 <li>不要通过在系统标准视图上嵌入子视图来定制自定义视图,可以在UIView上通过组合系统视图来完成自定义.</li>
 </ul>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/02/0702 Stackoverflow For iOS/" itemprop="url">
-                  Stackoverflow For iOS [2]
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-02T13:00:10+08:00" content="2016-07-02">
-              2016-07-02
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p><a href="Passing Data between View Controllers">Passing Data between View Controllers</a></p>
-<blockquote>
-<p>how do I transfer the data from one view to another? I will be holding the selections on the UITableView in an array, but how do I then pass that back to the previous data entry form view so it can be saved along with the other data to core data on submission of the form?</p>
-</blockquote>
-<h3 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h3><ul>
-<li><strong>Passing Data Forward by general</strong></li>
-</ul>
-<p>Controller直接暴露属性,在Controller之间切换时直接设置属性</p>
-<ul>
-<li><strong>Passing Data Forward using Segues</strong></li>
-</ul>
-<p>使用在UIStoryboard中的Segue进行控制器跳转时,在<code>-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender</code>方法中进行对目标控制器的数据传递</p>
-<ul>
-<li><strong>Passing Data Back by Delegate, Block, Notification</strong></li>
-</ul>
-<ul>
-<li><strong>使用NSUserDefaults</strong></li>
-</ul>
-<ul>
-<li><strong>使用单例对象</strong></li>
-</ul>
-<ul>
-<li><strong>数据库/文件访问</strong></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/07/02/0702 Stackoverflow For iOS/" rel="next" title="Stackoverflow For iOS [2]">
+                <i class="fa fa-chevron-left"></i> Stackoverflow For iOS [2]
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/06/29/Daily Stackoverflow For iOS/" itemprop="url">
-                  Stackoverflow For iOS [1]
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-29T21:25:15+08:00" content="2016-06-29">
-              2016-06-29
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h3 id="Question-Vertically-align-text-to-top-within-a-UILabel"><a href="#Question-Vertically-align-text-to-top-within-a-UILabel" class="headerlink" title="Question: Vertically align text to top within a UILabel"></a>Question: <a href="http://stackoverflow.com/questions/1054558/vertically-align-text-to-top-within-a-uilabel" target="_blank" rel="external">Vertically align text to top within a UILabel</a></h3><blockquote>
-<p>I have a UILabel with space for two lines of text. Sometimes, when the text is too short, this text is displayed in the vertical center of the label. How do I vertically align the text to always be at the top of the UILabel? <img src="http://7xk7a9.com1.z0.glb.clouddn.com/14672086182163.jpg" alt="a"></p>
-<h3 id="Answer-使用UILable的sizeToFit进行尺寸自我适应"><a href="#Answer-使用UILable的sizeToFit进行尺寸自我适应" class="headerlink" title="Answer: 使用UILable的sizeToFit进行尺寸自我适应"></a>Answer: 使用<code>UILable</code>的<code>sizeToFit</code>进行尺寸自我适应</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[myLabel sizeToFit];</span><br></pre></td></tr></table></figure>
-</blockquote>
-<ul>
-<li><code>sizeToFit</code>会根据label已设置的width进行细微调整</li>
-<li>如果文字过长需要换行,先设置numberOfLines为0.</li>
-<li>使用了autolayout的label在<code>viedidload</code>中调用了<code>sizeToFit</code>不会改变lable的尺寸位置,因为autolayout会在,进行自动布局前,撤销<code>sizeToFit</code>的调用影响;但是在<code>viewDidLayoutSubviews</code>中调用<code>sizeToFit</code>对label位置和尺寸有会影响.</li>
-</ul>
-<h3 id="Code-对Label的文字进行算高"><a href="#Code-对Label的文字进行算高" class="headerlink" title="Code: 对Label的文字进行算高"></a>Code: 对Label的文字进行算高</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CGSize maximumSize = CGSizeMake(300, 9999);</span><br><span class="line">NSString *dateString = @"The date today is January 1st, </span><br><span class="line">1999";</span><br><span class="line">UIFont *dateFont = [UIFont fontWithName:@"Helvetica" size:14];</span><br><span class="line">CGSize dateStringSize = [dateString sizeWithFont:dateFont </span><br><span class="line">        constrainedToSize:maximumSize </span><br><span class="line">        lineBreakMode:self.dateLabel.lineBreakMode];</span><br><span class="line"></span><br><span class="line">CGRect dateFrame = CGRectMake(10, 10, 300, dateStringSize.height);</span><br><span class="line"></span><br><span class="line">self.dateLabel.frame = dateFrame;</span><br></pre></td></tr></table></figure>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/17/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-17T20:42:19+08:00" content="2016-06-17">
-              2016-06-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -715,6 +416,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -734,8 +439,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7xk7a9.com1.z0.glb.clouddn.com/avater.png"
@@ -778,6 +492,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#View-and-Window-Architecture"><span class="nav-number">1.</span> <span class="nav-text">View and Window Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#View-Architecture-Fundamentals"><span class="nav-number">1.1.</span> <span class="nav-text">View Architecture Fundamentals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Hierachies-and-SubView-Management"><span class="nav-number">1.1.1.</span> <span class="nav-text">View Hierachies and SubView Management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-View-Drawing-Cycle"><span class="nav-number">1.1.2.</span> <span class="nav-text">The View Drawing Cycle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Content-Modes"><span class="nav-number">1.1.3.</span> <span class="nav-text">Content Modes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View-Geometry-and-Coordinate-Systems"><span class="nav-number">1.2.</span> <span class="nav-text">View Geometry and Coordinate Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Coordinate-Systems-Orientation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Coordinate Systems Orientation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Relationship-of-the-Frame-Bounds-Center"><span class="nav-number">1.2.2.</span> <span class="nav-text">The Relationship of the Frame, Bounds Center</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Coordinate-System-Transformations"><span class="nav-number">1.2.3.</span> <span class="nav-text">Coordinate System Transformations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Runtime-Interaction-Model-for-Views"><span class="nav-number">1.2.4.</span> <span class="nav-text">The Runtime Interaction Model for Views</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips-for-Using-Views-Effectively"><span class="nav-number">1.2.5.</span> <span class="nav-text">Tips for Using Views Effectively</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -881,6 +606,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
