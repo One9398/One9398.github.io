@@ -86,20 +86,20 @@
 
 <meta name="description" content="Window 与 View在iOS中, Window对象只是作为View对象的容器,本身没有任何可视化的内容展示在屏幕上.而屏幕上展示的文字,图片,形状等都是在View对象中添加的,然后将View对象添加到Window对象上,让视图内容展现到屏幕上,并且View对象间可以进行嵌套和组合形成一定的视图层次关系让最终呈现内容更加复杂.
 
-iOS程序一启动,Applegate对象都初始化一个主Windo">
+iOS程序一启动,Appdelegate对象都初始化一个主Win">
 <meta property="og:type" content="article">
 <meta property="og:title" content="View Programming Guide For iOS (1)">
 <meta property="og:url" content="http://www.yoursite.com/2016/07/05/ViewProgrammingGuideForiOS Part1/index.html">
 <meta property="og:site_name" content="One">
 <meta property="og:description" content="Window 与 View在iOS中, Window对象只是作为View对象的容器,本身没有任何可视化的内容展示在屏幕上.而屏幕上展示的文字,图片,形状等都是在View对象中添加的,然后将View对象添加到Window对象上,让视图内容展现到屏幕上,并且View对象间可以进行嵌套和组合形成一定的视图层次关系让最终呈现内容更加复杂.
 
-iOS程序一启动,Applegate对象都初始化一个主Windo">
-<meta property="og:updated_time" content="2016-07-05T13:04:49.000Z">
+iOS程序一启动,Appdelegate对象都初始化一个主Win">
+<meta property="og:updated_time" content="2016-07-06T12:15:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View Programming Guide For iOS (1)">
 <meta name="twitter:description" content="Window 与 View在iOS中, Window对象只是作为View对象的容器,本身没有任何可视化的内容展示在屏幕上.而屏幕上展示的文字,图片,形状等都是在View对象中添加的,然后将View对象添加到Window对象上,让视图内容展现到屏幕上,并且View对象间可以进行嵌套和组合形成一定的视图层次关系让最终呈现内容更加复杂.
 
-iOS程序一启动,Applegate对象都初始化一个主Windo">
+iOS程序一启动,Appdelegate对象都初始化一个主Win">
 
 
 
@@ -313,7 +313,7 @@ iOS程序一启动,Applegate对象都初始化一个主Windo">
       
         <h1 id="Window-与-View"><a href="#Window-与-View" class="headerlink" title="Window 与 View"></a>Window 与 View</h1><p>在iOS中, Window对象只是作为View对象的容器,本身没有任何可视化的内容展示在屏幕上.而屏幕上展示的文字,图片,形状等都是在View对象中添加的,然后将View对象添加到Window对象上,让视图内容展现到屏幕上,并且View对象间可以进行嵌套和组合形成一定的视图层次关系让最终呈现内容更加复杂.</p>
 <blockquote>
-<p>iOS程序一启动,Appleg<br>ate对象都初始化一个主Window对象,一般我们配置视图后都被添加在主Window对象,呈现在屏幕上.</p>
+<p>iOS程序一启动,Appdelegate对象都初始化一个主Window对象,一般我们配置视图后都被添加在主Window对象,然后呈现到屏幕上.</p>
 </blockquote>
 <h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>一个View就是UIView或者其子类的实例对象,主要负责了三个方面: <strong>内容绘制</strong>, <strong>事件处理</strong>, <strong>布局管理</strong></p>
 <ul>
@@ -324,11 +324,11 @@ iOS程序一启动,Applegate对象都初始化一个主Windo">
 <blockquote>
 <p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/WindowsandViews/WindowsandViews.html" target="_blank" rel="external">View and Window Architecture</a></p>
 </blockquote>
-<h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><p>一个Window就是UIWindow的实例,处理iOS程序的用户界面在设<br>备上整体的呈现,管理和交互添加在Window的View对象,来改变屏幕的呈现内容.常规地,程序中大多时候都只存在一个Window对象用于内容的展示,也可以创建一个的Window对象并且加入当前的Window层次中,添加View内容后呈现在屏幕上.</p>
+<h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><p>一个Window就是UIWindow的实例,处理iOS程序的用户界面在设备上整体的呈现,管理和交互添加在Window的View对象,来改变屏幕的呈现内容.常规地,程序中大多时候都只存在一个Window对象用于内容的展示,也可以创建一个的Window对象并且加入当前的Window层次中,添加View内容后呈现在屏幕上.</p>
 <blockquote>
 <p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/CreatingWindows/CreatingWindows.html#//apple_ref/doc/uid/TP40009503-CH4-SW1" target="_blank" rel="external">Windows</a></p>
 </blockquote>
-<h2 id="Animations"><a href="#Animations" class="headerlink" title="Animations"></a>Animations</h2><p>动画主要行为就是用可视化的反馈效果来表现View层次变化或者自身样式的变化,主要的动画技术有UIKit, Core Animation.</p>
+<h2 id="Animations"><a href="#Animations" class="headerlink" title="Animations"></a>Animations</h2><p>动画主要行为就是用可视化的反馈效果来表现View层次变化或者自身样式的变化,主要的动画技术有UIKit动画, Core Animation.</p>
 <blockquote>
 <p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/AnimatingViews/AnimatingViews.html#//apple_ref/doc/uid/TP40009503-CH6-SW1" target="_blank" rel="external">Animations</a></p>
 </blockquote>
