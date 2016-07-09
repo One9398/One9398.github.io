@@ -248,6 +248,144 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/09/ViewProgrammingGuideForiOS Part5/" itemprop="url">
+                  View Programming Guide For iOS (五)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-09T10:58:41+08:00" content="2016-07-09">
+              2016-07-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h1><p>iOS程序中,UIKit和Core Animation为视图提供了丰富的动画来表现视图变化效果.无论是针对UIView还是CALayer对象,在许多属性上提供动画效果.<br><strong>UIView的可动画属性</strong></p>
+<ul>
+<li>frame</li>
+<li>bounds</li>
+<li>center</li>
+<li>transform</li>
+<li>alpha</li>
+<li>backgroundColor</li>
+<li>contentStretch</li>
+</ul>
+<p><strong>CALayer的可动画属性</strong></p>
+<ul>
+<li>size</li>
+<li>center</li>
+<li>position</li>
+<li>z-order</li>
+<li>shadow</li>
+<li>opacity</li>
+<li>content</li>
+</ul>
+<p><strong>视图的动画代理</strong><br>通过UIView的<code>setAnimationDelegate:</code>方法就能让动画代理对象根据动画代理方法监听动画开始和结束的情况</p>
+<pre><code>- (void)animationWillStart:(NSString *)animationID context:(void *)context;
+- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+</code></pre><blockquote>
+<p>Tips: 通过设置<code>repeatCount</code>为0.5可以让执行动画视图保存新状态,而不是回到旧的状态.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/06/ViewProgrammingGuideForiOS Part4/" itemprop="url">
                   View Programming Guide For iOS (四)
                 </a>
@@ -1281,7 +1419,7 @@ UIWindowDidResignKeyNotification
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
