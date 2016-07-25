@@ -84,22 +84,41 @@
 
 
 
-<meta name="description" content="Window 与 View在iOS中, Window对象只是作为View对象的容器,本身没有任何可视化的内容展示在屏幕上.而屏幕上展示的文字,图片,形状等都是在View对象中添加的,然后将View对象添加到Window对象上,让视图内容展现到屏幕上,并且View对象间可以进行嵌套和组合形成一定的视图层次关系让最终呈现内容更加复杂.
+<meta name="description" content="控制器总览1.控制器的作用iOS中ViewControllers分两种:
 
-iOS程序一启动,Appdelegate对象都初始化一个主Win">
+内容控制器,管理自己根视图上的内容.
+容器控制器,管理子控制器和控制子控制器间的切换
+
+
+1.1视图管理对于内容控制器来说,控制器管理着属于自己根视图的所有层次视图,控制器通过对其根视图和所有子视图进行强引用来管来每一个视图对象.而容器控制器只管理自己的根视图以及子控制器的根视图尺寸和位置,不管理子控制器上的视图内容,如系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="View Programming Guide For iOS (一)">
-<meta property="og:url" content="http://www.yoursite.com/2016/07/05/ViewProgrammingGuideForiOS Part1/index.html">
+<meta property="og:title" content="View Controller Programming Guide For iOS (一)">
+<meta property="og:url" content="http://www.yoursite.com/2016/07/25/2016-07-25/index.html">
 <meta property="og:site_name" content="One">
-<meta property="og:description" content="Window 与 View在iOS中, Window对象只是作为View对象的容器,本身没有任何可视化的内容展示在屏幕上.而屏幕上展示的文字,图片,形状等都是在View对象中添加的,然后将View对象添加到Window对象上,让视图内容展现到屏幕上,并且View对象间可以进行嵌套和组合形成一定的视图层次关系让最终呈现内容更加复杂.
+<meta property="og:description" content="控制器总览1.控制器的作用iOS中ViewControllers分两种:
 
-iOS程序一启动,Appdelegate对象都初始化一个主Win">
-<meta property="og:updated_time" content="2016-07-08T15:28:31.000Z">
+内容控制器,管理自己根视图上的内容.
+容器控制器,管理子控制器和控制子控制器间的切换
+
+
+1.1视图管理对于内容控制器来说,控制器管理着属于自己根视图的所有层次视图,控制器通过对其根视图和所有子视图进行强引用来管来每一个视图对象.而容器控制器只管理自己的根视图以及子控制器的根视图尺寸和位置,不管理子控制器上的视图内容,如系">
+<meta property="og:image" content="http://www.yoursite.com/media/14694492144655.png">
+<meta property="og:image" content="http://www.yoursite.com/media/14694494275361.png">
+<meta property="og:image" content="http://www.yoursite.com/media/14694518498750.png">
+<meta property="og:image" content="http://www.yoursite.com/media/14694522538073.png">
+<meta property="og:image" content="http://www.yoursite.com/media/14694526035943.png">
+<meta property="og:image" content="http://www.yoursite.com/media/14694531009658.png">
+<meta property="og:updated_time" content="2016-07-25T13:28:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="View Programming Guide For iOS (一)">
-<meta name="twitter:description" content="Window 与 View在iOS中, Window对象只是作为View对象的容器,本身没有任何可视化的内容展示在屏幕上.而屏幕上展示的文字,图片,形状等都是在View对象中添加的,然后将View对象添加到Window对象上,让视图内容展现到屏幕上,并且View对象间可以进行嵌套和组合形成一定的视图层次关系让最终呈现内容更加复杂.
+<meta name="twitter:title" content="View Controller Programming Guide For iOS (一)">
+<meta name="twitter:description" content="控制器总览1.控制器的作用iOS中ViewControllers分两种:
 
-iOS程序一启动,Appdelegate对象都初始化一个主Win">
+内容控制器,管理自己根视图上的内容.
+容器控制器,管理子控制器和控制子控制器间的切换
+
+
+1.1视图管理对于内容控制器来说,控制器管理着属于自己根视图的所有层次视图,控制器通过对其根视图和所有子视图进行强引用来管来每一个视图对象.而容器控制器只管理自己的根视图以及子控制器的根视图尺寸和位置,不管理子控制器上的视图内容,如系">
+<meta name="twitter:image" content="http://www.yoursite.com/media/14694492144655.png">
 
 
 
@@ -120,9 +139,9 @@ iOS程序一启动,Appdelegate对象都初始化一个主Win">
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/2016/07/05/ViewProgrammingGuideForiOS Part1/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2016/07/25/2016-07-25/"/>
 
-  <title> View Programming Guide For iOS (一) | One </title>
+  <title> View Controller Programming Guide For iOS (一) | One </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +271,7 @@ iOS程序一启动,Appdelegate对象都初始化一个主Win">
             
             
               
-                View Programming Guide For iOS (一)
+                View Controller Programming Guide For iOS (一)
               
             
           </h1>
@@ -264,8 +283,8 @@ iOS程序一启动,Appdelegate对象都初始化一个主Win">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-05T18:38:29+08:00" content="2016-07-05">
-              2016-07-05
+            <time itemprop="dateCreated" datetime="2016-07-25T20:03:05+08:00" content="2016-07-25">
+              2016-07-25
             </time>
           </span>
 
@@ -311,34 +330,23 @@ iOS程序一启动,Appdelegate对象都初始化一个主Win">
       
 
       
-        <h1 id="Window-与-View"><a href="#Window-与-View" class="headerlink" title="Window 与 View"></a>Window 与 View</h1><p>在iOS中, Window对象只是作为View对象的容器,本身没有任何可视化的内容展示在屏幕上.而屏幕上展示的文字,图片,形状等都是在View对象中添加的,然后将View对象添加到Window对象上,让视图内容展现到屏幕上,并且View对象间可以进行嵌套和组合形成一定的视图层次关系让最终呈现内容更加复杂.</p>
-<blockquote>
-<p>iOS程序一启动,Appdelegate对象都初始化一个主Window对象,一般我们配置视图后都被添加在主Window对象,然后呈现到屏幕上.</p>
-</blockquote>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>一个View就是UIView或者其子类的实例对象,主要负责了三个方面: <strong>内容绘制</strong>, <strong>事件处理</strong>, <strong>布局管理</strong></p>
+        <h1 id="控制器总览"><a href="#控制器总览" class="headerlink" title="控制器总览"></a>控制器总览</h1><h2 id="1-控制器的作用"><a href="#1-控制器的作用" class="headerlink" title="1.控制器的作用"></a>1.控制器的作用</h2><p>iOS中ViewControllers分两种:</p>
 <ul>
-<li>内容绘制: 在iOS中绘制View所采用的绘制技术主要Core Graphic, OpenGL ES, UIKit.</li>
-<li>事件处理: 响应各种手势事件,Touch事件</li>
-<li>布局管理: 使用frame/bound 或者autolayout来进行自己subViews中各视图的位置和尺寸设置, 父视图可以动态地调整子视图布局来响应各种条件变化如动画,旋转等</li>
+<li>内容控制器,管理自己根视图上的内容.</li>
+<li>容器控制器,管理子控制器和控制子控制器间的切换</li>
 </ul>
-<blockquote>
-<p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/WindowsandViews/WindowsandViews.html" target="_blank" rel="external">View and Window Architecture</a></p>
-</blockquote>
-<h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><p>一个Window就是UIWindow的实例,处理iOS程序的用户界面在设备上整体的呈现,管理和交互添加在Window的View对象,来改变屏幕的呈现内容.常规地,程序中大多时候都只存在一个Window对象用于内容的展示,也可以创建一个的Window对象并且加入当前的Window层次中,添加View内容后呈现在屏幕上.</p>
-<blockquote>
-<p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/CreatingWindows/CreatingWindows.html#//apple_ref/doc/uid/TP40009503-CH4-SW1" target="_blank" rel="external">Windows</a></p>
-</blockquote>
-<h2 id="Animations"><a href="#Animations" class="headerlink" title="Animations"></a>Animations</h2><p>动画主要行为就是用可视化的反馈效果来表现View层次变化或者自身样式的变化,主要的动画技术有UIKit动画, Core Animation.</p>
-<blockquote>
-<p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/AnimatingViews/AnimatingViews.html#//apple_ref/doc/uid/TP40009503-CH6-SW1" target="_blank" rel="external">Animations</a></p>
-</blockquote>
-<h2 id="Relevant"><a href="#Relevant" class="headerlink" title="Relevant"></a>Relevant</h2><ul>
-<li>视图控制器与视图关系<a href="https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/index.html#//apple_ref/doc/uid/TP40007457" target="_blank" rel="external">View Controller Programming Guide for iOS</a></li>
-<li>视图如何处理事件 <a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009541" target="_blank" rel="external">Event Handling Guide for iOS</a></li>
-<li>自定义视图如何使用绘制技术渲染内容 <a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010156" target="_blank" rel="external">Drawing and Printing Guide for iOS</a></li>
-<li>视图如何使用有效,合适的动画 <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514" target="_blank" rel="external">Core Animation Programming for iOS</a></li>
-</ul>
-
+<p><br></p>
+<h3 id="1-1视图管理"><a href="#1-1视图管理" class="headerlink" title="1.1视图管理"></a>1.1视图管理</h3><p>对于内容控制器来说,控制器管理着属于自己根视图的所有层次视图,控制器通过对其根视图和所有子视图进行强引用来管来每一个视图对象.<br>而容器控制器只管理自己的根视图以及子控制器的根视图尺寸和位置,不管理子控制器上的视图内容,如系统的容器控制器SplitViewController<img src="media/14694492144655.png" alt="视图管理"><br><br></p>
+<h3 id="1-2数据处理"><a href="#1-2数据处理" class="headerlink" title="1.2数据处理"></a>1.2数据处理</h3><p>控制器还管理视图与模型之间的数据处理,将模型数据进行一定加工装载到视图上.但是控制器处理模型数据时要尽量减少对模型数据的管理,应让模型对象自身拥有数据处理的逻辑,然后由控制器进行执行,避免控制器代码的臃肿.<br><img src="media/14694494275361.png" alt="数据处理"><br><br></p>
+<h3 id="1-3用户交互"><a href="#1-3用户交互" class="headerlink" title="1.3用户交互"></a>1.3用户交互</h3><p>作为响应者对象,也具有基本的处理响应链中传递的事件的能力,但多数情况下视图都应自己处理对于的触摸事件或者使用delegate或target-action将事件转交给控制器处理.<br><br></p>
+<h3 id="1-4资源管理"><a href="#1-4资源管理" class="headerlink" title="1.4资源管理"></a>1.4资源管理</h3><p>控制器持有着所有在其根视图上的视图(包括根视图),以及创建的其他对象,所有这些对象的内存都由控制器分配管理.在手机内存紧张时,系统会自动地调用控制器的<code>didReceiveMemoryWarning</code>方法进行临时资源内存的释放,通常可以在此方法中手动释放一些懒加载的对象以及其他不重要但内存占量大的对象.<br><br></p>
+<h3 id="1-5适应多尺寸"><a href="#1-5适应多尺寸" class="headerlink" title="1.5适应多尺寸"></a>1.5适应多尺寸</h3><p>控制器负责视图的应对各个尺寸环境下的呈现方式,比如iPhone的横屏与竖屏两种不同尺寸:水平方向和垂直方向上的Regular Size和Compact Size,控制器应使用Autolayout来合理地布局内容到对应尺寸上,进行布局的动态调整.</p>
+<h2 id="2-控制器层次"><a href="#2-控制器层次" class="headerlink" title="2.控制器层次"></a>2.控制器层次</h2><h3 id="2-1根控制器"><a href="#2-1根控制器" class="headerlink" title="2.1根控制器"></a>2.1根控制器</h3><p>根控制器是控制器层次中的最末端,也是Window对象<code>rootViewController</code>属性指向的对象,来提供初始的视图内容添加到当前的可视窗口上.<img src="media/14694518498750.png" alt="窗口与gen&#39;shi&#39;tu&#39;kong&#39;zhi&#39;q根视图控制器"></p>
+<p><br></p>
+<h3 id="2-2容器控制器"><a href="#2-2容器控制器" class="headerlink" title="2.2容器控制器"></a>2.2容器控制器</h3><p>容器控制器结合多个子控制器的自定义视图内容组成最终界面来呈现内容,为此需要合理地放置子控制器根视图以及恰当地填充整个容器控制器的根视图界面.<img src="media/14694522538073.png" alt="容器控制器与视图的层次关系"><br><br></p>
+<h3 id="2-3呈现视图控制器"><a href="#2-3呈现视图控制器" class="headerlink" title="2.3呈现视图控制器"></a>2.3呈现视图控制器</h3><p>为了在当前控制器下呈现出另一个新的控制器来展示新的内容,常常使用默认的Modal Presentied方式来表现,其中presentedViewContoller表示着呈现出来的新控制器对象,presentingViewController为原来界面的控制器对象.<img src="media/14694526035943.png" alt="Presented&amp;Presenting"></p>
+<p>当有容器控制器存在情况下进行呈现新控制器操作时,UIKit提供合适的上下文来表现:默认选择跟当前控制器层次关系最近的容器控制器来presented新控制器,通常也是窗口的根控制器,当然可允许调整控制器所定义的呈现上下文,进行手动地呈现控制.<img src="media/14694531009658.png" alt="有根控制器下的presentation"></p>
+<h2 id="3-设计建议"><a href="#3-设计建议" class="headerlink" title="3.设计建议"></a>3.设计建议</h2>
       
     </div>
 
@@ -368,17 +376,13 @@ iOS程序一启动,Appdelegate对象都初始化一个主Win">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/04/ViewProgrammingGuideForiOS Part2/" rel="next" title="View Programming Guide For iOS (二)">
-                <i class="fa fa-chevron-left"></i> View Programming Guide For iOS (二)
+              <a href="/2016/07/09/ViewProgrammingGuideForiOS Part5/" rel="next" title="View Programming Guide For iOS (五)">
+                <i class="fa fa-chevron-left"></i> View Programming Guide For iOS (五)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/05/ViewProgrammingGuideForiOS Part3/" rel="prev" title="View Programming Guide For iOS (三)">
-                View Programming Guide For iOS (三) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -492,7 +496,7 @@ iOS程序一启动,Appdelegate对象都初始化一个主Win">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Window-与-View"><span class="nav-number">1.</span> <span class="nav-text">Window 与 View</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">1.1.</span> <span class="nav-text">View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Window"><span class="nav-number">1.2.</span> <span class="nav-text">Window</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animations"><span class="nav-number">1.3.</span> <span class="nav-text">Animations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relevant"><span class="nav-number">1.4.</span> <span class="nav-text">Relevant</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#控制器总览"><span class="nav-number">1.</span> <span class="nav-text">控制器总览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-控制器的作用"><span class="nav-number">1.1.</span> <span class="nav-text">1.控制器的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1视图管理"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1视图管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2数据处理"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2数据处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3用户交互"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3用户交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4资源管理"><span class="nav-number">1.1.4.</span> <span class="nav-text">1.4资源管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5适应多尺寸"><span class="nav-number">1.1.5.</span> <span class="nav-text">1.5适应多尺寸</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-控制器层次"><span class="nav-number">1.2.</span> <span class="nav-text">2.控制器层次</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1根控制器"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1根控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2容器控制器"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2容器控制器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3呈现视图控制器"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3呈现视图控制器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-设计建议"><span class="nav-number">1.3.</span> <span class="nav-text">3.设计建议</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
