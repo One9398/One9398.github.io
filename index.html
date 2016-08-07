@@ -381,6 +381,253 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/25/0807/" itemprop="url">
+                  View Controller Programming Guide For iOS (二)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-25T20:03:05+08:00" content="2016-07-25">
+              2016-07-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1子类化控制器定制"><a href="#1子类化控制器定制" class="headerlink" title="1子类化控制器定制"></a>1子类化控制器定制</h2><h3 id="1-1自定义界面UI"><a href="#1-1自定义界面UI" class="headerlink" title="1.1自定义界面UI"></a>1.1自定义界面UI</h3><p>官方推荐使用Storyboard文件以可视化方式进行控制器的UI定制,来对应多种尺寸环境,并且方便快速地调整和查看.</p>
+<p><br></p>
+<h3 id="1-2处理用户交互"><a href="#1-2处理用户交互" class="headerlink" title="1.2处理用户交互"></a>1.2处理用户交互</h3><p>通常,控制器主要处理交互事件方式有三种:</p>
+<ul>
+<li>由视图指定为Target的动作事件和手势事件</li>
+<li>系统或者其他对象发送的通知事件处理</li>
+<li>作为其他对象的数据源和代理事件处理</li>
+</ul>
+<p><br></p>
+<h3 id="1-3运行时展示视图"><a href="#1-3运行时展示视图" class="headerlink" title="1.3运行时展示视图"></a>1.3运行时展示视图</h3><p>当控制器加载视图后会调用<code>viewWillAppear:</code>方法让控制器知道将要呈现在屏幕上的视图,然后更新视图布局,展示视图到屏幕上,然后就调用<code>viewDidAppear:</code>.<br>当动态地添加,删除或修改视图时需要对应地进行约束布局调整.</p>
+<p><br></p>
+<h3 id="1-4管理视图布局"><a href="#1-4管理视图布局" class="headerlink" title="1.4管理视图布局"></a>1.4管理视图布局</h3><p>当控制器上视图的约束布局变化时,UIKit会通知这些变化的发生,并允许在几处关键的响应过程进行额外的处理工作.</p>
+<ul>
+<li>更新控制器和视图的trait collections,</li>
+<li>调用控制器的<code>viewWillLayoutSubviews</code></li>
+<li>对当前UIPresentationController 对象调用<code>containerViewWillLayoutSubviews</code></li>
+<li>调用根视图的<code>layoutSubviews</code>,内部遍历子视图进行调用</li>
+<li>应用计算后的布局信息到视图</li>
+<li>调用控制器的<code>viewDidLayoutSubViews</code></li>
+<li>调用当前UIPresentationController对象的<code>containerViewDidLayoutSubviews</code>方法.</li>
+</ul>
+<p><strong>管理布局的建议</strong></p>
+<ul>
+<li>使用Autolayout</li>
+<li>利用top and bottom layout guides</li>
+<li>添加移除视图时对于更新约束</li>
+<li>实现动画时临时移除约束</li>
+</ul>
+<p><br></p>
+<h3 id="1-5有效地管理内存"><a href="#1-5有效地管理内存" class="headerlink" title="1.5有效地管理内存"></a>1.5有效地管理内存</h3><p>控制器中主要进行内存分配和释放的关键方法.</p>
+<ul>
+<li>init系列的初始化方法: 加载首要的数据</li>
+<li>viewDidLoad: 装载数据,并配置视图内容</li>
+<li>didReceiveMemoryWarning: 释放非首要的数据内存</li>
+<li>dealloc: 释放所有与当前控制器相关的对象内存.</li>
+</ul>
+<p><br></p>
+<h2 id="2如何实现容器控制器"><a href="#2如何实现容器控制器" class="headerlink" title="2如何实现容器控制器"></a>2如何实现容器控制器</h2><h3 id="2-1设计自定义的容器控制器"><a href="#2-1设计自定义的容器控制器" class="headerlink" title="2.1设计自定义的容器控制器"></a>2.1设计自定义的容器控制器</h3><blockquote>
+<p>容器控制器只应该管理自己视图层次上的视图,再让子控制器管理各自的视图层次.</p>
+</blockquote>
+<p><strong>设计容器控制器的注意点</strong></p>
+<ul>
+<li>明确容器控制器和子控制器各自的作用</li>
+<li>存在几个同时展示的子控制器</li>
+<li>子控制器之间的关系</li>
+<li>子控制器如何添加或移除</li>
+<li>子控制器尺寸,位置变化的处理</li>
+<li>容器控制器对子控制器的UI定制</li>
+<li>容器控制器与子控制器之间的通信方式和事件处理</li>
+<li>容器控制器的UI定制</li>
+</ul>
+<p><strong>以下为系统级容器控制器的例子: NavigationViewController &amp; SplitViewController</strong><br><img src="media/14696593931345.png" alt="导航控制器的层次设计"><br><img src="media/14696594994664.png" alt="SplitViewController的层次设计"></p>
+<p><br></p>
+<h3 id="2-2Interface-Builder配置容器控制器"><a href="#2-2Interface-Builder配置容器控制器" class="headerlink" title="2.2Interface Builder配置容器控制器"></a>2.2Interface Builder配置容器控制器</h3><p>使用Xcode中UI组件库Container对象,进行子控制器内容视图的占位,加载时同时加载子控制器的视图.</p>
+<p><br></p>
+<h3 id="2-3实现自定义容器控制器"><a href="#2-3实现自定义容器控制器" class="headerlink" title="2.3实现自定义容器控制器"></a>2.3实现自定义容器控制器</h3><blockquote>
+<p>实现明确的控制器间子父关系</p>
+</blockquote>
+<p><br></p>
+<h4 id="2-3-1添加子控制器"><a href="#2-3-1添加子控制器" class="headerlink" title="2.3.1添加子控制器"></a>2.3.1添加子控制器</h4><ol>
+<li>使用<code>addChildViewController</code>添加到容器控制器</li>
+<li>添加子控制器的根视图到容器控制器的视图层次中,限定size和postion</li>
+<li>调用<code>didMoveToParentViewController</code>,提供子控制器响应控制器关系改变的机会</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) displayContentController: (<span class="built_in">UIViewController</span>*) content &#123;</span><br><span class="line">   [<span class="keyword">self</span> addChildViewController:content];</span><br><span class="line">   content.view.frame = [<span class="keyword">self</span> frameForContentController];</span><br><span class="line">   [<span class="keyword">self</span>.view addSubview:<span class="keyword">self</span>.currentClientView];</span><br><span class="line">   [content didMoveToParentViewController:<span class="keyword">self</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>注意:</em> <code>didMoveToParentViewController:</code>方法必须在视图层次变化后调用.</p>
+<h4 id="2-3-2移除子控制器"><a href="#2-3-2移除子控制器" class="headerlink" title="2.3.2移除子控制器"></a>2.3.2移除子控制器</h4><ol>
+<li>调用子控制器的<code>willMoveToParentViewController</code>方法,传nil</li>
+<li>移除在容器视图上跟子控制器相关的布局约束</li>
+<li>移除子控制器视图</li>
+<li>调用子控制器的<code>removeFromParentViewController</code>完成子父关系的结束</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) hideContentController: (<span class="built_in">UIViewController</span>*) content &#123;</span><br><span class="line">   [content willMoveToParentViewController:<span class="literal">nil</span>];</span><br><span class="line">   [content.view removeFromSuperview];</span><br><span class="line">   [content removeFromParentViewController];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>注意:</em> 可以在子类的<code>willMoveToParentViewController</code>方法进行额外自定义操作<br><br></p>
+<h4 id="2-3-3子控制器间的切换"><a href="#2-3-3子控制器间的切换" class="headerlink" title="2.3.3子控制器间的切换"></a>2.3.3子控制器间的切换</h4><ol>
+<li>准备进行切换的子控制器</li>
+<li>切换时改变子控制视图的层次,设置子控制器切换后的frame</li>
+<li>通知子控制器间切换的完成</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)cycleFromViewController: (<span class="built_in">UIViewController</span>*) oldVC</span><br><span class="line">               toViewController: (<span class="built_in">UIViewController</span>*) newVC &#123;</span><br><span class="line">   <span class="comment">// Prepare the two view controllers for the change.</span></span><br><span class="line">   [oldVC willMoveToParentViewController:<span class="literal">nil</span>];</span><br><span class="line">   [<span class="keyword">self</span> addChildViewController:newVC];</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Get the start frame of the new view controller and the end frame</span></span><br><span class="line">   <span class="comment">// for the old view controller. Both rectangles are offscreen.</span></span><br><span class="line">   newVC.view.frame = [<span class="keyword">self</span> newViewStartFrame];</span><br><span class="line">   <span class="built_in">CGRect</span> endFrame = [<span class="keyword">self</span> oldViewEndFrame];</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// Queue up the transition animation.</span></span><br><span class="line">   [<span class="keyword">self</span> transitionFromViewController: oldVC toViewController: newVC</span><br><span class="line">        duration: <span class="number">0.25</span> options:<span class="number">0</span></span><br><span class="line">        animations:^&#123;</span><br><span class="line">            <span class="comment">// Animate the views to their final positions.</span></span><br><span class="line">            newVC.view.frame = oldVC.view.frame;</span><br><span class="line">            oldVC.view.frame = endFrame;</span><br><span class="line">        &#125;</span><br><span class="line">        completion:^(<span class="built_in">BOOL</span> finished) &#123;</span><br><span class="line">           <span class="comment">// Remove the old view controller and send the final</span></span><br><span class="line">           <span class="comment">// notification to the new view controller.</span></span><br><span class="line">           [oldVC removeFromParentViewController];</span><br><span class="line">           [newVC didMoveToParentViewController:<span class="keyword">self</span>];</span><br><span class="line">        &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-4管理子控制器的界面更新"><a href="#2-3-4管理子控制器的界面更新" class="headerlink" title="2.3.4管理子控制器的界面更新"></a>2.3.4管理子控制器的界面更新</h4><p>切换子控制器时,UIKit自动进行按照默认顺序转发外观方法,若需要实现自定义顺序的转发,需要重写容器控制器<code>shouldAutomaticallyForwardAppearanceMethods</code>方法,返回NO;然后手动调用子控制器的<code>beginAppearanceTransition:animated:</code>和<code>endAppearanceTransition</code>方法来通知子控制器.</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">void</span>) viewWillAppear:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    [<span class="keyword">self</span>.child beginAppearanceTransition: <span class="literal">YES</span> animated: animated];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">-(<span class="keyword">void</span>) viewDidAppear:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    [<span class="keyword">self</span>.child endAppearanceTransition];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">-(<span class="keyword">void</span>) viewWillDisappear:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    [<span class="keyword">self</span>.child beginAppearanceTransition: <span class="literal">NO</span> animated: animated];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">-(<span class="keyword">void</span>) viewDidDisappear:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    [<span class="keyword">self</span>.child endAppearanceTransition];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-5创建容器控制器的建议"><a href="#2-3-5创建容器控制器的建议" class="headerlink" title="2.3.5创建容器控制器的建议"></a>2.3.5创建容器控制器的建议</h4><ul>
+<li>让容器控制器只能访问子控制器的根视图</li>
+<li>子控制器保持对容器控制器的耦合,使用委托代理将事件转发给容器控制器处理</li>
+<li>在容器控制器中首先使用常规的视图,再去嵌入子控制器的根视图.</li>
+</ul>
+<p><br></p>
+<h3 id="2-4代理控制子控制器"><a href="#2-4代理控制子控制器" class="headerlink" title="2.4代理控制子控制器"></a>2.4代理控制子控制器</h3><p>容器控制器通常会委托一个或者多个子控制器来进行部分外观的配置,配置的方式可以考虑以下两种:</p>
+<ul>
+<li>重写<code>childViewControllerForStatusBarStyle</code>或<code>childViewControllerForStatusBarHidden</code>让子控制器决定顶部状态栏风格</li>
+<li>使用子控制器的<code>preferredContentSize</code>属性让其确定自己尺寸.</li>
+</ul>
+<p><br></p>
+<h2 id="3支持便利性"><a href="#3支持便利性" class="headerlink" title="3支持便利性"></a>3支持便利性</h2><p>为了让每一用户即使生理上存在缺陷也能最大程度地使用iOS应用, UIKit的对象默认都accessible,而对控制器仍然在要以下方面保持便利性:</p>
+<ul>
+<li>确保每个界面元素accessible,比如标签或者按钮等</li>
+<li>确保每个accessible元素提高准确有效的信息</li>
+</ul>
+<p><br></p>
+<h3 id="3-1使用VoiceOver功能"><a href="#3-1使用VoiceOver功能" class="headerlink" title="3.1使用VoiceOver功能"></a>3.1使用VoiceOver功能</h3><p>开启VoiceOver功能后,界面光标可以移动到特定的元素进行语音告知,主要通过UIAccessibilityScreenChangedNotification通知和<code>UIAccessibilityPostNotification(,)</code>方法,传入特定的控件元素来实现,在布局变化时使用<code>UIAccessibilityLayoutChangedNotification</code>通知来告知用户.</p>
+<p><br></p>
+<h3 id="3-2响应VoiceOver手势"><a href="#3-2响应VoiceOver手势" class="headerlink" title="3.2响应VoiceOver手势"></a>3.2响应VoiceOver手势</h3><p>UIKit会寻找在响应者链中法实现相应的手势的方法，成为VoiceOver的焦点。如果没有对象实现了对应的方法，UIKit执行系统默认动作。</p>
+<p><br></p>
+<h3 id="3-3监听Accessibility通知"><a href="#3-3监听Accessibility通知" class="headerlink" title="3.3监听Accessibility通知"></a>3.3监听Accessibility通知</h3><p>使用默认的通知中心注册为可访问性通知的观察者,如UIAccessibilityAnnouncementDidFinishNotification通知和UIAccessibilityVoiceOverStatusChanged告知用户App的状态变化.</p>
+<h2 id="4状态的保存和恢复"><a href="#4状态的保存和恢复" class="headerlink" title="4状态的保存和恢复"></a>4状态的保存和恢复</h2><p>为了提供App更好的用户体验,iOS控制器提供了App界面状态的存储和恢复功能,即使App在一些特定情况下如内存紧缺,电量不足而中断,能够进行存储配置来记录App退出前界面和数据,保证下次启动App时将中断退出前呈现再给用户.</p>
+<p><strong>配置过程</strong></p>
+<ul>
+<li>1.对需要具有存储功能的控制器赋值restoration identifiers</li>
+<li>2.在应用启动时创建具有restoration identifiers且被应用中断的控制器对象</li>
+<li>3.每一个由于存储恢复创建的控制器配置对应数据,保证呈现用户的界面与之前退出的界面一致.</li>
+</ul>
+<p><br></p>
+<h3 id="4-1标记需要存储的控制器"><a href="#4-1标记需要存储的控制器" class="headerlink" title="4.1标记需要存储的控制器"></a>4.1标记需要存储的控制器</h3><p>设置控制器的restorationIdentifier属性为唯一字符串,默认为nil.并且<strong>保证其控制器的所有父控制器也设置了restorationIdentifier</strong>,从而使得状态恢复过程中能到从窗口对象开始,一层层查找到需要状态恢复并且呈现在界面上的控制器.<br><em>Tip: restorationIdentifier通常设置为控制器类名本身的字符串.</em></p>
+<p><br></p>
+<h3 id="4-2启动时恢复控制器"><a href="#4-2启动时恢复控制器" class="headerlink" title="4.2启动时恢复控制器"></a>4.2启动时恢复控制器</h3><p>App启动时,会在AppDelegate中进行具有存储功能控制器需要恢复的定位,并且创建该对象,通过一系列的步骤进行查询和创建.</p>
+<ul>
+<li>调用<code>viewControllerWithRestorationIdentifierPath:coder:</code>判断是否存在具有RestorationIdentifier路径的控制器,没有就会返回nil.</li>
+<li>然后调用<code>application:viewControllerWithRestorationIdentifierPath:coder:</code>查看没有恢复功能的控制器类</li>
+<li>若果存在具有RestorationIdentifier路径的控制器情况下,系统会在启动过程中通过恢复路径加载这些控制器对象.</li>
+</ul>
+<p><em>若使用Storyboard创建状态恢复控制器的代码示例</em></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">UIViewController</span>*) viewControllerWithRestorationIdentifierPath:(<span class="built_in">NSArray</span> *)identifierComponents</span><br><span class="line">                      coder:(<span class="built_in">NSCoder</span> *)coder &#123;</span><br><span class="line">   MyViewController* vc;</span><br><span class="line">   <span class="built_in">UIStoryboard</span>* sb = [coder decodeObjectForKey:<span class="built_in">UIStateRestorationViewControllerStoryboardKey</span>];</span><br><span class="line">   <span class="keyword">if</span> (sb) &#123;</span><br><span class="line">      vc = (PushViewController*)[sb instantiateViewControllerWithIdentifier:<span class="string">@"MyViewController"</span>];</span><br><span class="line">      vc.restorationIdentifier = [identifierComponents lastObject];</span><br><span class="line">      vc.restorationClass = [MyViewController class];</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">return</span> vc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-3对控制器状态的编码和解码"><a href="#4-3对控制器状态的编码和解码" class="headerlink" title="4.3对控制器状态的编码和解码"></a>4.3对控制器状态的编码和解码</h3><p>针对进行状态保存和恢复的对象,系统都会调用当前对象的<code>encodeRestorableStateWithCoder:</code>和<code>decodeRestorableStateWithCoder:</code>方法,来应用到该对象上,通常所做为保存和恢复所引用的数据对象,其子控制器,当前选择的状态以及配置过的视图.<br>在编码过程中,需要存储控制器的各个状态数据,而在界面控制器中需要恢复控制器的各个状态数据.</p>
+<p><em>对控制器的数据进行编码和解码的代码示例</em></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)encodeRestorableStateWithCoder:(<span class="built_in">NSCoder</span> *)coder &#123;</span><br><span class="line">   [<span class="keyword">super</span> encodeRestorableStateWithCoder:coder];</span><br><span class="line"> </span><br><span class="line">   [coder encodeInt:<span class="keyword">self</span>.number forKey:MyViewControllerNumber];</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">- (<span class="keyword">void</span>)decodeRestorableStateWithCoder:(<span class="built_in">NSCoder</span> *)coder &#123;</span><br><span class="line">   [<span class="keyword">super</span> decodeRestorableStateWithCoder:coder];</span><br><span class="line"> </span><br><span class="line">   <span class="keyword">self</span>.number = [coder decodeIntForKey:MyViewControllerNumber];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="4-4保存和存储控制器的建议"><a href="#4-4保存和存储控制器的建议" class="headerlink" title="4.4保存和存储控制器的建议"></a>4.4保存和存储控制器的建议</h3><ol>
+<li>不要保留所有控制器的状态,仅考虑必要的最先呈现给用户的控制器</li>
+<li>避免在恢复过程中对控制器类进行交换</li>
+<li>使用状态恢复系统推荐的控制器存储恢复方式实现界面的保存和再恢复状态.</li>
+</ol>
+<p><br></p>
+<h2 id="5-参考"><a href="#5-参考" class="headerlink" title="5.参考"></a>5.参考</h2><p><a href="https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/DefiningYourSubclass.html#//apple_ref/doc/uid/TP40007457-CH7-SW1" target="_blank" rel="external">View Controller Programming Guide for iOS-Defining Your Subclass</a></p>
+<p><br></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/09/ViewProgrammingGuideForiOS Part5/" itemprop="url">
                   View Programming Guide For iOS (五)
                 </a>
@@ -1456,7 +1703,7 @@ UIWindowDidResignKeyNotification
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
