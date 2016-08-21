@@ -248,6 +248,311 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/06/ViewProgrammingGuideForiOS Part4/" itemprop="url">
+                  View Programming Guide For iOS (四)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-06T21:50:58+08:00" content="2016-07-06">
+              2016-07-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="View"><a href="#View" class="headerlink" title="View"></a>View</h1><p><strong>视图作为程序中主要的交互对象,自然有许多职责和功能,比如负责布局和子视图的管理, 内容的绘制和动画,以及响应事件的处理.</strong></p>
+<h2 id="视图的创建和配置"><a href="#视图的创建和配置" class="headerlink" title="视图的创建和配置"></a>视图的创建和配置</h2><p><strong>创建视图</strong><br>创建视图有两种方式:Nib加载和纯代码加载.其中如果采用Nib加载的方式,又分为加载控制器的Nib文件和加载视图的Nib文件两种.若是加载控制器Nib则加载后控制器会在合适的时机使用和移除其根视图,纯视图的Nib文件加载就需要从NSBundle对象或者UINib对象去手动地创建.<br><br><br><strong>Tag标示视图</strong><br>对视图的tag属性设置可以用于后续视图的获取,使用<code>viewWithTag:</code>方法,而基于Tag的视图搜索采用深度优先搜索,比遍历视图效率更高.</p>
+<h2 id="视图层次的创建和管理"><a href="#视图层次的创建和管理" class="headerlink" title="视图层次的创建和管理"></a>视图层次的创建和管理</h2><p><strong>视图添加移除的内存管理</strong><br>通过<code>addSubview</code>后的视图会自动被父视图强引用,所以在保证视图不被移除父视图的视图层次的情况下单独引用该视图时推荐使用弱引用;通过<code>removeFormSuperView</code>方法从原有视图层中移除视图后,视图会被autorelease一次,如果该视图进入下一次事件循环周期前仍然没有被其他对象强引用,则视图就会被释放掉.<br><br><br><strong>如何隐藏视图</strong><br>让视图暂时地不可见有两种方式:设置hidden属性为YES;改变aplha属性为0.后一种是具有动画性的属性,可以用于动画,前一种则不会产生动画.</p>
+<blockquote>
+<p>隐藏的视图仍会可能成为事件的第一响应者,因此在隐藏前需要显示地resign第一响应者状态.</p>
+</blockquote>
+<p><br><br><strong>如何定位视图层次的视图</strong></p>
+<ol>
+<li>对特定视图使用强引用</li>
+<li>设置视图的tag属性,使用<code>viewWithTag:</code>方法获取</li>
+</ol>
+<p><br><br><strong>视图的旋转,位移,缩放</strong><br>针对视图的transform属性进行修改,可以产生视图旋转,位移,缩放的效果,这些效果都是围绕视图的center进行变化.多次对视图transform设置时,不同的变换顺序会产生不同的展示效果.</p>
+<p><br><br><strong>视图层次中转换坐标</strong></p>
+<ul>
+<li>对于UIView对象提供<code>convertPoint:fromView</code>等方法进行不同视图间坐标系的转换.</li>
+<li>对于UIWindow对象提供类似<code>convertPoint:fromWindow</code>等方法进行不同窗口间坐标系转换.</li>
+</ul>
+<p>如下图当子视图应用了rotation transform后,将子视图基于自己坐标系的矩形转换到父视图坐标系下,生成的区域矩形比原来矩形更大,是在父坐标系下包含子视图原来矩形的最小矩形.<br><img src="media/14679310809717.jpg" alt=""></p>
+<h2 id="动态调整视图的尺寸-位置"><a href="#动态调整视图的尺寸-位置" class="headerlink" title="动态调整视图的尺寸/位置"></a>动态调整视图的尺寸/位置</h2><p><strong>视图布局的变化时机</strong></p>
+<ul>
+<li>视图size改变</li>
+<li>设备方向的改变</li>
+<li>视图相关的sublayers的改变</li>
+<li>对视图调用<code>setNeedsLayout</code>或者<code>layoutIfNeed</code>方法</li>
+<li>对视图的layer调用<code>setNeedsLayout</code>方法</li>
+</ul>
+<p><br><br><strong>管理视图布局</strong><br>iOS程序管理视图布局的方式主要有为设置frame手动管理布局变化的方式和使用autolayout或者Autoresizing规则自动处理布局变化两种.</p>
+<ol>
+<li><p>当视图尺寸变化时,一定会自己调用<code>layoutSubviews</code>进行子视图frame的自动调整,通过重写该方法可以覆盖系统对子视图frame的调整,对其进行自定义设置,比如:</p>
+<ul>
+<li>调整自己任何子视图的尺寸和位置</li>
+<li>添加移除子视图或者Core Animation图层</li>
+<li>调用子视图的<code>setNeedsDisplay</code>或<code>setNeedsDisplayInRect:</code>方法迫使子视图重新绘制</li>
+</ul>
+</li>
+<li><p>利用autolayout布局引擎和Autoresizing规则能够让视图自动处理自己尺寸和位置的变化来应对父视图新的size.不过最终的布局效果仍可以在<code>layoutSubviews</code>中进行调整.</p>
+</li>
+</ol>
+<p><br><br><strong>视图与层</strong><br>每一个View都有一个layer提供内容,可以在View的<code>+layerClass</code>方法指定特定的layer类,但一旦指定,该layer的实例对象也成为View的delegate,不应该再去改变它们的关系.</p>
+<h2 id="视图的自定义"><a href="#视图的自定义" class="headerlink" title="视图的自定义"></a>视图的自定义</h2><p><strong>如何实现自定义</strong><br>由于系统控件的视图不能总是满足产品需求,开发者往往需要去实现自定义的视图,对视图进行自定义后,就完全控制了视图内容的呈现和事件处理,也因此需要特别注意几个地方,让自定义视图的表现能像系统控件一样稳定,功能能满足自己的需求.</p>
+<ul>
+<li>提供合适的初始化方法.如果视图只能被纯代码地创建,则需要重写<code>initWithFrame</code>方法;而要用nib加载视图,则需要重写<code>initWithCoder:</code>方法进行视图初始化.</li>
+<li>实现<code>dealloc</code>方法提供视图数据的清理</li>
+<li>若要自定义绘制内容,则重写<code>drawRect:</code>方法</li>
+<li>若存在子视图,则需要要初始化时进行添加,并且在<code>layoutSubviews</code>方法中布局.</li>
+<li>提供基于Touch的事件处理</li>
+</ul>
+<p><br><br><strong>自定义视图绘制</strong><br>视图首次绘制时会调用<code>drawRect:</code>方法,方法里UIKit会自动创建一个限定区域的图形上下文,可通过<code>UIGraphicsGetCurrentContext</code>方法获得.</p>
+<p><br><br><strong>自定义视图事件响应</strong><br>视图对象由于继承UIResponder类,也因此具有了处理touch事件的能力.<br>UIApplication提供两个方法<code>beginIgnoringInteractionEvents</code>和<code>endIgnoringInteractionEvents</code>让视图在临时一段时间内不接受touch事件.<br>在事件传递过程中UIKit会调用<code>hitTest:withEvent:</code>和<code>pointInside:withEvent:</code>方法来决定事件是否在给定视图bounds内容,你可以重写这些方法来阻止子视图接收touch时间.</p>
+<p><br><br><strong>自定义视图的清理</strong><br>当自定义视图被释放时,任何视图内容相关资源和数据应该在<code>dealloc</code>方法中释放掉,而不是执行其他任务性的操作.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/06/更好地理解,利用习惯 -《习惯的力量》/" itemprop="url">
+                  更好地理解,利用习惯 -《习惯的力量》
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-06T21:38:02+08:00" content="2016-07-06">
+              2016-07-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/book/" itemprop="url" rel="index">
+                    <span itemprop="name">阅读</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="《习惯的力量》"><a href="#《习惯的力量》" class="headerlink" title="《习惯的力量》"></a>《习惯的力量》</h1><h2 id="文摘"><a href="#文摘" class="headerlink" title="文摘"></a>文摘</h2><p><strong>习惯的规则</strong></p>
+<blockquote>
+<p>大脑存在由三步组成的习惯回路.第一步,存在着暗示,能让大脑进入某种自动行为模式,并决定使用某种习惯.第二,存在一个惯常行为,比如身体,思维或者情感方面的.第三步则是奖赏,让大脑辨别出是否应该记下这个回路,以备将来之用.</p>
+</blockquote>
+<p><br><br><strong>习惯的产生</strong></p>
+<blockquote>
+<p>习惯的形成:把暗示,惯性行为和奖赏拼在一起,然后培养一种渴求来驱动这样一回路.</p>
+<p>暗示除了能够触发惯性行为,还必须能够触发人对即将到来的奖赏的渴求.而渴求在驱动着习惯,找到触发渴求的方式让创造新习惯变得更容易.</p>
+</blockquote>
+<p><br><br><strong>习惯产生的渴求</strong></p>
+<blockquote>
+<p>习惯如此强大的原因: 能够创造出神经渴求,在大部分时间里,渴求是逐渐产生的,而我们确实没有意识到它们的存在,所以往往看不到他们的影响.</p>
+<p>暗示除了能够触发惯常行为,还必须能够触发人对即将到来的奖赏的渴求.</p>
+<p>渴求在驱动着习惯,找到触发渴求的方式让创造新习惯变得更容易,</p>
+</blockquote>
+<p><br><br><strong>习惯的改变</strong></p>
+<blockquote>
+<p>习惯是不能被消除,而只能被代替</p>
+<p>改变习惯,你必须留住就旧习惯回路中的暗示,提供旧回路中的奖赏,但要插入一个新的惯常行为.</p>
+</blockquote>
+<p><br><br><strong>习惯中的信仰</strong></p>
+<blockquote>
+<p>为了保持住一种新的习惯,必须相信改变是可能的,形成一种信仰.而信仰往往是在群体中培养出来的.</p>
+<p>信仰是将改造过的习惯回路变成永久性行为的要素.</p>
+</blockquote>
+<h2 id="实践指南"><a href="#实践指南" class="headerlink" title="实践指南"></a>实践指南</h2><h1 id=""><a href="#" class="headerlink" title=""></a><img src="media/screenshot%202.png" alt="screenshot 2"></h1><ul>
+<li>找出旧的惯常行为,设计新的惯常行为.</li>
+<li>用奖赏试验,不同奖赏触发不同程度的渴求,寻找最合适的奖赏</li>
+<li>将暗示隔离地点,时间,情绪状态,其他人,之前紧挨的动作;</li>
+<li>制定计划</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/06/以经济学的角度看待我们非理性行为-《怪诞行为学》/" itemprop="url">
                   以经济学的角度看待我们非理性行为-《怪诞行为学》
                 </a>
@@ -655,195 +960,11 @@ UIWindowDidResignKeyNotification
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/04/ViewProgrammingGuideForiOS Part2/" itemprop="url">
-                  View Programming Guide For iOS (二)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-04T22:34:04+08:00" content="2016-07-04">
-              2016-07-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="View-and-Window-Architecture"><a href="#View-and-Window-Architecture" class="headerlink" title="View and Window Architecture"></a>View and Window Architecture</h1><p>UIVIew和UIWindow类,在管理布局和内容呈现上提供了复杂的实现,理解这些实现是怎么回事,更有利于明白自定义视图在程序中的表现以及如何正确地响应程序de变化.</p>
-<h2 id="View-Architecture-Fundamentals"><a href="#View-Architecture-Fundamentals" class="headerlink" title="View Architecture Fundamentals"></a>View Architecture Fundamentals</h2><p>UIKit视图的内容渲染和动画其实是由Core Animation Layers 处理,每一个UIKit的视图对象都依靠对应一个layer对象来管理视图内容的后备存储器<em>(backing store)</em>和动画处理.当你需要对动画或者渲染需要进一步控制和自定义时,就需要在视图的layer上进行操作.</p>
-<p>涉及视图绘制时,Core Animation layer对象在执行绘制代码时会产生一定性能消耗,应该尽可能地少使用绘制相关的代码,而绘制后的结果会被Core Animation缓存起来,尽可能地重用.这样的重用机制主要是避免绘制周期时更新视图内容时重复绘制生成的昂贵性能代价.并且绘制内容的重用在执行动画中也十分重要,因为重用比创建内容的耗费的性能要小得多.</p>
-<h3 id="View-Hierachies-and-SubView-Management"><a href="#View-Hierachies-and-SubView-Management" class="headerlink" title="View Hierachies and SubView Management"></a>View Hierachies and SubView Management</h3><p>View除了提供自身内容,也能作为其他视图对象的容器,提供其他视图的内容,成为自己的子视图,形成子父级的视图层次关系.</p>
-<p>向View的subViews数组添加子视图时,subViews中越是最后的视图对象,它的内容就越靠前地呈现在父视图的上方,从而可能遮挡住其他子视图的内容.而子父视图的关系让父视图能在改变自身的尺寸,位置或者透明度等属性时影响到它的所有子视图.</p>
-<p>层次级的视图管理也决定了程序中事件的响应处理方式: 当在一个特定视图上发送Touch事件,系统会将事件的信息包装在UIEvent对象中,发送给被touch的视图对象,让其完成对事件的处理,如果该视图不处理该Touch事件,事件就会被传递到它的父视图进行查询是否处理事件,如果它的父视图也不处理该事件,事件就会一层层地向位于更高视图层次的视图传递,这样的过程形成的就是一个<strong>响应链</strong> <em>(responder chain)</em>,并且每一个视图都属于响应者对象,其中控制器也是响应者对象,这也表示这视图可以直接将事件传递给控制器,让其处理事件.如果没有任何对象处理一个事件,那它将会传递到响应链的最顶层Application对象上,如果Application对象也没处理该事件,则事件就会因没有对象来处理而丢弃.</p>
-<h3 id="The-View-Drawing-Cycle"><a href="#The-View-Drawing-Cycle" class="headerlink" title="The View Drawing Cycle"></a>The View Drawing Cycle</h3><p>UIView采用按需绘制模型来展现内容: 当视图将首次出现在屏幕上时,系统执行绘制代码来绘制内容并且渲染到屏幕上,然后对绘制的结果内容生成快照缓存,以便后期的视图内容重用.这样以后只要视图的内容不被改变,绘制代码就不会再被执行,而是使用首次绘制后留下的缓存结果,但是一旦视图的内容发生改变,系统就会收到绘制需要执行的通知,执行新的绘制代码过程,并且生成新绘制后的快照缓存.</p>
-<p>视图内容的变化后,调用<code>setNeedsDisplay</code>相关方法,会通知系统关于视图的绘制和内容变化将延时到下一个运行循环的绘制阶段中进行,这样就可同时改变不同视图的内容甚至结构层次,然后在屏幕上进行这些变化的同步.</p>
-<blockquote>
-<p>Note: 改变视图的几何特征是不会导致内容的重绘,而视图的几何特征由view的contentMode属性来表现,设置contentMode后的行为表现就是操作内容绘制后的快照结果, 让其在视图限定的区域内进行伸缩和移动.这样的行为并不会创建的绘制内容,是比较高效的.</p>
-</blockquote>
-<h3 id="Content-Modes"><a href="#Content-Modes" class="headerlink" title="Content Modes"></a>Content Modes</h3><blockquote>
-<p>针对视图当尺寸和位置变化时需要重新呈现视图内容所对应的一种对视图内容的回收使用的优化.</p>
-</blockquote>
-<p>每个视图都有一个内容模式，控制如何回收使用它的内容来响应视图中的几何特征的变化以及是否回收利用其全部的内容。当第一个视图显示时，它呈现它的内容像往常一样，结果被捕获在一个基本的位图中。之后，在视图几何外形的改变并不一定会导致重新创建位图,在方式属性的值决定旧的位图是否应该缩放或者移动来适应新的边界.</p>
-<p><strong>content mode被应用的时机</strong></p>
-<ol>
-<li>视图的frame或者bound中的width/height发生变化</li>
-<li>对视图的transform属性进行新的trasnform设置</li>
-</ol>
-<p><strong>content mode 主要模式</strong></p>
-<pre><code>enum UIViewContentMode : Int {
-    case ScaleToFill
-    case ScaleAspectFit
-    case ScaleAspectFill
-    case Redraw             // important
-    case Center
-    case Top
-    case Bottom
-    case Left
-    case Right
-    case TopLeft
-    case TopRight
-    case BottomLeft
-    case BottomRight
-}
-</code></pre><p><img src="/media/14675210454265.jpg" alt="14675210454265"></p>
-<p>值得注意的一点是,其中<code>UIViewContentMode</code>中Redraw表示视图在发生缩放和调整大小时不采用系统默认使用旧的绘制快照来调整视图内容变化,而是重新执行绘制代码.这样场景适用于当自定义视图需要自己控制内容变化时绘制方式,通过让系统强制调用<code>drawRect</code>相关方法来响应几何特征的变化.</p>
-<h2 id="View-Geometry-and-Coordinate-Systems"><a href="#View-Geometry-and-Coordinate-Systems" class="headerlink" title="View Geometry and Coordinate Systems"></a>View Geometry and Coordinate Systems</h2><h3 id="Coordinate-Systems-Orientation"><a href="#Coordinate-Systems-Orientation" class="headerlink" title="Coordinate Systems Orientation"></a>Coordinate Systems Orientation</h3><p>iOS中,UIKit中的坐标系以设备右上角为原点,向右为x轴正方向,向下为y轴正方向;而Core Graphic 和OpenGL ES所采用的坐标系是以左下角为原点,向上为y轴正方向,向右为x轴正方向.<br><img src="/media/14675508348796.jpg" alt="14675508348796"></p>
-<h3 id="The-Relationship-of-the-Frame-Bounds-Center"><a href="#The-Relationship-of-the-Frame-Bounds-Center" class="headerlink" title="The Relationship of the Frame, Bounds Center"></a>The Relationship of the Frame, Bounds Center</h3><p>frame和center都是根据视图以它父视图坐标系进行size和location的设定.而bounds表示视图根据自己的坐标系指定size和origin.<br>iOS程序中主要使用frame和center来操作视图的几何.<strong>而当视图的transform属性不为Identity Transform时,访问frame值是不准确,存在偏差的;</strong>应该使用center来获得图像有效中心位置.<br><img src="/media/14675514286963.jpg" alt="14675514286963"></p>
-<p><strong>frame,bounds,center的变化关系</strong><br>当frame改变时,bounds的size会对应变化,center也会变化;当center变化时frame的origin会变化;当bounds的size改变时,frame的size会对应变化.</p>
-<p>若一个子视图的frame超过了父视图本身的内容区域,超出的那部分默认情况下仍会渲染绘制出来,但是在那部分内容无法进行事件的响应接收和处理.另外,也可以设置父视图的clipToBounds为Yes,进行超出区域内容的裁剪.</p>
-<h3 id="Coordinate-System-Transformations"><a href="#Coordinate-System-Transformations" class="headerlink" title="Coordinate System Transformations"></a>Coordinate System Transformations</h3><p>利用view的transform属性可以快速改变视图的尺寸,位置,角度等表现效果,而设置的所有的transform都是围绕视图的center进行视图几何特征的变化.</p>
-<p>由于每个子视图的坐标系统都基于他们的祖先视图的坐标系统建立,若改变一个父视图的transform,则会影响到所有其子视图的布局.</p>
-<p>一旦视图的transform被设置,其的frame的值会变得无效,需要使用bounds和center来得到有效的尺寸和位置数据,但其子视图的frame是根据父视图的bound而生成的,所以子视图的frame仍是有效的.</p>
-<h3 id="The-Runtime-Interaction-Model-for-Views"><a href="#The-Runtime-Interaction-Model-for-Views" class="headerlink" title="The Runtime Interaction Model for Views"></a>The Runtime Interaction Model for Views</h3><p>当前用户在屏幕上某个视图进行touch时,一系列事件的传递就从硬件到软件发送.<br><img src="/media/14676403006202.jpg" alt="14676403006202"></p>
-<blockquote>
-<ol>
-<li>用户触屏屏幕某个视图</li>
-<li>硬件向UIKit框架传达touch事件</li>
-<li>UIKit框架将事件打包成UIEvent对象,分发给最合适处理该事件的视图,一般是touch所在位置的视图.</li>
-<li>视图执行处理touch事件的代码</li>
-<li>视图的几何特征如果变化,UIKit就会更新它的子视图.</li>
-<li>UIKit对被标记了重绘标记的视图进行绘制.</li>
-<li>更新后的视图与屏幕其他的视图发送给图像硬件去显示.</li>
-<li>图像引擎将渲染的内容传输到屏幕上</li>
-</ol>
-</blockquote>
-<p>在整个处理过程中,若使用自定义视图,主要有以下几个关键处理点</p>
-<ul>
-<li>添加事件处理方法,<code>touchesBegan:withEvent:</code>系列方法或者使用手势事件</li>
-<li>实现<code>layoutSubViews</code></li>
-<li>实现<code>drawRect</code></li>
-</ul>
-<h3 id="Tips-for-Using-Views-Effectively"><a href="#Tips-for-Using-Views-Effectively" class="headerlink" title="Tips for Using Views Effectively"></a>Tips for Using Views Effectively</h3><p>View章节最后,官方给了几个高效使用视图的建议.</p>
-<ul>
-<li>尽量减少自定义的绘制,自定义绘制难免需要一些性能消耗,尽可能使用现有的系统视图控件来组合成所需要的视图层次.</li>
-<li>利用Cotent Modes,减少已渲染的视图的重绘,并且尽量避免设置为UIViewContentModeRedraw;在需要视图再重新绘制时使用<code>setNeedsDisplay</code>相关方法来更新视图的内容.</li>
-<li>尽量让视图保持不透明,设置视图的opaque属性为YES,这样UIKit就不需要再渲染该视图下面所遮挡的其他视图的内容.</li>
-<li>在滚动行为中调整视图的绘制行为,尽量减少在滚动时内容的绘制操作来保证滚动的流畅性,在滚动停止时进行视图内容的更新.</li>
-<li>不要通过在系统标准视图上嵌入子视图来定制自定义视图,极有可能影响到原有控件的绘制和功能.相对的,可以在UIView上通过组合系统视图来完成自定义视图.</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -884,7 +1005,7 @@ UIWindowDidResignKeyNotification
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

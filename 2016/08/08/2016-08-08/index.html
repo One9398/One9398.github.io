@@ -84,37 +84,19 @@
 
 
 
-<meta name="description" content="WindowWindow对象除了作为装载视图的容器这个作用外,还把负责touch event的分发给最适合处理事件的视图或者其他对象.
-所使用Window对象能做的事
-
-将基于窗口坐标系的点和矩形与其他坐标系之间进行值的转换
-根据窗口变化发出的系统通知进行特定操作的执行
-
-创建和配置Window的要点尽可能地懒加载Window,在需要呈现的时候创建,并且保持对Window对象的强引用.
-向Wind">
+<meta name="description" content="抽象类UIGestureRecognizer的核心子类
+12345678910111213UITapGestureRecognizerUIPinchGestureRecognizerUIRotationGestureRecognizerUISwipeGestureRecognizerUIPanGestureRecognizerUIScreenEdgePanGestureRecognizerUILo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="View Programming Guide For iOS (三)">
-<meta property="og:url" content="http://www.yoursite.com/2016/07/05/ViewProgrammingGuideForiOS Part3/index.html">
+<meta property="og:title" content="iOS的手势识别">
+<meta property="og:url" content="http://www.yoursite.com/2016/08/08/2016-08-08/index.html">
 <meta property="og:site_name" content="One Word">
-<meta property="og:description" content="WindowWindow对象除了作为装载视图的容器这个作用外,还把负责touch event的分发给最适合处理事件的视图或者其他对象.
-所使用Window对象能做的事
-
-将基于窗口坐标系的点和矩形与其他坐标系之间进行值的转换
-根据窗口变化发出的系统通知进行特定操作的执行
-
-创建和配置Window的要点尽可能地懒加载Window,在需要呈现的时候创建,并且保持对Window对象的强引用.
-向Wind">
-<meta property="og:updated_time" content="2016-07-08T15:28:21.000Z">
+<meta property="og:description" content="抽象类UIGestureRecognizer的核心子类
+12345678910111213UITapGestureRecognizerUIPinchGestureRecognizerUIRotationGestureRecognizerUISwipeGestureRecognizerUIPanGestureRecognizerUIScreenEdgePanGestureRecognizerUILo">
+<meta property="og:updated_time" content="2016-08-08T13:12:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="View Programming Guide For iOS (三)">
-<meta name="twitter:description" content="WindowWindow对象除了作为装载视图的容器这个作用外,还把负责touch event的分发给最适合处理事件的视图或者其他对象.
-所使用Window对象能做的事
-
-将基于窗口坐标系的点和矩形与其他坐标系之间进行值的转换
-根据窗口变化发出的系统通知进行特定操作的执行
-
-创建和配置Window的要点尽可能地懒加载Window,在需要呈现的时候创建,并且保持对Window对象的强引用.
-向Wind">
+<meta name="twitter:title" content="iOS的手势识别">
+<meta name="twitter:description" content="抽象类UIGestureRecognizer的核心子类
+12345678910111213UITapGestureRecognizerUIPinchGestureRecognizerUIRotationGestureRecognizerUISwipeGestureRecognizerUIPanGestureRecognizerUIScreenEdgePanGestureRecognizerUILo">
 
 
 
@@ -135,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/2016/07/05/ViewProgrammingGuideForiOS Part3/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2016/08/08/2016-08-08/"/>
 
-  <title> View Programming Guide For iOS (三) | One Word </title>
+  <title> iOS的手势识别 | One Word </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +249,7 @@
             
             
               
-                View Programming Guide For iOS (三)
+                iOS的手势识别
               
             
           </h1>
@@ -279,8 +261,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-05T21:09:29+08:00" content="2016-07-05">
-              2016-07-05
+            <time itemprop="dateCreated" datetime="2016-08-08T19:34:06+08:00" content="2016-08-08">
+              2016-08-08
             </time>
           </span>
 
@@ -326,27 +308,26 @@
       
 
       
-        <h1 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h1><p>Window对象除了作为装载视图的容器这个作用外,还把负责touch event的分发给最适合处理事件的视图或者其他对象.</p>
-<p><strong>所使用Window对象能做的事</strong></p>
+        <p>抽象类UIGestureRecognizer的核心子类</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UITapGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UIPinchGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UIRotationGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UISwipeGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UIPanGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UIScreenEdgePanGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UILongPressGestureRecognizer</span></span><br></pre></td></tr></table></figure>
+<p>官方说明</p>
 <ul>
-<li>将基于窗口坐标系的点和矩形与其他坐标系之间进行值的转换</li>
-<li>根据窗口变化发出的系统通知进行特定操作的执行</li>
+<li>手势识别操作基于hit-tested View和其所有子视图.</li>
+<li>手势识别不参与视图的响应链.</li>
 </ul>
-<p><strong>创建和配置Window的要点</strong><br>尽可能地懒加载Window,在需要呈现的时候创建,并且保持对Window对象的强引用.</p>
-<p><strong>向Window上添加内容</strong><br>通过<code>addSubView</code>添加在Window上的视图被称为Window的root View,而设置window的rootViewController属性后,rootViewController的视图自动被添加到Window上,称为root View.</p>
-<p><strong>改变Window等级</strong><br>每个Window对象都有一个windowLevel,决定着多个Window之间显示的优先等级,level越高则window就显示得越前面,而覆盖住level低的Window上的内容.以下为系统提供的windowLevel的取值.</p>
-<pre><code>UIWindowLevelNormal // 默认值
-UIWindowLevelAlert  
-UIWindowLevelStatusBar
-</code></pre><p><strong>Window变化的监听</strong><br>当Window隐藏或者显示等状态发生变化时,系统会发送Window相关的通知,给iOS程序提供机会进行对于的操作.</p>
-<pre><code>UIWindowDidBecomeVisibleNotification
-UIWindowDidBecomeHiddenNotification
-UIWindowDidBecomeKeyNotification
-UIWindowDidResignKeyNotification
-</code></pre><blockquote>
-<p>UIWindowDidBecomeKeyNotification和UIWindowDidResignKeyNotification的通知监听着程序的keyWindow的变化,keyWindow表示当前能接收键盘事件和其他非touch事件的窗口,而keyWindow接收到touch事件不会有与touch位置相关的值.</p>
-<p>keyWindow永远只能出现一个,但可以相互切换.</p>
-</blockquote>
+<p>官方推荐</p>
+<p>为手势识别添加识别对象提供Action时推荐的方法签名</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)handleGesture;</span><br><span class="line">- (<span class="keyword">void</span>)handleGesture:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer;</span><br></pre></td></tr></table></figure>
+<p>手势操作分为连续性手势<em>(如旋转手势,缩放手势等)</em>和非连续性手势<em>(如轻按手势等)</em></p>
+<p>cancelsTouchesInView &amp; delaysTouchesBegan &amp; delaysTouchesEnded</p>
+<h2 id="自定义手势"><a href="#自定义手势" class="headerlink" title="自定义手势"></a>自定义手势</h2><p>导入<code>UIGestureRecognizerSubclass.h</code>文件,才能读写其state属性,以及需要重写一些必要的方法</p>
+<p>手势识别内部基于预定义的状态机进行持续的状态改变.所有手势识别都最先处于<code>UIGestureRecognizerStatePossible</code>状态,识别非连续性手势时状态就变化为<code>UIGestureRecognizerStateRecognized</code>或者<code>UIGestureRecognizerStateFailed</code>两种可能,一旦识别为Recognized状态,就会为其target对象触发action方法.</p>
+<p>而对于连续性手势的状态变化如下</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P<span class="function"><span class="title">ossible</span> ----&gt;</span> B<span class="function"><span class="title">egan</span> ----&gt;</span> [C<span class="function"><span class="title">hanged</span>] ----&gt;</span> Cancelled</span><br><span class="line"></span><br><span class="line">P<span class="function"><span class="title">ossible</span> ----&gt;</span> B<span class="function"><span class="title">egan</span> ----&gt;</span> [C<span class="function"><span class="title">hanged</span>] ----&gt;</span> Ended</span><br></pre></td></tr></table></figure>
+<h2 id="添加-移除-Target-Action"><a href="#添加-移除-Target-Action" class="headerlink" title="添加/移除 Target-Action"></a>添加/移除 Target-Action</h2><ul>
+<li>为手势识别添加执行对象时使用多次<code>addTarget:action:</code>只也被添加一次.</li>
+<li>对<code>removeTarget:action:</code>的target传入nil能移除所有匹配的targets,给action传入Null能移除所有接受者的action</li>
+</ul>
 
       
     </div>
@@ -377,16 +358,16 @@ UIWindowDidResignKeyNotification
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/05/ViewProgrammingGuideForiOS Part1/" rel="next" title="View Programming Guide For iOS (一)">
-                <i class="fa fa-chevron-left"></i> View Programming Guide For iOS (一)
+              <a href="/2016/07/25/0804/" rel="next" title="View Controller Programming Guide For iOS (一)">
+                <i class="fa fa-chevron-left"></i> View Controller Programming Guide For iOS (一)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/06/以经济学的角度看待我们非理性行为-《怪诞行为学》/" rel="prev" title="以经济学的角度看待我们非理性行为-《怪诞行为学》">
-                以经济学的角度看待我们非理性行为-《怪诞行为学》 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/21/2016-08-21/" rel="prev" title="Swift时代下的Objective-C新特性">
+                Swift时代下的Objective-C新特性 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -501,7 +482,7 @@ UIWindowDidResignKeyNotification
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Window"><span class="nav-number">1.</span> <span class="nav-text">Window</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义手势"><span class="nav-number">1.</span> <span class="nav-text">自定义手势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加-移除-Target-Action"><span class="nav-number">2.</span> <span class="nav-text">添加/移除 Target-Action</span></a></li></ol></div>
             
           </div>
         </section>
