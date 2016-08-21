@@ -310,17 +310,18 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自从苹果在WWDC2014上推出Swift语言后,国外iOS开发社区纷纷转向苹果推崇的iOS开发语言新贵. 而由于Swift语言存在时间不长,其所对应的iOS第三库的数目远没有Objective-C写的开源库,因此在iOS平台开发语言的过渡中,Objective-C与Swift混编的项目而越来越多,而为了能让Objective-C和Swift更安全地共存在应用中,苹果不断优化Xcode编译器LLVM,为Objective-C语言增加了不少新特性,使其桥接到Swift代码时更加安全和有效.</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自从苹果在WWDC2014上推出Swift语言后,国外iOS开发社区纷纷转向苹果推崇的iOS开发语言新贵. 而由于Swift语言存在时间不长,其所对应的iOS开源库远不及Objective-C的开源库多,因此在iOS平台开发语言的过渡中,Objective-C与Swift混编的项目也越来越多,而为了能让Objective-C和Swift更安全地兼容在iOS应用中,苹果不断优化Xcode编译器LLVM,为Objective-C语言增加了不少新特性,使其桥接到Swift代码时更加安全.</p>
 <p>接下来就来看看Swift出现之后的这些Objective-C新特性,以及如何更好应用到自己的Objective-C代码中吧<em>(下文都以OC简称)</em>.</p>
 <ul>
 <li>Objective-C新增的Nullability声明</li>
 <li>数组,字典等集合类的轻量级泛型声明</li>
 <li>Objective-C 类属性的使用</li>
 </ul>
-<h2 id="Objective-C新增的Nullability声明"><a href="#Objective-C新增的Nullability声明" class="headerlink" title="Objective-C新增的Nullability声明"></a>Objective-C新增的Nullability声明</h2><p>针对引用对象,OC语言都将其可以设置nil,而有时表示nil的对象访问和调用方法时常常会出现数据异常问题,严重地还会直接造成应用Crash; 而Swfit为对象引入Optional类型的概念,只有Optional类型的对象才能被设置为nil,否则就会编译错误,当对Optional类型的对象为nil值情况下被强行访问就会导致程序的Crash,也就是强制解包Opional类型对象值为nil的情况.</p>
-<p>为了保证OC程序的安全性以及更安全地向Swift进行桥接,OC出现nonnull,_Nonnull和nullable,_Nullable关键字,而这就对应在Swift中表示了非Optional和Optional的对象.现在无论声明属性还是声明变量,使用新增的这几个关键字,就能显示告诉编译器哪个可以被赋为nil,哪个不能被赋值为nil.<br>接下来看看是使用在代码中使用这些关键字的吧.</p>
+<h2 id="Objective-C新增的Nullability声明"><a href="#Objective-C新增的Nullability声明" class="headerlink" title="Objective-C新增的Nullability声明"></a>Objective-C新增的Nullability声明</h2><p>针对引用对象,OC语言都将其可以设置nil,而常常对nil的对象访问和调用方法时会就出现问题,严重地还会直接造成应用Crash; 而Swift为引用对象引入Optional类型的概念,只有Optional类型的对象才能被设置为nil,否则就会编译为类型错误,当对Optional类型的对象为nil值的情况下仍强行访问该对象就会导致程序的Crash,也就是强制解包Opional类型对象值为nil的情况,这也是写Swift代码中要极力避免的.</p>
+<p>为了保证OC程序的安全性以及更安全地向Swift进行桥接,OC出现nonnull,_Nonnull和nullable,_Nullable等一系列Nullability关键字,而这也对应在Swift中表示了非Optional和Optional的对象.现在(<code>Xcode 7之后</code>)无论声明属性还是声明变量,使用新增的这几个关键字,就能显示告诉编译器哪个对象可以被赋为nil,哪个不能被赋值为nil.</p>
+<p>首先来看看是使用在代码中使用这些关键字的吧.</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Employee</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (nonnull, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>)<span class="built_in">NSString</span> *name;</span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>)<span class="built_in">NSString</span> *company;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)workInPlace:(<span class="built_in">NSString</span> * _Nonnull)place;</span><br><span class="line">- (nullable instancetype)initWithName:(<span class="built_in">NSString</span> * _Nonnull)name company:(<span class="built_in">NSString</span> * _Nullable)company;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>这里nonnull和nullable是针对属性,返回值声明Nullability的关键字,声明时与nonatomic和copy一样都为属性的修饰符;而_Nonnull和_Nullable针对局部变量, 参数变量声明时使用,注意的是该类关键字<strong>声明顺序一定要在指针<code>*</code>的后面</strong>, 否则编译器无法识别该关键字.</p>
+<p>这里nonnull和nullable是针对属性,返回值声明Nullability的关键字,声明时与nonatomic和copy一样都为属性的修饰符;而_Nonnull和_Nullable是针对局部变量, 参数变量来声明时使用的,注意的是该类关键字<strong>声明顺序一定要在指针符号<code>*</code>的后面</strong>, 否则编译器无法识别该关键字.</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/21/2016-08-21/#more" rel="contents">
               阅读全文 &raquo;
