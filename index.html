@@ -374,138 +374,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/08/2016-08-08/" itemprop="url">
-                  iOS的手势识别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-08T19:34:06+08:00" content="2016-08-08">
-              2016-08-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>抽象类UIGestureRecognizer的核心子类</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UITapGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UIPinchGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UIRotationGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UISwipeGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UIPanGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UIScreenEdgePanGestureRecognizer</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">UILongPressGestureRecognizer</span></span><br></pre></td></tr></table></figure>
-<p>官方说明</p>
-<ul>
-<li>手势识别操作基于hit-tested View和其所有子视图.</li>
-<li>手势识别不参与视图的响应链.</li>
-</ul>
-<p>官方推荐</p>
-<p>为手势识别添加识别对象提供Action时推荐的方法签名</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)handleGesture;</span><br><span class="line">- (<span class="keyword">void</span>)handleGesture:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer;</span><br></pre></td></tr></table></figure>
-<p>手势操作分为连续性手势<em>(如旋转手势,缩放手势等)</em>和非连续性手势<em>(如轻按手势等)</em></p>
-<p>cancelsTouchesInView &amp; delaysTouchesBegan &amp; delaysTouchesEnded</p>
-<h2 id="自定义手势"><a href="#自定义手势" class="headerlink" title="自定义手势"></a>自定义手势</h2><p>导入<code>UIGestureRecognizerSubclass.h</code>文件,才能读写其state属性,以及需要重写一些必要的方法</p>
-<p>手势识别内部基于预定义的状态机进行持续的状态改变.所有手势识别都最先处于<code>UIGestureRecognizerStatePossible</code>状态,识别非连续性手势时状态就变化为<code>UIGestureRecognizerStateRecognized</code>或者<code>UIGestureRecognizerStateFailed</code>两种可能,一旦识别为Recognized状态,就会为其target对象触发action方法.</p>
-<p>而对于连续性手势的状态变化如下</p>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P<span class="function"><span class="title">ossible</span> ----&gt;</span> B<span class="function"><span class="title">egan</span> ----&gt;</span> [C<span class="function"><span class="title">hanged</span>] ----&gt;</span> Cancelled</span><br><span class="line"></span><br><span class="line">P<span class="function"><span class="title">ossible</span> ----&gt;</span> B<span class="function"><span class="title">egan</span> ----&gt;</span> [C<span class="function"><span class="title">hanged</span>] ----&gt;</span> Ended</span><br></pre></td></tr></table></figure>
-<h2 id="添加-移除-Target-Action"><a href="#添加-移除-Target-Action" class="headerlink" title="添加/移除 Target-Action"></a>添加/移除 Target-Action</h2><ul>
-<li>为手势识别添加执行对象时使用多次<code>addTarget:action:</code>只也被添加一次.</li>
-<li>对<code>removeTarget:action:</code>的target传入nil能移除所有匹配的targets,给action传入Null能移除所有接受者的action</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/07/25/0804/" itemprop="url">
                   View Controller Programming Guide For iOS (一)
                 </a>
@@ -869,11 +737,173 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/06/ViewProgrammingGuideForiOS Part4/" itemprop="url">
+                  View Programming Guide For iOS (四)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-06T21:50:58+08:00" content="2016-07-06">
+              2016-07-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="View"><a href="#View" class="headerlink" title="View"></a>View</h1><p><strong>视图作为程序中主要的交互对象,自然有许多职责和功能,比如负责布局和子视图的管理, 内容的绘制和动画,以及响应事件的处理.</strong></p>
+<h2 id="视图的创建和配置"><a href="#视图的创建和配置" class="headerlink" title="视图的创建和配置"></a>视图的创建和配置</h2><p><strong>创建视图</strong><br>创建视图有两种方式:Nib加载和纯代码加载.其中如果采用Nib加载的方式,又分为加载控制器的Nib文件和加载视图的Nib文件两种.若是加载控制器Nib则加载后控制器会在合适的时机使用和移除其根视图,纯视图的Nib文件加载就需要从NSBundle对象或者UINib对象去手动地创建.<br><br><br><strong>Tag标示视图</strong><br>对视图的tag属性设置可以用于后续视图的获取,使用<code>viewWithTag:</code>方法,而基于Tag的视图搜索采用深度优先搜索,比遍历视图效率更高.</p>
+<h2 id="视图层次的创建和管理"><a href="#视图层次的创建和管理" class="headerlink" title="视图层次的创建和管理"></a>视图层次的创建和管理</h2><p><strong>视图添加移除的内存管理</strong><br>通过<code>addSubview</code>后的视图会自动被父视图强引用,所以在保证视图不被移除父视图的视图层次的情况下单独引用该视图时推荐使用弱引用;通过<code>removeFormSuperView</code>方法从原有视图层中移除视图后,视图会被autorelease一次,如果该视图进入下一次事件循环周期前仍然没有被其他对象强引用,则视图就会被释放掉.<br><br><br><strong>如何隐藏视图</strong><br>让视图暂时地不可见有两种方式:设置hidden属性为YES;改变aplha属性为0.后一种是具有动画性的属性,可以用于动画,前一种则不会产生动画.</p>
+<blockquote>
+<p>隐藏的视图仍会可能成为事件的第一响应者,因此在隐藏前需要显示地resign第一响应者状态.</p>
+</blockquote>
+<p><br><br><strong>如何定位视图层次的视图</strong></p>
+<ol>
+<li>对特定视图使用强引用</li>
+<li>设置视图的tag属性,使用<code>viewWithTag:</code>方法获取</li>
+</ol>
+<p><br><br><strong>视图的旋转,位移,缩放</strong><br>针对视图的transform属性进行修改,可以产生视图旋转,位移,缩放的效果,这些效果都是围绕视图的center进行变化.多次对视图transform设置时,不同的变换顺序会产生不同的展示效果.</p>
+<p><br><br><strong>视图层次中转换坐标</strong></p>
+<ul>
+<li>对于UIView对象提供<code>convertPoint:fromView</code>等方法进行不同视图间坐标系的转换.</li>
+<li>对于UIWindow对象提供类似<code>convertPoint:fromWindow</code>等方法进行不同窗口间坐标系转换.</li>
+</ul>
+<p>如下图当子视图应用了rotation transform后,将子视图基于自己坐标系的矩形转换到父视图坐标系下,生成的区域矩形比原来矩形更大,是在父坐标系下包含子视图原来矩形的最小矩形.<br><img src="media/14679310809717.jpg" alt=""></p>
+<h2 id="动态调整视图的尺寸-位置"><a href="#动态调整视图的尺寸-位置" class="headerlink" title="动态调整视图的尺寸/位置"></a>动态调整视图的尺寸/位置</h2><p><strong>视图布局的变化时机</strong></p>
+<ul>
+<li>视图size改变</li>
+<li>设备方向的改变</li>
+<li>视图相关的sublayers的改变</li>
+<li>对视图调用<code>setNeedsLayout</code>或者<code>layoutIfNeed</code>方法</li>
+<li>对视图的layer调用<code>setNeedsLayout</code>方法</li>
+</ul>
+<p><br><br><strong>管理视图布局</strong><br>iOS程序管理视图布局的方式主要有为设置frame手动管理布局变化的方式和使用autolayout或者Autoresizing规则自动处理布局变化两种.</p>
+<ol>
+<li><p>当视图尺寸变化时,一定会自己调用<code>layoutSubviews</code>进行子视图frame的自动调整,通过重写该方法可以覆盖系统对子视图frame的调整,对其进行自定义设置,比如:</p>
+<ul>
+<li>调整自己任何子视图的尺寸和位置</li>
+<li>添加移除子视图或者Core Animation图层</li>
+<li>调用子视图的<code>setNeedsDisplay</code>或<code>setNeedsDisplayInRect:</code>方法迫使子视图重新绘制</li>
+</ul>
+</li>
+<li><p>利用autolayout布局引擎和Autoresizing规则能够让视图自动处理自己尺寸和位置的变化来应对父视图新的size.不过最终的布局效果仍可以在<code>layoutSubviews</code>中进行调整.</p>
+</li>
+</ol>
+<p><br><br><strong>视图与层</strong><br>每一个View都有一个layer提供内容,可以在View的<code>+layerClass</code>方法指定特定的layer类,但一旦指定,该layer的实例对象也成为View的delegate,不应该再去改变它们的关系.</p>
+<h2 id="视图的自定义"><a href="#视图的自定义" class="headerlink" title="视图的自定义"></a>视图的自定义</h2><p><strong>如何实现自定义</strong><br>由于系统控件的视图不能总是满足产品需求,开发者往往需要去实现自定义的视图,对视图进行自定义后,就完全控制了视图内容的呈现和事件处理,也因此需要特别注意几个地方,让自定义视图的表现能像系统控件一样稳定,功能能满足自己的需求.</p>
+<ul>
+<li>提供合适的初始化方法.如果视图只能被纯代码地创建,则需要重写<code>initWithFrame</code>方法;而要用nib加载视图,则需要重写<code>initWithCoder:</code>方法进行视图初始化.</li>
+<li>实现<code>dealloc</code>方法提供视图数据的清理</li>
+<li>若要自定义绘制内容,则重写<code>drawRect:</code>方法</li>
+<li>若存在子视图,则需要要初始化时进行添加,并且在<code>layoutSubviews</code>方法中布局.</li>
+<li>提供基于Touch的事件处理</li>
+</ul>
+<p><br><br><strong>自定义视图绘制</strong><br>视图首次绘制时会调用<code>drawRect:</code>方法,方法里UIKit会自动创建一个限定区域的图形上下文,可通过<code>UIGraphicsGetCurrentContext</code>方法获得.</p>
+<p><br><br><strong>自定义视图事件响应</strong><br>视图对象由于继承UIResponder类,也因此具有了处理touch事件的能力.<br>UIApplication提供两个方法<code>beginIgnoringInteractionEvents</code>和<code>endIgnoringInteractionEvents</code>让视图在临时一段时间内不接受touch事件.<br>在事件传递过程中UIKit会调用<code>hitTest:withEvent:</code>和<code>pointInside:withEvent:</code>方法来决定事件是否在给定视图bounds内容,你可以重写这些方法来阻止子视图接收touch时间.</p>
+<p><br><br><strong>自定义视图的清理</strong><br>当自定义视图被释放时,任何视图内容相关资源和数据应该在<code>dealloc</code>方法中释放掉,而不是执行其他任务性的操作.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -914,7 +944,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
