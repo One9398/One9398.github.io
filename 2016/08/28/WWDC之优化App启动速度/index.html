@@ -84,37 +84,18 @@
 
 
 
-<meta name="description" content="WindowWindow对象除了作为装载视图的容器这个作用外,还把负责touch event的分发给最适合处理事件的视图或者其他对象.
-所使用Window对象能做的事
-
-将基于窗口坐标系的点和矩形与其他坐标系之间进行值的转换
-根据窗口变化发出的系统通知进行特定操作的执行
-
-创建和配置Window的要点尽可能地懒加载Window,在需要呈现的时候创建,并且保持对Window对象的强引用.
-向Wind">
+<meta name="description" content="前言在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出许多方法来关注应用启动时开发者代码还没执行前AppDel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="View Programming Guide For iOS (三)">
-<meta property="og:url" content="http://www.yoursite.com/2016/07/05/ViewProgrammingGuideForiOS Part3/index.html">
+<meta property="og:title" content="WWDC之优化App启动速度">
+<meta property="og:url" content="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/index.html">
 <meta property="og:site_name" content="One Word">
-<meta property="og:description" content="WindowWindow对象除了作为装载视图的容器这个作用外,还把负责touch event的分发给最适合处理事件的视图或者其他对象.
-所使用Window对象能做的事
-
-将基于窗口坐标系的点和矩形与其他坐标系之间进行值的转换
-根据窗口变化发出的系统通知进行特定操作的执行
-
-创建和配置Window的要点尽可能地懒加载Window,在需要呈现的时候创建,并且保持对Window对象的强引用.
-向Wind">
-<meta property="og:updated_time" content="2016-07-08T15:28:21.000Z">
+<meta property="og:description" content="前言在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出许多方法来关注应用启动时开发者代码还没执行前AppDel">
+<meta property="og:image" content="http://www.yoursite.com/media/14723544941522.png">
+<meta property="og:updated_time" content="2016-08-28T04:27:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="View Programming Guide For iOS (三)">
-<meta name="twitter:description" content="WindowWindow对象除了作为装载视图的容器这个作用外,还把负责touch event的分发给最适合处理事件的视图或者其他对象.
-所使用Window对象能做的事
-
-将基于窗口坐标系的点和矩形与其他坐标系之间进行值的转换
-根据窗口变化发出的系统通知进行特定操作的执行
-
-创建和配置Window的要点尽可能地懒加载Window,在需要呈现的时候创建,并且保持对Window对象的强引用.
-向Wind">
+<meta name="twitter:title" content="WWDC之优化App启动速度">
+<meta name="twitter:description" content="前言在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出许多方法来关注应用启动时开发者代码还没执行前AppDel">
+<meta name="twitter:image" content="http://www.yoursite.com/media/14723544941522.png">
 
 
 
@@ -135,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/2016/07/05/ViewProgrammingGuideForiOS Part3/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/"/>
 
-  <title> View Programming Guide For iOS (三) | One Word </title>
+  <title> WWDC之优化App启动速度 | One Word </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +248,7 @@
             
             
               
-                View Programming Guide For iOS (三)
+                WWDC之优化App启动速度
               
             
           </h1>
@@ -279,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-05T21:09:29+08:00" content="2016-07-05">
-              2016-07-05
+            <time itemprop="dateCreated" datetime="2016-08-28T12:26:54+08:00" content="2016-08-28">
+              2016-08-28
             </time>
           </span>
 
@@ -326,27 +307,40 @@
       
 
       
-        <h1 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h1><p>Window对象除了作为装载视图的容器这个作用外,还把负责touch event的分发给最适合处理事件的视图或者其他对象.</p>
-<p><strong>所使用Window对象能做的事</strong></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出许多方法来关注应用启动时开发者代码还没执行前AppDelegate对象所做的事.而通过这个Session,你会了解到以下内容:</p>
 <ul>
-<li>将基于窗口坐标系的点和矩形与其他坐标系之间进行值的转换</li>
-<li>根据窗口变化发出的系统通知进行特定操作的执行</li>
+<li>如何获得应用加载的时间</li>
+<li>执行程序入门的代码前App加载过程中的流程</li>
+<li>如何优化App的加载时间</li>
 </ul>
-<p><strong>创建和配置Window的要点</strong><br>尽可能地懒加载Window,在需要呈现的时候创建,并且保持对Window对象的强引用.</p>
-<p><strong>向Window上添加内容</strong><br>通过<code>addSubView</code>添加在Window上的视图被称为Window的root View,而设置window的rootViewController属性后,rootViewController的视图自动被添加到Window上,称为root View.</p>
-<p><strong>改变Window等级</strong><br>每个Window对象都有一个windowLevel,决定着多个Window之间显示的优先等级,level越高则window就显示得越前面,而覆盖住level低的Window上的内容.以下为系统提供的windowLevel的取值.</p>
-<pre><code>UIWindowLevelNormal // 默认值
-UIWindowLevelAlert  
-UIWindowLevelStatusBar
-</code></pre><p><strong>Window变化的监听</strong><br>当Window隐藏或者显示等状态发生变化时,系统会发送Window相关的通知,给iOS程序提供机会进行对于的操作.</p>
-<pre><code>UIWindowDidBecomeVisibleNotification
-UIWindowDidBecomeHiddenNotification
-UIWindowDidBecomeKeyNotification
-UIWindowDidResignKeyNotification
-</code></pre><blockquote>
-<p>UIWindowDidBecomeKeyNotification和UIWindowDidResignKeyNotification的通知监听着程序的keyWindow的变化,keyWindow表示当前能接收键盘事件和其他非touch事件的窗口,而keyWindow接收到touch事件不会有与touch位置相关的值.</p>
-<p>keyWindow永远只能出现一个,但可以相互切换.</p>
-</blockquote>
+<h2 id="测量Pre-main-Time"><a href="#测量Pre-main-Time" class="headerlink" title="测量Pre-main Time"></a>测量Pre-main Time</h2><p>一个App在执行main函数前和app delegate的方法如<code>applicationWillFinishLaunching</code>时,会做许多系统级别的准备.而在iOS10之前,开发者很难清楚自己App为何启动加载慢.而通过在工程的scheme中添加环境变量<strong>DYLD_PRINT_STATISTICS</strong>,设置Value为1,就可以进行一些App启动加载的日志输出. 现在<em>(iOS 10之后)</em>Apple对DYLD_PRINT_STATISTICS的日志输出结果进行了简化,使得更容易让开发者理解.<br><img src="media/14723544941522.png" alt="指定Scheme上添加DYLD_PRINT_STATISTICS环境变量"></p>
+<p>尝试在iPad (使用iOS10 beta 3)上对一个纯OC项目设置该环境变量后,有了一下输出.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Total pre-main time:  <span class="number">74.37</span> milliseconds (<span class="number">100.0</span>%)</span><br><span class="line">       dylib loading time:  <span class="number">41.05</span> milliseconds (<span class="number">55.2</span>%)</span><br><span class="line">      rebase/binding time:   <span class="number">8.10</span> milliseconds (<span class="number">10.9</span>%)</span><br><span class="line">          ObjC setup time:   <span class="number">9.87</span> milliseconds (<span class="number">13.2</span>%)</span><br><span class="line">         initializer time:  <span class="number">15.23</span> milliseconds (<span class="number">20.4</span>%)</span><br><span class="line">         slowest intializers :</span><br><span class="line">           libSystem.B.dylib :   <span class="number">6.58</span> milliseconds (<span class="number">8.8</span>%)</span><br><span class="line"> libBacktraceRecording.dylib :   <span class="number">6.27</span> milliseconds (<span class="number">8.4</span>%)</span><br></pre></td></tr></table></figure>
+<p>输出内容展示了系统调用main()函前主要进行的工作内容和时间花费,Session上也对每一阶段加载过程进行了详细的叙述.</p>
+<h2 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h2><p>那么如何尽可能的减少pre-main花费的时间呢,主要有四个阶段下手,详细的处理细节可观看该Session.</p>
+<ul>
+<li><p><strong>对动态库加载的时间优化.</strong>每个App都会自己指定的动态库加载,其中系统级别的动态库占据了绝大数,而针对系统级别的动态库都是经过系统高度优化的,不用担心.开发者应该关注于自己集成进App的那些动态库,往往那些会消耗一点时间.对此Apple建议<strong>尽量减少自己的动态库集成或者有可能地将其多个动态库最终集成一个动态库, 保证将非系统级的动态库个数保证在6个以内.</strong></p>
+</li>
+<li><p><strong>减少Appp的Objective-C类,分类和的Selector的个数.</strong>换句话说尽快使用Swift代码以及使用其结构体,对文件符号的重定位和绑定<em>(Rebase/binding)</em>过程中减少指针修正的使用,加快程序机器码的生成.</p>
+</li>
+<li><p><strong>减少Objc运行初始化的时间花费.</strong>类的注册,分类的注册,唯一选择器的存在,以及涉及类布局的<code>Non Fragile ivars</code>偏移的更新<em>(涉及OC类的继承时)</em>,都会影响Objective-C运行时初始化,需要的就是就是减少这些操作</p>
+</li>
+<li><p><strong>使用initialise</strong>进行必要的初始化工作.用替换<code>+initialise</code>方法替换调用原先在OC的<code>+load</code>方法中执行初始代码,从而加快所有类文件的加载速度.</p>
+</li>
+</ul>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>在最后,演讲者也讲述的加载启动优化的整体概括Session的传达的主要内容:</p>
+<ul>
+<li>使用<strong>DYLD_PRINT_STATISTICS</strong>测试启动加载时间</li>
+<li>减少自定义的动态库集成</li>
+<li>精简原有的Objective-C类和代码</li>
+<li>移除静态的初始化操作</li>
+<li>使用更多的Swfit</li>
+</ul>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
+<li><a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">WWDC 2016 Session 406 Optimizing App Startup Time</a></li>
+<li><a href="http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime
+</a></li>
+</ul>
 
       
     </div>
@@ -377,17 +371,13 @@ UIWindowDidResignKeyNotification
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/05/ViewProgrammingGuideForiOS Part1/" rel="next" title="View Programming Guide For iOS (一)">
-                <i class="fa fa-chevron-left"></i> View Programming Guide For iOS (一)
+              <a href="/2016/08/21/2016-08-21/" rel="next" title="Swift时代下的Objective-C新特性">
+                <i class="fa fa-chevron-left"></i> Swift时代下的Objective-C新特性
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/06/以经济学的角度看待我们非理性行为-《怪诞行为学》/" rel="prev" title="以经济学的角度看待我们非理性行为-《怪诞行为学》">
-                以经济学的角度看待我们非理性行为-《怪诞行为学》 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -501,7 +491,7 @@ UIWindowDidResignKeyNotification
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Window"><span class="nav-number">1.</span> <span class="nav-text">Window</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测量Pre-main-Time"><span class="nav-number">2.</span> <span class="nav-text">测量Pre-main Time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动优化"><span class="nav-number">3.</span> <span class="nav-text">启动优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结尾"><span class="nav-number">4.</span> <span class="nav-text">结尾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展"><span class="nav-number">5.</span> <span class="nav-text">拓展</span></a></li></ol></div>
             
           </div>
         </section>
