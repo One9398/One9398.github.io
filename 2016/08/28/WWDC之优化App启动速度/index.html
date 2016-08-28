@@ -84,18 +84,21 @@
 
 
 
-<meta name="description" content="前言在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出许多方法来关注应用启动时开发者代码还没执行前AppDe">
+<meta name="description" content="前言
+在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WWDC之优化App启动速度">
 <meta property="og:url" content="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/index.html">
 <meta property="og:site_name" content="One Word">
-<meta property="og:description" content="前言在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出许多方法来关注应用启动时开发者代码还没执行前AppDe">
+<meta property="og:description" content="前言
+在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
 <meta property="og:image" content="http://www.yoursite.com/media/screenshot-6.png">
 <meta property="og:image" content="http://www.yoursite.com/media/14723544941522.png">
-<meta property="og:updated_time" content="2016-08-28T04:40:28.000Z">
+<meta property="og:updated_time" content="2016-08-28T06:02:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WWDC之优化App启动速度">
-<meta name="twitter:description" content="前言在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出许多方法来关注应用启动时开发者代码还没执行前AppDe">
+<meta name="twitter:description" content="前言
+在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
 <meta name="twitter:image" content="http://www.yoursite.com/media/screenshot-6.png">
 
 
@@ -308,25 +311,25 @@
       
 
       
-        <p><img src="media/screenshot-6.png" alt="title-pic"></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出许多方法来关注应用启动时开发者代码还没执行前AppDelegate对象所做的事.而通过这个Session,你会了解到以下内容:</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="media/screenshot-6.png" alt="title-pic"></p>
+<p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行<code>main()</code>前究竟干了些什么.而通过这个Session,你会了解到以下内容:</p>
 <ul>
 <li>如何获得应用加载的时间</li>
 <li>执行程序入门的代码前App加载过程中的流程</li>
 <li>如何优化App的加载时间</li>
 </ul>
 <a id="more"></a>
-<h2 id="测量Pre-main-Time"><a href="#测量Pre-main-Time" class="headerlink" title="测量Pre-main Time"></a>测量Pre-main Time</h2><p>一个App在执行main函数前和app delegate的方法如<code>applicationWillFinishLaunching</code>时,会做许多系统级别的准备.而在iOS10之前,开发者很难清楚自己App为何启动加载慢.而通过在工程的scheme中添加环境变量<strong>DYLD_PRINT_STATISTICS</strong>,设置Value为1,就可以进行一些App启动加载的日志输出. 现在<em>(iOS 10之后)</em>Apple对DYLD_PRINT_STATISTICS的日志输出结果进行了简化,使得更容易让开发者理解.<br><img src="media/14723544941522.png" alt="指定Scheme上添加DYLD_PRINT_STATISTICS环境变量"></p>
-<p>尝试在iPad (使用iOS10 beta 3)上对一个纯OC项目设置该环境变量后,有了一下输出.</p>
+<h2 id="测量Pre-main-Time"><a href="#测量Pre-main-Time" class="headerlink" title="测量Pre-main Time"></a>测量Pre-main Time</h2><p>一个App在执行main函数前包括app delegate的系列方法如<code>applicationWillFinishLaunching</code>时,会做许多系统级别的准备.而在iOS10之前,开发者很难清楚自己App为何启动加载慢.而通过在工程的scheme中添加环境变量<strong>DYLD_PRINT_STATISTICS</strong>,设置Value为1,App启动加载时就会有启动过程的日志输出. 现在<em>(iOS 10之后)</em>Apple对DYLD_PRINT_STATISTICS的日志输出结果进行了简化,使得更容易让开发者理解.<br><img src="media/14723544941522.png" alt="指定Scheme上添加DYLD_PRINT_STATISTICS环境变量"></p>
+<p>尝试在iPad (使用iOS10 beta 3)上对一个纯OC项目设置该环境变量后,有了以下输出信息.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Total pre-main time:  <span class="number">74.37</span> milliseconds (<span class="number">100.0</span>%)</span><br><span class="line">       dylib loading time:  <span class="number">41.05</span> milliseconds (<span class="number">55.2</span>%)</span><br><span class="line">      rebase/binding time:   <span class="number">8.10</span> milliseconds (<span class="number">10.9</span>%)</span><br><span class="line">          ObjC setup time:   <span class="number">9.87</span> milliseconds (<span class="number">13.2</span>%)</span><br><span class="line">         initializer time:  <span class="number">15.23</span> milliseconds (<span class="number">20.4</span>%)</span><br><span class="line">         slowest intializers :</span><br><span class="line">           libSystem.B.dylib :   <span class="number">6.58</span> milliseconds (<span class="number">8.8</span>%)</span><br><span class="line"> libBacktraceRecording.dylib :   <span class="number">6.27</span> milliseconds (<span class="number">8.4</span>%)</span><br></pre></td></tr></table></figure>
-<p>输出内容展示了系统调用main()函前主要进行的工作内容和时间花费,Session上也对每一阶段加载过程进行了详细的叙述.</p>
-<h2 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h2><p>那么如何尽可能的减少pre-main花费的时间呢,主要有四个阶段下手,详细的处理细节可观看该Session.</p>
+<p>输出内容展示了系统调用main()函前主要进行的工作内容和时间花费,Session上也对每一阶段加载过程具体内容进行了详细的叙述,有兴趣地可观看该Session.</p>
+<h2 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h2><p>那么如何尽可能的减少pre-main花费的时间呢,主要就从输出日志给出四个阶段的time下手.</p>
 <ul>
-<li><p><strong>对动态库加载的时间优化.</strong>每个App都会自己指定的动态库加载,其中系统级别的动态库占据了绝大数,而针对系统级别的动态库都是经过系统高度优化的,不用担心.开发者应该关注于自己集成进App的那些动态库,往往那些会消耗一点时间.对此Apple建议<strong>尽量减少自己的动态库集成或者有可能地将其多个动态库最终集成一个动态库, 保证将非系统级的动态库个数保证在6个以内.</strong></p>
+<li><p><strong>对动态库加载的时间优化.</strong>每个App都进行动态库加载,其中系统级别的动态库占据了绝大数,而针对系统级别的动态库都是经过系统高度优化的,不用担心时间的花费.开发者应该关注于自己集成到App的那些动态库,这也是最能消耗加载时间的地方.对此Apple建议<strong>减少在App里开发者的动态库集成或者有可能地将其多个动态库最终集成一个动态库后进行导入, 尽量保证将App现有的非系统级的动态库个数保证在6个以内.</strong></p>
 </li>
-<li><p><strong>减少Appp的Objective-C类,分类和的Selector的个数.</strong>换句话说尽快使用Swift代码以及使用其结构体,对文件符号的重定位和绑定<em>(Rebase/binding)</em>过程中减少指针修正的使用,加快程序机器码的生成.</p>
+<li><p><strong>减少Appp的Objective-C类,分类和的唯一Selector的个数.</strong>这样做主要是为了加快程序的整个动态链接过程,进行内存地址链接时目标文件的重定位和绑定<em>(Rebase/binding)</em>过程中减少指针修正的使用,加快程序机器码的生成.</p>
 </li>
-<li><p><strong>减少Objc运行初始化的时间花费.</strong>类的注册,分类的注册,唯一选择器的存在,以及涉及类布局的<code>Non Fragile ivars</code>偏移的更新<em>(涉及OC类的继承时)</em>,都会影响Objective-C运行时初始化,需要的就是就是减少这些操作</p>
+<li><p><strong>减少Objc运行初始化的时间花费.</strong>主要是类的注册,分类的注册,唯一选择器的存在,以及涉及子父类内存布局的<code>Non Fragile ivars</code>偏移的更新,都会影响Objective-C运行时初始化,需要的就是就是减少这些操作.</p>
 </li>
 <li><p><strong>使用initialise</strong>进行必要的初始化工作.用替换<code>+initialise</code>方法替换调用原先在OC的<code>+load</code>方法中执行初始代码,从而加快所有类文件的加载速度.</p>
 </li>
