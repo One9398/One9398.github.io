@@ -94,7 +94,7 @@
 在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
 <meta property="og:image" content="http://www.yoursite.com/media/screenshot-6.png">
 <meta property="og:image" content="http://www.yoursite.com/media/14723544941522.png">
-<meta property="og:updated_time" content="2016-08-28T11:58:28.000Z">
+<meta property="og:updated_time" content="2016-08-28T12:02:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WWDC之优化App启动速度">
 <meta name="twitter:description" content="前言
@@ -323,13 +323,13 @@
 <p>尝试在iPad (使用iOS10 beta 3)上对一个纯OC项目设置该环境变量后,有了以下输出信息.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Total pre-main time:  <span class="number">74.37</span> milliseconds (<span class="number">100.0</span>%)</span><br><span class="line">       dylib loading time:  <span class="number">41.05</span> milliseconds (<span class="number">55.2</span>%)</span><br><span class="line">      rebase/binding time:   <span class="number">8.10</span> milliseconds (<span class="number">10.9</span>%)</span><br><span class="line">          ObjC setup time:   <span class="number">9.87</span> milliseconds (<span class="number">13.2</span>%)</span><br><span class="line">         initializer time:  <span class="number">15.23</span> milliseconds (<span class="number">20.4</span>%)</span><br><span class="line">         slowest intializers :</span><br><span class="line">           libSystem.B.dylib :   <span class="number">6.58</span> milliseconds (<span class="number">8.8</span>%)</span><br><span class="line"> libBacktraceRecording.dylib :   <span class="number">6.27</span> milliseconds (<span class="number">8.4</span>%)</span><br></pre></td></tr></table></figure>
 <p>输出内容展示了系统调用main()函前主要进行的工作内容和时间花费,Session上也对每一阶段加载过程具体内容进行了详细的叙述,有兴趣地可观看该Session.</p>
-<h2 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h2><p>那么如何尽可能的减少pre-main花费的时间呢,主要就从输出日志给出四个阶段的time下手.</p>
+<h2 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h2><p>那么如何尽可能的减少pre-main花费的时间呢,主要就从输出日志给出的四个阶段下手:</p>
 <ul>
-<li><p><strong>对动态库加载的时间优化.</strong>每个App都进行动态库加载,其中系统级别的动态库占据了绝大数,而针对系统级别的动态库都是经过系统高度优化的,不用担心时间的花费.开发者应该关注于自己集成到App的那些动态库,这也是最能消耗加载时间的地方.对此Apple建议<strong>减少在App里开发者的动态库集成或者有可能地将其多个动态库最终集成一个动态库后进行导入, 尽量保证将App现有的非系统级的动态库个数保证在6个以内.</strong></p>
+<li><p><strong>对动态库加载的时间优化.</strong>每个App都进行动态库加载,其中系统级别的动态库占据了绝大数,而针对系统级别的动态库都是经过系统高度优化的,不用担心时间的花费.开发者应该关注于自己集成到App的那些动态库,这也是最能消耗加载时间的地方.对此Apple建议<strong>减少在App里开发者的动态库集成或者有可能地将其多个动态库最终集成一个动态库后进行导入, 尽量保证将App现有的非系统级的动态库个数保证在6个以内</strong>.</p>
 </li>
 <li><p><strong>减少Appp的Objective-C类,分类和的唯一Selector的个数.</strong>这样做主要是为了加快程序的整个动态链接, 在进行动态库的重定位和绑定<em>(Rebase/binding)</em>过程中减少指针修正的使用,加快程序机器码的生成.</p>
 </li>
-<li><p><strong>减少Objc运行初始化的时间花费.</strong>主要是类的注册,分类的注册,唯一选择器的存在,以及涉及子父类内存布局的<code>Non Fragile ivars</code>偏移的更新,都会影响Objective-C运行时初始化的,需要的就是就是减少这些操作.</p>
+<li><p><strong>减少Objc运行初始化的时间花费.</strong>主要是类的注册,分类的注册,唯一选择器的存在,以及涉及子父类内存布局的<code>Non Fragile ivars</code>偏移的更新,都会影响Objective-C运行时初始化的时间消耗.</p>
 </li>
 <li><p><strong>使用initialize方法</strong>进行必要的初始化工作.用<code>+initialize</code>方法替换调用原先在OC的<code>+load</code>方法中执行初始代码工作,从而加快所有类文件的加载速度.</p>
 </li>
@@ -340,7 +340,7 @@
 <li>减少自定义的动态库集成</li>
 <li>精简原有的Objective-C类和代码</li>
 <li>移除静态的初始化操作</li>
-<li>使用更多的Swfit</li>
+<li>使用更多的Swift代码</li>
 </ul>
 <h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
 <li><a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">WWDC 2016 Session 406 Optimizing App Startup Time</a></li>
