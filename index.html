@@ -327,64 +327,22 @@
 
       
         
-          
-            <p><img src="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screenshot.png"></p>
+          <p><img src="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screenshot.png"></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Testting in Xcode6,但所涉及的内容在Xcode7都没有太多变化, Xcode7主要是增加了UI Test和查看测试覆盖率的功能, 所以该Session对了解如何在现在Xcode写单元测试还是很有参考价值.</p>
-<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h3 id="一-为什么要测试"><a href="#一-为什么要测试" class="headerlink" title="一. 为什么要测试"></a>一. 为什么要测试</h3><p><strong>发现Bug</strong><br>帮助开发者尽早地尽多地发现程序中的Bug,并且提前去修复它,而不是将程序发布给客户后,由客户反馈各样的Bug,再去进行修复.</p>
-<p><strong>扩展</strong><br>当对程序进行完善或者新功能的开发时,通过添加新的测试用例或者原来测试用例代码来检查新加入的代码对原程序是否所有影响.</p>
-<p><strong>维护</strong><br>程序具有完整的测试用例和测试内容让其他开发者能更加容易地交接,使更快地熟悉程序中API的行为和功能.</p>
-<h3 id="二-测试的工作流"><a href="#二-测试的工作流" class="headerlink" title="二. 测试的工作流"></a>二. 测试的工作流</h3><p>主流的测试流程有两种:<br>第一种,行为驱动开发(又称BDD)的测试:</p>
-<ol>
-<li>代码实现功能</li>
-<li>为其行为添加测试</li>
-<li>验证代码通过测试</li>
-</ol>
-<p>第二种,测试驱动开发(又称TDD)的测试:</p>
-<ol>
-<li>写无法通过的测试</li>
-<li>写能通过测试的代码</li>
-<li>重构通过测试的代码去实现功能</li>
-</ol>
-<p>测试通过就会测试用例的代码呈现绿色状态,而测试失败就会呈现红色状态.<br><img src="http://upload-images.jianshu.io/upload_images/260190-17cfcaf9c28bde74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Test State"></p>
-<h3 id="三-如何在Xcode进行测试"><a href="#三-如何在Xcode进行测试" class="headerlink" title="三.如何在Xcode进行测试"></a>三.如何在Xcode进行测试</h3><p><strong>使用XCTest</strong></p>
-<p>XCTest Framework是Xcode的测试框架,在Xcode5发布时推出.它提供一个类XCTestCase作为开发者自己实现测试的基类, 在继承此类的基础上实现自己的测试方法, 方法的命名要符合以test开头的规范,尽量让测试方法的名字表达测试的功能和期望的行为,例如testDocumentOpening; 提供了assertion API比如XCTAssertEqual, XCTAssertNotNil…来帮助判断测试的失败还是成功.</p>
-<p><strong>使用 Test Target</strong><br><img src="http://upload-images.jianshu.io/upload_images/260190-84b31072155dfd49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Test Target"><br>Xcode中独立的Test Target进行对测试用例代码的管理, 类似与一般程序的Target, Test Target进行自己的包资源和测试代码的管理,每个Target都是独立,互不干扰,新建工程时,Xcode都会默认了配置一个Unit Test Target,(Xcode 7后有多了一个UI Test Target),也允许在原有的工程上直接添加一个或者多个Test Target.</p>
-<p><strong>Xcode测试时的注意点</strong></p>
-<ul>
-<li>针对测试的内容,需要手动地import,让测试进行注入你的App.</li>
-<li>存在于Test Target的文件,图片资源,并不在main bundle中,要使用[NSBundle bundleForClass:[MyTest class]]来资源访问.</li>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h3 id="一-为什么要测试"><a href="#一-为什么要测试" class="headerlink" title="一. 为什么要测试"></a>一. 为什么要测试</h3><ul>
+<li><p><strong>发现Bug</strong><br>帮助开发者尽早地尽多地发现程序中的Bug,并且提前去修复它,而不是将程序发布给客户后,由客户反馈各样的Bug,再去进行修复.</p>
+</li>
+<li><p><strong>扩展</strong><br>当对程序进行完善或者新功能的开发时,通过添加新的测试用例或者原来测试用例代码来检查新加入的代码对原程序是否所有影响.</p>
+</li>
+<li><p><strong>维护</strong><br>程序具有完整的测试用例和测试内容让其他开发者能更加容易地交接,使更快地熟悉程序中API的行为和功能.</p>
+</li>
 </ul>
-<p><strong>如何运行测试用例</strong><br>针对已经写好的测试用例,运行测试用例的四种方式</p>
-<ol>
-<li>快捷键 Cmd + U,进行当前scheme的所有测试Target的测试</li>
-<li>点击测试用例方法的侧边栏的按钮,运行当前测试Target用例方法的测试</li>
-<li>点击Xcode左边导航栏的Test Navigator的按钮,进行当前scheme的所有测试用例的测试</li>
-<li>使用命令行 xcodebuild运行指定scheme的测试用例<pre><code>xcodebuild test\
-    -projetc ~/Document/MyApp.xcodeproj \
-    -scheme MyApp \
-    -destination `platform=iOS,name=iPhone`
-</code></pre></li>
-</ol>
-<p><strong>异步代码测试</strong></p>
-<p>开发App时往往为了程序的效率使用多线程,对存在耗时的,不必要阻塞主线程的代码进行异步执行,比如代理和Blcok的异步回调, 网络请求, 后台数据处理等操作代码, 使得对异步代码的测试也显得比较特殊,XCTest框架有异步代码的测试也有很好的API支持.</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1</span></span><br><span class="line">- (<span class="built_in">XCTestExpectation</span> *)expectationWithDescription:(<span class="built_in">NSString</span> *)description; </span><br><span class="line">- (<span class="keyword">void</span>)waitForExpectationsWithTimeout:(<span class="built_in">NSTimeInterval</span>)timeout handler:(nullable <span class="built_in">XCWaitCompletionHandler</span>)handler;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line">- (<span class="built_in">XCTestExpectation</span> *)expectationForNotification:(<span class="built_in">NSString</span> *)notificationName object:(nullable <span class="keyword">id</span>)objectToObserve handler:(nullable <span class="built_in">XCNotificationExpectationHandler</span>)handler;</span><br></pre></td></tr></table></figure>
-<p>1) 通过根据测试行为的描述自定义一个XCTestExpectation对象, 然后设置异步测试的超时时间以及处理回调Handler,在进行异步代码执行测试时,进行常规的测试断言,然后使用XCTestExpectation类的fulfill方法来响应之前定义的XCTestExpectation对象,表示异步测试的结束,具体执行顺序如下示例代码:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">XCTestExpectation</span> *expectation = [<span class="keyword">self</span> expectationWithDescription:<span class="string">"open doc"</span>];</span><br><span class="line"> <span class="built_in">UIDocument</span> *doc = ...;</span><br><span class="line"> [doc openWithCompletionHandler:^(<span class="built_in">BOOL</span> success) &#123;</span><br><span class="line"> 					<span class="built_in">XCTAssert</span>(success);</span><br><span class="line">           [expectation fulfill];</span><br><span class="line"> &#125;];</span><br><span class="line">       </span><br><span class="line"> [<span class="keyword">self</span> waitForExpectationsWithTimeout:<span class="number">5.0</span> handler:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
-<p>2) 使用通知的方式,先利用expectationForNotification:进行异步测试时间的通知注册,然后设置超时时间,然后进行异步代码执行的过程中,使用<code>NSNotificationCenter</code>的<code>postNotificationName:</code>方法主动去响应之前注册的通知,具体执行顺序如下示例代码:</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	<span class="built_in">UIDocument</span> *doc = ...;</span><br><span class="line">	[doc openWithCompletionHandler:^(<span class="built_in">BOOL</span> success) &#123;</span><br><span class="line">        <span class="built_in">XCTAssert</span>(success);</span><br><span class="line">      	[[<span class="built_in">NSNotificationCenter</span> defaultCenter] postNotificationName:<span class="string">@"OpenDoc"</span> object:<span class="literal">nil</span>];    </span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">	[<span class="keyword">self</span> expectationForNotification:<span class="string">@"OpenDoc"</span> object:<span class="literal">nil</span> handler:<span class="literal">nil</span>];  <span class="comment">// 提示:设置Notification Name一定要统一,否则测试会失败</span></span><br><span class="line">	[<span class="keyword">self</span> waitForExpectationsWithTimeout:<span class="number">5.0</span> handler:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
-<p><strong>单元测试中的性能测试</strong><br>Xcode为了提供性能的单元测试专门提供了UI和新API,来检测测试代码的执行时间和性能波动情况;使用<code>- (void)measureBlock:(void (^)(void))block;</code>在Block中进行性能测试代码的调用,里面的代码会被运行10次,并且记录平均时间和十次运行的性能波动情况.</p>
-<p>存在性能测试失败的测试用例,就可以通过Profile的TimeProfile工具进行具体性能问题代码的定位: 在Xcode左边导航栏的Test Navigator的右击需要Profile的测试用例,选择Profile testMethod.</p>
-<p>对每一段代码性能执行测试后Xcode会提供Baseline界面, 呈现上一次测试运行的性能耗时分布,第一次运行后需要设置Baseline作为之后性能测试的标准,在之后的测试过程中,如果新的性能平均分布增加了10%,XCTest就会认定此次性能测试的失败;</p>
-<blockquote>
-<p>Note: Baseline的信息保存在设备中,同样的测试代码,针对真机性能代码测试的Baseline不会在模拟器中测试时使用.</p>
-</blockquote>
-<p>对于性能代码的测试, Xcode还提供了性能测试结果的标准偏差(STDDEV),若果偏差超过上次偏差平均值的10%,(可手动调整)就会被认定测试失败, 而当偏差不到0.1秒就会被XCTest忽略, Session也说明影响STDDEV的因素主要有: 针对文件或者网络的IO操作;  每一次回调时进行不同的工作; 系统处理进程时的忙碌,这些都可能使得STDDEV变高.</p>
-<p>为了能更真实地进行代码的性能测试,Session建议只对需要进行性能测试的代码进行测试,其他关联性小的代码进行不要去影响测试结果,提供了一种更好的使用<code>measureBlock</code>的方式,如下实例代码</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   [<span class="keyword">self</span> measureMetrics:@[<span class="built_in">XCTPerformanceMetric_WallClockTime</span>] automaticallyStartMeasuring:<span class="literal">NO</span> forBlock:^&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSInteger</span> index = <span class="number">1</span>; index &lt; <span class="number">10000</span>; index++) &#123;</span><br><span class="line">        </span><br><span class="line">        [<span class="keyword">self</span> startMeasuring]; </span><br><span class="line">        <span class="built_in">NSString</span> *string = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%ld=="</span>, index];</span><br><span class="line">        [<span class="keyword">self</span> stopMeasuring];</span><br><span class="line">        <span class="comment">// 只在需要测试的地方使用start和stop Mesure方法;</span></span><br><span class="line">        [array addObject:string];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>虽然软件工程中没有真正的”银弹”,测试也不是万能的,不会让程序开发的Bug多一一消除,但保持良好的软件编程习惯,学会为自己的代码写测试,尽可能保证代码的正确和简洁,不论是App开发还是其他领域的开发,对于开发人员都是一种编程能力的提现,以后尝试多写写测试,可以从网络层或者数据层开始尝试,更加容易些.</p>
-<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p><a href="https://developer.apple.com/videos/play/wwdc2014/414/" target="_blank" rel="external">Testing in Xcode 6</a></p>
-
-          
+<p><br><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/03/WWDC之Testing in Xcode6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
