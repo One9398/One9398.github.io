@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, Word" />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -84,15 +84,20 @@
 
 
 
-<meta name="description" content="Keep learning, keep going.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="One Word">
-<meta property="og:url" content="http://www.yoursite.com/index.html">
+<meta name="description" content="前言软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Te">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WWDC之Testing in Xcode6">
+<meta property="og:url" content="http://www.yoursite.com/2016/09/03/WWDC之Testing in Xcode6/index.html">
 <meta property="og:site_name" content="One Word">
-<meta property="og:description" content="Keep learning, keep going.">
+<meta property="og:description" content="前言软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Te">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/260190-17cfcaf9c28bde74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/260190-84b31072155dfd49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-09-03T11:56:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="One Word">
-<meta name="twitter:description" content="Keep learning, keep going.">
+<meta name="twitter:title" content="WWDC之Testing in Xcode6">
+<meta name="twitter:description" content="前言软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Te">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -113,9 +118,9 @@
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2016/09/03/WWDC之Testing in Xcode6/"/>
 
-  <title> One Word </title>
+  <title> WWDC之Testing in Xcode6 | One Word </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,9 +151,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,9 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -257,10 +260,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/09/03/WWDC之Testing in Xcode6/" itemprop="url">
-                  WWDC之Testing in Xcode6
-                </a>
+                WWDC之Testing in Xcode6
               
             
           </h1>
@@ -326,9 +326,7 @@
       
 
       
-        
-          
-            <p><img src="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screenshot.png"></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screenshot.png"></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Testting in Xcode6,但所涉及的内容在Xcode7都没有太多变化, Xcode7主要是增加了UI Test和查看测试覆盖率的功能, 所以该Session对了解如何在现在Xcode写单元测试还是很有参考价值.</p>
 <h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h3 id="一-为什么要测试"><a href="#一-为什么要测试" class="headerlink" title="一. 为什么要测试"></a>一. 为什么要测试</h3><p><strong>发现Bug</strong><br>帮助开发者尽早地尽多地发现程序中的Bug,并且提前去修复它,而不是将程序发布给客户后,由客户反馈各样的Bug,再去进行修复.</p>
 <p><strong>扩展</strong><br>当对程序进行完善或者新功能的开发时,通过添加新的测试用例或者原来测试用例代码来检查新加入的代码对原程序是否所有影响.</p>
@@ -414,561 +412,58 @@ UIDocument *doc = ...;
 </code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>虽然软件工程中没有真正的”银弹”,测试也不是万能的,不会让程序开发的Bug多一一消除,但保持良好的软件编程习惯,学会为自己的代码写测试,尽可能保证代码的正确和简洁,不论是App开发还是其他领域的开发,对于开发人员都是一种编程能力的提现,以后尝试多写写测试,可以从网络层或者数据层开始尝试,更加容易些.</p>
 <h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p><a href="https://developer.apple.com/videos/play/wwdc2014/414/" target="_blank" rel="external">Testing in Xcode 6</a></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/WWDC之优化App启动速度/" itemprop="url">
-                  WWDC之优化App启动速度
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T12:26:54+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/28/WWDC之优化App启动速度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/WWDC之优化App启动速度/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="media/screenshot-6.png" alt="title-pic"></p>
-<p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行<code>main()</code>前究竟干了些什么.而通过这个Session,你会了解到以下内容:</p>
-<ul>
-<li>如何获得应用加载的时间</li>
-<li>执行程序入门的代码前App加载过程中的流程</li>
-<li>如何优化App的加载时间</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/28/WWDC之优化App启动速度/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/28/WWDC之优化App启动速度/" rel="next" title="WWDC之优化App启动速度">
+                <i class="fa fa-chevron-left"></i> WWDC之优化App启动速度
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/2016-08-21/" itemprop="url">
-                  Swift时代下的Objective-C新特性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T10:38:10+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/21/2016-08-21/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/21/2016-08-21/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自从苹果在WWDC2014上推出Swift语言后,国外iOS开发社区纷纷转向苹果推崇的iOS开发语言新贵. 而由于Swift语言存在时间不长,其所对应的iOS开源库远不及Objective-C的开源库多,因此在iOS平台开发语言的过渡中,Objective-C与Swift混编的项目也越来越多,而为了能让Objective-C和Swift更安全地兼容在iOS应用中,苹果不断优化Xcode编译器LLVM,为Objective-C语言增加了不少新特性,使其桥接到Swift代码时更加安全.</p>
-<p>接下来就来看看Swift出现之后的这些Objective-C新特性,以及如何更好应用到自己的Objective-C代码中吧<em>(下文都以OC简称)</em>.</p>
-<ul>
-<li>Objective-C新增的Nullability声明</li>
-<li>数组,字典等集合类的轻量级泛型声明</li>
-<li>Objective-C 类属性的使用</li>
-</ul>
-<h2 id="Objective-C新增的Nullability声明"><a href="#Objective-C新增的Nullability声明" class="headerlink" title="Objective-C新增的Nullability声明"></a>Objective-C新增的Nullability声明</h2><p>针对引用对象,OC语言都将其可以设置nil,而常常对nil的对象访问和调用方法时会就出现问题,严重地还会直接造成应用Crash; 而Swift为引用对象引入Optional类型的概念,只有Optional类型的对象才能被设置为nil,否则就会编译为类型错误,当对Optional类型的对象为nil值的情况下仍强行访问该对象就会导致程序的Crash,也就是强制解包Opional类型对象值为nil的情况,这也是写Swift代码中要极力避免的.</p>
-<p>为了保证OC程序的安全性以及更安全地向Swift进行桥接,OC出现nonnull,_Nonnull和nullable,_Nullable等一系列Nullability关键字,而这也对应在Swift中表示了非Optional和Optional的对象.现在(<code>Xcode 7之后</code>)无论声明属性还是声明变量,使用新增的这几个关键字,就能显示告诉编译器哪个对象可以被赋为nil,哪个不能被赋值为nil.</p>
-<p>首先来看看是使用在代码中使用这些关键字的吧.</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Employee</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (nonnull, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>)<span class="built_in">NSString</span> *name;</span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>)<span class="built_in">NSString</span> *company;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)workInPlace:(<span class="built_in">NSString</span> * _Nonnull)place;</span><br><span class="line">- (nullable instancetype)initWithName:(<span class="built_in">NSString</span> * _Nonnull)name company:(<span class="built_in">NSString</span> * _Nullable)company;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>这里nonnull和nullable是针对属性,返回值声明Nullability的关键字,声明时与nonatomic和copy一样都为属性的修饰符;而_Nonnull和_Nullable是针对局部变量, 参数变量来声明时使用的,注意的是该类关键字<strong>声明顺序一定要在指针符号<code>*</code>的后面</strong>, 否则编译器无法识别该关键字.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/2016-08-21/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/25/0804/" itemprop="url">
-                  View Controller Programming Guide For iOS (一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-25T20:03:05+08:00" content="2016-07-25">
-              2016-07-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/25/0804/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/0804/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="控制器总览"><a href="#控制器总览" class="headerlink" title="控制器总览"></a>控制器总览</h1><h2 id="控制器的作用"><a href="#控制器的作用" class="headerlink" title="控制器的作用"></a>控制器的作用</h2><p>iOS中ViewControllers分两种:</p>
-<ul>
-<li>内容控制器,管理自己根视图上的内容.</li>
-<li>容器控制器,管理子控制器和控制子控制器间的切换</li>
-</ul>
-<p><br></p>
-<h3 id="视图管理"><a href="#视图管理" class="headerlink" title="视图管理"></a>视图管理</h3><p>对于内容控制器来说,控制器管理着属于自己根视图的所有层次视图,控制器通过对其根视图和所有子视图进行强引用来管来每一个视图对象.<br>而容器控制器只管理自己的根视图以及子控制器的根视图尺寸和位置,不管理子控制器上的视图内容,如系统的容器控制器SplitViewController<br><img src="/media/14694492144655.png" alt="视图管理"><br><br><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/25/0804/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/25/0807/" itemprop="url">
-                  View Controller Programming Guide For iOS (二)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-25T20:03:05+08:00" content="2016-07-25">
-              2016-07-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/25/0807/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/0807/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="子类化控制器定制"><a href="#子类化控制器定制" class="headerlink" title="子类化控制器定制"></a>子类化控制器定制</h2><h3 id="自定义界面UI"><a href="#自定义界面UI" class="headerlink" title="自定义界面UI"></a>自定义界面UI</h3><p>官方推荐使用Storyboard文件以可视化方式进行控制器的UI定制,来对应多种尺寸环境,并且方便快速地调整和查看.</p>
-<p><br></p>
-<h3 id="处理用户交互"><a href="#处理用户交互" class="headerlink" title="处理用户交互"></a>处理用户交互</h3><p>通常,控制器主要处理交互事件方式有三种:</p>
-<ul>
-<li>由视图指定为Target的动作事件和手势事件</li>
-<li>系统或者其他对象发送的通知事件处理</li>
-<li>作为其他对象的数据源和代理事件处理</li>
-</ul>
-<p><br></p>
-<h3 id="运行时展示视图"><a href="#运行时展示视图" class="headerlink" title="运行时展示视图"></a>运行时展示视图</h3><p>当控制器加载视图后会调用<code>viewWillAppear:</code>方法让控制器知道将要呈现在屏幕上的视图,然后更新视图布局,展示视图到屏幕上,然后就调用<code>viewDidAppear:</code>.<br>当动态地添加,删除或修改视图时需要对应地进行约束布局调整.</p>
-<p><br><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/25/0807/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -976,6 +471,14 @@ UIDocument *doc = ...;
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/03/WWDC之Testing in Xcode6/"
+           data-title="WWDC之Testing in Xcode6" data-url="http://www.yoursite.com/2016/09/03/WWDC之Testing in Xcode6/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -995,8 +498,17 @@ UIDocument *doc = ...;
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars2.githubusercontent.com/u/17493209?v=3&u=fc0d3d59931920d0724ad6ac8d7a5312b15920d2&s=140"
@@ -1046,6 +558,17 @@ UIDocument *doc = ...;
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容"><span class="nav-number">2.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-为什么要测试"><span class="nav-number">2.1.</span> <span class="nav-text">一. 为什么要测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-测试的工作流"><span class="nav-number">2.2.</span> <span class="nav-text">二. 测试的工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-如何在Xcode进行测试"><span class="nav-number">2.3.</span> <span class="nav-text">三.如何在Xcode进行测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源"><span class="nav-number">4.</span> <span class="nav-text">资源</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1149,6 +672,10 @@ UIDocument *doc = ...;
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
