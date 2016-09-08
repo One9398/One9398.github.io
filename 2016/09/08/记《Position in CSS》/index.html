@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS," />
+  <meta name="keywords" content="Font-End," />
 
 
 
@@ -84,22 +84,45 @@
 
 
 
-<meta name="description" content="前言
-在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
+<meta name="description" content="Basic
+CSS属性position不会被继承
+绝对定位的元素会脱离正常文档流, 并生成Block-level box. 
+
+Offset
+常用属性:left,right,top,bottom 描述定位元素在Containing Block各个边的偏移量.
+每个属性都单独针对一个边
+
+Width and Height
+浮动元素都设置了有效的left,right,top,bottom后能自动计算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WWDC之优化App启动速度">
-<meta property="og:url" content="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/index.html">
+<meta property="og:title" content="记《Position in CSS》">
+<meta property="og:url" content="http://www.yoursite.com/2016/09/08/记《Position in CSS》/index.html">
 <meta property="og:site_name" content="One Word">
-<meta property="og:description" content="前言
-在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
-<meta property="og:image" content="http://www.yoursite.com/media/screenshot-6.png">
-<meta property="og:image" content="http://www.yoursite.com/media/14723544941522.png">
-<meta property="og:updated_time" content="2016-09-03T11:56:15.000Z">
+<meta property="og:description" content="Basic
+CSS属性position不会被继承
+绝对定位的元素会脱离正常文档流, 并生成Block-level box. 
+
+Offset
+常用属性:left,right,top,bottom 描述定位元素在Containing Block各个边的偏移量.
+每个属性都单独针对一个边
+
+Width and Height
+浮动元素都设置了有效的left,right,top,bottom后能自动计算">
+<meta property="og:image" content="http://o9or2y9io.bkt.clouddn.com/2016-09-08-screenshot.png">
+<meta property="og:updated_time" content="2016-09-08T13:09:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WWDC之优化App启动速度">
-<meta name="twitter:description" content="前言
-在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
-<meta name="twitter:image" content="http://www.yoursite.com/media/screenshot-6.png">
+<meta name="twitter:title" content="记《Position in CSS》">
+<meta name="twitter:description" content="Basic
+CSS属性position不会被继承
+绝对定位的元素会脱离正常文档流, 并生成Block-level box. 
+
+Offset
+常用属性:left,right,top,bottom 描述定位元素在Containing Block各个边的偏移量.
+每个属性都单独针对一个边
+
+Width and Height
+浮动元素都设置了有效的left,right,top,bottom后能自动计算">
+<meta name="twitter:image" content="http://o9or2y9io.bkt.clouddn.com/2016-09-08-screenshot.png">
 
 
 
@@ -120,9 +143,9 @@
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2016/09/08/记《Position in CSS》/"/>
 
-  <title> WWDC之优化App启动速度 | One Word </title>
+  <title> 记《Position in CSS》 | One Word </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +285,7 @@
             
             
               
-                WWDC之优化App启动速度
+                记《Position in CSS》
               
             
           </h1>
@@ -274,8 +297,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T12:26:54+08:00" content="2016-08-28">
-              2016-08-28
+            <time itemprop="dateCreated" datetime="2016-09-08T21:07:47+08:00" content="2016-09-08">
+              2016-09-08
             </time>
           </span>
 
@@ -304,8 +327,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/28/WWDC之优化App启动速度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/WWDC之优化App启动速度/" itemprop="commentsCount"></span>
+                <a href="/2016/09/08/记《Position in CSS》/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/08/记《Position in CSS》/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,42 +351,47 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="media/screenshot-6.png" alt="title-pic"></p>
-<p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行<code>main()</code>前究竟干了些什么.而通过这个Session,你会了解到以下内容:</p>
+        <p><img src="http://o9or2y9io.bkt.clouddn.com/2016-09-08-screenshot.png" alt="screenshot"></p>
+<h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><ul>
+<li>CSS属性position不会被继承</li>
+<li>绝对定位的元素会脱离正常文档流, 并生成<a href="https://www.w3.org/TR/CSS2/visuren.html#block-boxes" target="_blank" rel="external">Block-level box</a>. </li>
+</ul>
+<h2 id="Offset"><a href="#Offset" class="headerlink" title="Offset"></a>Offset</h2><ul>
+<li>常用属性:left,right,top,bottom 描述定位元素在Containing Block各个边的偏移量.</li>
+<li>每个属性都单独针对一个边</li>
+</ul>
+<h2 id="Width-and-Height"><a href="#Width-and-Height" class="headerlink" title="Width and Height"></a>Width and Height</h2><ul>
+<li>浮动元素都设置了有效的left,right,top,bottom后能自动计算出元素的宽高.</li>
+</ul>
+<h2 id="Contain-Overflow-and-Clipping"><a href="#Contain-Overflow-and-Clipping" class="headerlink" title="Contain Overflow and Clipping"></a>Contain Overflow and Clipping</h2><p>针对元素的内容超过元素盒子尺寸,超出的内容需要隐藏时,设置overflow为hidden.</p>
+<h2 id="Element-Visibility"><a href="#Element-Visibility" class="headerlink" title="Element Visibility"></a>Element Visibility</h2><p>使用visibility属性可以元素隐藏,但是元素仍在正常的文档流布局中占据位置,与设置display为none的效果不同.</p>
+<h2 id="Absolute-Positioning"><a href="#Absolute-Positioning" class="headerlink" title="Absolute Positioning"></a>Absolute Positioning</h2><ul>
+<li>绝对定位元素的offset设置会基于自己的Containing Block.(离自己最近祖先元素position不为static的元素; 如果不存在则指定为Viewpoint)</li>
+<li><p>当元素被绝对定位后,会创建一个<code>Containing Block</code>来约束它的后代元素的布局行为</p>
+</li>
+<li><p>定位元素使用auto-margin实现垂直居中.</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"position: relative; width: 10em; height: 10em;border: 0.125em solid black;"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"position: absolute;left: 0;top: 0; bottom: 0;width: 100%; margin: auto; height: 2em;background-color: #ccc; text-align: center;"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"line-height: 2em;"</span>&gt;</span>垂直居中<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>如何获得应用加载的时间</li>
-<li>执行程序入门的代码前App加载过程中的流程</li>
-<li>如何优化App的加载时间</li>
+<li>定位元素使用<code>transform: translate(-50%, y);</code>实现水平居中</li>
 </ul>
-<a id="more"></a>
-<h2 id="测量Pre-main-Time"><a href="#测量Pre-main-Time" class="headerlink" title="测量Pre-main Time"></a>测量Pre-main Time</h2><p>一个App在执行main函数前包括app delegate的系列方法如<code>applicationWillFinishLaunching</code>时,会做许多系统级别的准备.而在iOS10之前,开发者很难清楚自己App为何启动加载慢.而通过在工程的scheme中添加环境变量<strong>DYLD_PRINT_STATISTICS</strong>,设置Value为1,App启动加载时就会有启动过程的日志输出. 现在<em>(iOS 10之后)</em>Apple对DYLD_PRINT_STATISTICS的日志输出结果进行了简化,使得更容易让开发者理解.<br><img src="media/14723544941522.png" alt="指定Scheme上添加DYLD_PRINT_STATISTICS环境变量"></p>
-<p>尝试在iPad上对一个纯OC项目设置该环境变量后,有了以下输出信息.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Total pre-main time:  <span class="number">74.37</span> milliseconds (<span class="number">100.0</span>%)</span><br><span class="line">       dylib loading time:  <span class="number">41.05</span> milliseconds (<span class="number">55.2</span>%)</span><br><span class="line">      rebase/binding time:   <span class="number">8.10</span> milliseconds (<span class="number">10.9</span>%)</span><br><span class="line">          ObjC setup time:   <span class="number">9.87</span> milliseconds (<span class="number">13.2</span>%)</span><br><span class="line">         initializer time:  <span class="number">15.23</span> milliseconds (<span class="number">20.4</span>%)</span><br><span class="line">         slowest intializers :</span><br><span class="line">           libSystem.B.dylib :   <span class="number">6.58</span> milliseconds (<span class="number">8.8</span>%)</span><br><span class="line"> libBacktraceRecording.dylib :   <span class="number">6.27</span> milliseconds (<span class="number">8.4</span>%)</span><br></pre></td></tr></table></figure>
-<p>输出内容展示了系统调用main()函前主要进行的工作内容和时间花费,Session上也对每一阶段加载过程具体内容进行了详细的叙述,有兴趣地可观看该Session.</p>
-<h2 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h2><p>那么如何尽可能的减少pre-main花费的时间呢,主要就从输出日志给出的四个阶段下手:</p>
+<blockquote>
+<p>Note:<a href="http://www.w3schools.com/css/css_align.asp" target="_blank" rel="external">如何居中布局定位元素</a></p>
+</blockquote>
 <ul>
-<li><p><strong>对动态库加载的时间优化.</strong>每个App都进行动态库加载,其中系统级别的动态库占据了绝大数,而针对系统级别的动态库都是经过系统高度优化的,不用担心时间的花费.开发者应该关注于自己集成到App的那些动态库,这也是最能消耗加载时间的地方.对此Apple建议<strong>减少在App里开发者的动态库集成或者有可能地将其多个动态库最终集成一个动态库后进行导入, 尽量保证将App现有的非系统级的动态库个数保证在6个以内</strong>.</p>
-</li>
-<li><p><strong>减少Appp的Objective-C类,分类和的唯一Selector的个数.</strong>这样做主要是为了加快程序的整个动态链接, 在进行动态库的重定位和绑定<em>(Rebase/binding)</em>过程中减少指针修正的使用,加快程序机器码的生成.</p>
-</li>
-<li><p><strong>减少Objc运行初始化的时间花费.</strong>主要是类的注册,分类的注册,唯一选择器的存在,以及涉及子父类内存布局的<code>Non Fragile ivars</code>偏移的更新,都会影响Objective-C运行时初始化的时间消耗.</p>
-</li>
-<li><p><strong>使用initialize方法</strong>进行必要的初始化工作.用<code>+initialize</code>方法替换调用原先在OC的<code>+load</code>方法中执行初始代码工作,从而加快所有类文件的加载速度.</p>
-</li>
+<li>浮点Non-Replaced元素的宽度计算公式 (高度同理)</li>
 </ul>
-<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>最后演讲者对加载启动优化的整体概括了Session所要传达的内容:</p>
-<ul>
-<li>使用<strong>DYLD_PRINT_STATISTICS</strong>测试启动加载时间</li>
-<li>减少自定义的动态库集成</li>
-<li>精简原有的Objective-C类和代码</li>
-<li>移除静态的初始化操作</li>
-<li>使用更多的Swift代码</li>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">containing <span class="built_in">block</span> <span class="built_in">width</span> = left + margin-left + <span class="built_in">border</span>-left-<span class="built_in">width</span> + padding-left-<span class="built_in">width</span> + margin-right + <span class="built_in">border</span>-right-<span class="built_in">width</span> + right</span><br></pre></td></tr></table></figure>
+<h2 id="Fixed-Postioning"><a href="#Fixed-Postioning" class="headerlink" title="Fixed Postioning"></a>Fixed Postioning</h2><p>行为和作用与 Absolute Positioning一样,只是Containing Block指定为 Viewpoint.</p>
+<h2 id="Relative-Postioning"><a href="#Relative-Postioning" class="headerlink" title="Relative Postioning"></a>Relative Postioning</h2><ul>
+<li>相对定位元素的布局不会脱离正常文档流, 并且offset基于自身原始的位置变化,偏移后仍占有原来的位置,显示空白.</li>
+<li>通常应用场景为:将元素进行相对定位,创建一个Containing Block提供给绝对定位的子元素进行布局.(子绝父相)</li>
 </ul>
-<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
-<li><a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">WWDC 2016 Session 406 Optimizing App Startup Time</a></li>
-<li><a href="http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime
-</a></li>
-</ul>
+<h2 id="Addition"><a href="#Addition" class="headerlink" title="Addition"></a>Addition</h2><p><strong>Replace Element</strong><br>能根据其标签的元素与属性来判断显示具体的内容,具有内部的宽高.<br>a replaced element is an element whose representation is outside the scope of CSS, eg:img,video,form element(input, textarea).<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element" target="_blank" rel="external">More Detail</a></p>
+<p><strong>Block-level box</strong><br>用来包容后代box和内容;<br>Block-level boxes are boxes that participate in a block formatting context. Each block-level element generates a principal block-level box that contains descendant boxes and generated content and is also the box involved in any positioning scheme. Some block-level elements may generate additional boxes in addition to the principal box: ‘list-item’ elements. These additional boxes are placed with respect to the principal box.</p>
+<p><a href="https://www.w3.org/TR/CSS2/visuren.html#block-boxes" target="_blank" rel="external">More Detail</a></p>
+<p><strong>Viewpoint</strong><br>浏览器可视窗口点,以左上角为原点(0,0).</p>
 
       
     </div>
@@ -385,7 +413,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS/" rel="tag">#iOS</a>
+            <a href="/tags/Font-End/" rel="tag">#Font-End</a>
           
         </div>
       
@@ -394,17 +422,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/21/2016-08-21/" rel="next" title="Swift时代下的Objective-C新特性">
-                <i class="fa fa-chevron-left"></i> Swift时代下的Objective-C新特性
+              <a href="/2016/09/03/WWDC之Testing in Xcode6/" rel="next" title="WWDC之Testing in Xcode6">
+                <i class="fa fa-chevron-left"></i> WWDC之Testing in Xcode6
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/03/WWDC之Testing in Xcode6/" rel="prev" title="WWDC之Testing in Xcode6">
-                WWDC之Testing in Xcode6 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -430,8 +454,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/28/WWDC之优化App启动速度/"
-           data-title="WWDC之优化App启动速度" data-url="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/">
+      <div class="ds-thread" data-thread-key="2016/09/08/记《Position in CSS》/"
+           data-title="记《Position in CSS》" data-url="http://www.yoursite.com/2016/09/08/记《Position in CSS》/">
       </div>
     
   </div>
@@ -522,7 +546,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测量Pre-main-Time"><span class="nav-number">2.</span> <span class="nav-text">测量Pre-main Time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动优化"><span class="nav-number">3.</span> <span class="nav-text">启动优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结尾"><span class="nav-number">4.</span> <span class="nav-text">结尾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展"><span class="nav-number">5.</span> <span class="nav-text">拓展</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic"><span class="nav-number">1.</span> <span class="nav-text">Basic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Offset"><span class="nav-number">2.</span> <span class="nav-text">Offset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Width-and-Height"><span class="nav-number">3.</span> <span class="nav-text">Width and Height</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contain-Overflow-and-Clipping"><span class="nav-number">4.</span> <span class="nav-text">Contain Overflow and Clipping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Element-Visibility"><span class="nav-number">5.</span> <span class="nav-text">Element Visibility</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Absolute-Positioning"><span class="nav-number">6.</span> <span class="nav-text">Absolute Positioning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fixed-Postioning"><span class="nav-number">7.</span> <span class="nav-text">Fixed Postioning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relative-Postioning"><span class="nav-number">8.</span> <span class="nav-text">Relative Postioning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Addition"><span class="nav-number">9.</span> <span class="nav-text">Addition</span></a></li></ol></div>
             
           </div>
         </section>
