@@ -84,15 +84,18 @@
 
 
 
-<meta name="description" content="Keep learning, keep going.">
-<meta property="og:type" content="website">
+<meta name="description" content="You Don’t Know JS: Scope &amp;amp; ClosuresChapter 2: Lexical ScopeIn Chapter 1, we defined “scope” as the set of rules that govern how the Engine can look up a variable by its identifier name and find it">
+<meta property="og:type" content="article">
 <meta property="og:title" content="One Word">
-<meta property="og:url" content="http://www.yoursite.com/index.html">
+<meta property="og:url" content="http://www.yoursite.com/2016/09/08/Chapter 2: Lexical Scope  /index.html">
 <meta property="og:site_name" content="One Word">
-<meta property="og:description" content="Keep learning, keep going.">
+<meta property="og:description" content="You Don’t Know JS: Scope &amp;amp; ClosuresChapter 2: Lexical ScopeIn Chapter 1, we defined “scope” as the set of rules that govern how the Engine can look up a variable by its identifier name and find it">
+<meta property="og:image" content="http://o9or2y9io.bkt.clouddn.com/2016-09-08-fig2.png">
+<meta property="og:updated_time" content="2016-09-08T14:25:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="One Word">
-<meta name="twitter:description" content="Keep learning, keep going.">
+<meta name="twitter:description" content="You Don’t Know JS: Scope &amp;amp; ClosuresChapter 2: Lexical ScopeIn Chapter 1, we defined “scope” as the set of rules that govern how the Engine can look up a variable by its identifier name and find it">
+<meta name="twitter:image" content="http://o9or2y9io.bkt.clouddn.com/2016-09-08-fig2.png">
 
 
 
@@ -113,9 +116,9 @@
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2016/09/08/Chapter 2: Lexical Scope  /"/>
 
-  <title> One Word </title>
+  <title>  | One Word </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,9 +149,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,9 +236,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -258,9 +259,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/08/Chapter 2: Lexical Scope  /" itemprop="url">
-                  未命名
-                </a>
               
             
           </h1>
@@ -307,9 +305,7 @@
       
 
       
-        
-          
-            <h1 id="You-Don’t-Know-JS-Scope-amp-Closures"><a href="#You-Don’t-Know-JS-Scope-amp-Closures" class="headerlink" title="You Don’t Know JS: Scope &amp; Closures"></a>You Don’t Know JS: Scope &amp; Closures</h1><h1 id="Chapter-2-Lexical-Scope"><a href="#Chapter-2-Lexical-Scope" class="headerlink" title="Chapter 2: Lexical Scope"></a>Chapter 2: Lexical Scope</h1><p>In Chapter 1, we defined “scope” as the set of rules that govern how the <em>Engine</em> can look up a variable by its identifier name and find it, either in the current <em>Scope</em>, or in any of the <em>Nested Scopes</em> it’s contained within.</p>
+        <h1 id="You-Don’t-Know-JS-Scope-amp-Closures"><a href="#You-Don’t-Know-JS-Scope-amp-Closures" class="headerlink" title="You Don’t Know JS: Scope &amp; Closures"></a>You Don’t Know JS: Scope &amp; Closures</h1><h1 id="Chapter-2-Lexical-Scope"><a href="#Chapter-2-Lexical-Scope" class="headerlink" title="Chapter 2: Lexical Scope"></a>Chapter 2: Lexical Scope</h1><p>In Chapter 1, we defined “scope” as the set of rules that govern how the <em>Engine</em> can look up a variable by its identifier name and find it, either in the current <em>Scope</em>, or in any of the <em>Nested Scopes</em> it’s contained within.</p>
 <p>There are two predominant models for how scope works. The first of these is by far the most common, used by the vast majority of programming languages. It’s called <strong>Lexical Scope</strong>, and we will examine it in-depth. The other model, which is still used by some languages (such as Bash scripting, some modes in Perl, etc.) is called <strong>Dynamic Scope</strong>.</p>
 <p>Dynamic Scope is covered in Appendix A. I mention it here only to provide a contrast with Lexical Scope, which is the scope model that JavaScript employs.</p>
 <h2 id="Lex-time"><a href="#Lex-time" class="headerlink" title="Lex-time"></a>Lex-time</h2><p>As we discussed in Chapter 1, the first traditional phase of a standard language compiler is called lexing (aka, tokenizing). If you recall, the lexing process examines a string of source code characters and assigns semantic meaning to the tokens as a result of some stateful parsing.</p>
@@ -378,16 +374,19 @@
 <p>Two mechanisms in JavaScript can “cheat” lexical scope: <code>eval(..)</code> and <code>with</code>. The former can modify existing lexical scope (at runtime) by evaluating a string of “code” which has one or more declarations in it. The latter essentially creates a whole new lexical scope (again, at runtime) by treating an object reference <em>as</em> a “scope” and that object’s properties as scoped identifiers.</p>
 <p>The downside to these mechanisms is that it defeats the <em>Engine</em>‘s ability to perform compile-time optimizations regarding scope look-up, because the <em>Engine</em> has to assume pessimistically that such optimizations will be invalid. Code <em>will</em> run slower as a result of using either feature. <strong>Don’t use them.</strong></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -395,548 +394,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/08/记《Position in CSS》/" rel="next" title="记《Position in CSS》">
+                <i class="fa fa-chevron-left"></i> 记《Position in CSS》
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/09/08/记《Position in CSS》/" itemprop="url">
-                  记《Position in CSS》
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-08T21:07:47+08:00" content="2016-09-08">
-              2016-09-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/08/记《Position in CSS》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/08/记《Position in CSS》/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p><img src="http://o9or2y9io.bkt.clouddn.com/2016-09-08-screenshot.png" alt="screenshot"></p>
-<h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><ul>
-<li>CSS属性position不会被继承</li>
-<li>绝对定位的元素会脱离正常文档流, 并生成<a href="https://www.w3.org/TR/CSS2/visuren.html#block-boxes">Block-level box</a>. </li>
-</ul>
-<h2 id="Offset"><a href="#Offset" class="headerlink" title="Offset"></a>Offset</h2><ul>
-<li>常用属性:left,right,top,bottom 描述定位元素在Containing Block各个边的偏移量.</li>
-<li>每个属性都单独针对一个边</li>
-</ul>
-<h2 id="Width-and-Height"><a href="#Width-and-Height" class="headerlink" title="Width and Height"></a>Width and Height</h2><ul>
-<li>浮动元素都设置了有效的left,right,top,bottom后能自动计算出元素的宽高.
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/08/记《Position in CSS》/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/03/WWDC之Testing in Xcode6/" itemprop="url">
-                  WWDC之Testing in Xcode6
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-03T19:29:43+08:00" content="2016-09-03">
-              2016-09-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/03/WWDC之Testing in Xcode6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/03/WWDC之Testing in Xcode6/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screenshot.png">ΩWA我`    </p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Testting in Xcode6,但所涉及的内容在Xcode7都没有太多变化, Xcode7主要是增加了UI Test和查看测试覆盖率的功能, 所以该Session对了解如何在现在Xcode写单元测试还是很有参考价值.</p>
-<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h3 id="一-为什么要测试"><a href="#一-为什么要测试" class="headerlink" title="一. 为什么要测试"></a>一. 为什么要测试</h3><ul>
-<li><p><strong>发现Bug</strong><br>帮助开发者尽早地尽多地发现程序中的Bug,并且提前去修复它,而不是将程序发布给客户后,由客户反馈各样的Bug,再去进行修复.</p>
-</li>
-<li><p><strong>扩展</strong><br>当对程序进行完善或者新功能的开发时,通过添加新的测试用例或者原来测试用例代码来检查新加入的代码对原程序是否所有影响.</p>
-</li>
-<li><p><strong>维护</strong><br>程序具有完整的测试用例和测试内容让其他开发者能更加容易地交接,使更快地熟悉程序中API的行为和功能.</p>
-</li>
-</ul>
-<p><br><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/03/WWDC之Testing in Xcode6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/WWDC之优化App启动速度/" itemprop="url">
-                  WWDC之优化App启动速度
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T12:26:54+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/28/WWDC之优化App启动速度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/WWDC之优化App启动速度/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="media/screenshot-6.png" alt="title-pic"></p>
-<p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行<code>main()</code>前究竟干了些什么.而通过这个Session,你会了解到以下内容:</p>
-<ul>
-<li>如何获得应用加载的时间</li>
-<li>执行程序入门的代码前App加载过程中的流程</li>
-<li>如何优化App的加载时间</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/28/WWDC之优化App启动速度/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/2016-08-21/" itemprop="url">
-                  Swift时代下的Objective-C新特性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T10:38:10+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/21/2016-08-21/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/21/2016-08-21/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自从苹果在WWDC2014上推出Swift语言后,国外iOS开发社区纷纷转向苹果推崇的iOS开发语言新贵. 而由于Swift语言存在时间不长,其所对应的iOS开源库远不及Objective-C的开源库多,因此在iOS平台开发语言的过渡中,Objective-C与Swift混编的项目也越来越多,而为了能让Objective-C和Swift更安全地兼容在iOS应用中,苹果不断优化Xcode编译器LLVM,为Objective-C语言增加了不少新特性,使其桥接到Swift代码时更加安全.</p>
-<p>接下来就来看看Swift出现之后的这些Objective-C新特性,以及如何更好应用到自己的Objective-C代码中吧<em>(下文都以OC简称)</em>.</p>
-<ul>
-<li>Objective-C新增的Nullability声明</li>
-<li>数组,字典等集合类的轻量级泛型声明</li>
-<li>Objective-C 类属性的使用</li>
-</ul>
-<h2 id="Objective-C新增的Nullability声明"><a href="#Objective-C新增的Nullability声明" class="headerlink" title="Objective-C新增的Nullability声明"></a>Objective-C新增的Nullability声明</h2><p>针对引用对象,OC语言都将其可以设置nil,而常常对nil的对象访问和调用方法时会就出现问题,严重地还会直接造成应用Crash; 而Swift为引用对象引入Optional类型的概念,只有Optional类型的对象才能被设置为nil,否则就会编译为类型错误,当对Optional类型的对象为nil值的情况下仍强行访问该对象就会导致程序的Crash,也就是强制解包Opional类型对象值为nil的情况,这也是写Swift代码中要极力避免的.</p>
-<p>为了保证OC程序的安全性以及更安全地向Swift进行桥接,OC出现nonnull,_Nonnull和nullable,_Nullable等一系列Nullability关键字,而这也对应在Swift中表示了非Optional和Optional的对象.现在(<code>Xcode 7之后</code>)无论声明属性还是声明变量,使用新增的这几个关键字,就能显示告诉编译器哪个对象可以被赋为nil,哪个不能被赋值为nil.</p>
-<p>首先来看看是使用在代码中使用这些关键字的吧.</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Employee</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (nonnull, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>)<span class="built_in">NSString</span> *name;</span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>)<span class="built_in">NSString</span> *company;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)workInPlace:(<span class="built_in">NSString</span> * _Nonnull)place;</span><br><span class="line">- (nullable instancetype)initWithName:(<span class="built_in">NSString</span> * _Nonnull)name company:(<span class="built_in">NSString</span> * _Nullable)company;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-<p>这里nonnull和nullable是针对属性,返回值声明Nullability的关键字,声明时与nonatomic和copy一样都为属性的修饰符;而_Nonnull和_Nullable是针对局部变量, 参数变量来声明时使用的,注意的是该类关键字<strong>声明顺序一定要在指针符号<code>*</code>的后面</strong>, 否则编译器无法识别该关键字.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/2016-08-21/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -944,6 +427,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/08/Chapter 2: Lexical Scope  /"
+           data-title="" data-url="http://www.yoursite.com/2016/09/08/Chapter 2: Lexical Scope  /">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -963,8 +454,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars2.githubusercontent.com/u/17493209?v=3&u=fc0d3d59931920d0724ad6ac8d7a5312b15920d2&s=140"
@@ -1014,6 +514,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#You-Don’t-Know-JS-Scope-amp-Closures"><span class="nav-number">1.</span> <span class="nav-text">You Don’t Know JS: Scope & Closures</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-Lexical-Scope"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2: Lexical Scope</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lex-time"><span class="nav-number">2.1.</span> <span class="nav-text">Lex-time</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Look-ups"><span class="nav-number">2.1.1.</span> <span class="nav-text">Look-ups</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cheating-Lexical"><span class="nav-number">2.2.</span> <span class="nav-text">Cheating Lexical</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eval"><span class="nav-number">2.2.1.</span> <span class="nav-text">eval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#with"><span class="nav-number">2.2.2.</span> <span class="nav-text">with</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">2.2.3.</span> <span class="nav-text">Performance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Review-TL-DR"><span class="nav-number">2.3.</span> <span class="nav-text">Review (TL;DR)</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1117,6 +628,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
