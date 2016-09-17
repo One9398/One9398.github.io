@@ -258,8 +258,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/25/0804/" itemprop="url">
-                  View Controller Programming Guide For iOS (一)
+                <a class="post-title-link" href="/2016/08/21/2016-08-21/" itemprop="url">
+                  Swift时代下的Objective-C新特性
                 </a>
               
             
@@ -272,8 +272,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-25T20:03:05+08:00" content="2016-07-25">
-              2016-07-25
+            <time itemprop="dateCreated" datetime="2016-08-21T10:38:10+08:00" content="2016-08-21">
+              2016-08-21
             </time>
           </span>
 
@@ -302,8 +302,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/25/0804/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/0804/" itemprop="commentsCount"></span>
+                <a href="/2016/08/21/2016-08-21/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/21/2016-08-21/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -327,15 +327,20 @@
 
       
         
-          <h1 id="控制器总览"><a href="#控制器总览" class="headerlink" title="控制器总览"></a>控制器总览</h1><h2 id="控制器的作用"><a href="#控制器的作用" class="headerlink" title="控制器的作用"></a>控制器的作用</h2><p>iOS中ViewControllers分两种:</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自从苹果在WWDC2014上推出Swift语言后,国外iOS开发社区纷纷转向苹果推崇的iOS开发语言新贵. 而由于Swift语言存在时间不长,其所对应的iOS开源库远不及Objective-C的开源库多,因此在iOS平台开发语言的过渡中,Objective-C与Swift混编的项目也越来越多,而为了能让Objective-C和Swift更安全地兼容在iOS应用中,苹果不断优化Xcode编译器LLVM,为Objective-C语言增加了不少新特性,使其桥接到Swift代码时更加安全.</p>
+<p>接下来就来看看Swift出现之后的这些Objective-C新特性,以及如何更好应用到自己的Objective-C代码中吧<em>(下文都以OC简称)</em>.</p>
 <ul>
-<li>内容控制器,管理自己根视图上的内容.</li>
-<li>容器控制器,管理子控制器和控制子控制器间的切换</li>
+<li>Objective-C新增的Nullability声明</li>
+<li>数组,字典等集合类的轻量级泛型声明</li>
+<li>Objective-C 类属性的使用</li>
 </ul>
-<p><br></p>
-<h3 id="视图管理"><a href="#视图管理" class="headerlink" title="视图管理"></a>视图管理</h3><p>对于内容控制器来说,控制器管理着属于自己根视图的所有层次视图,控制器通过对其根视图和所有子视图进行强引用来管来每一个视图对象.<br>而容器控制器只管理自己的根视图以及子控制器的根视图尺寸和位置,不管理子控制器上的视图内容,如系统的容器控制器SplitViewController<br><img src="/media/14694492144655.png" alt="视图管理"><br><br><br>
+<h2 id="Objective-C新增的Nullability声明"><a href="#Objective-C新增的Nullability声明" class="headerlink" title="Objective-C新增的Nullability声明"></a>Objective-C新增的Nullability声明</h2><p>针对引用对象,OC语言都将其可以设置nil,而常常对nil的对象访问和调用方法时会就出现问题,严重地还会直接造成应用Crash; 而Swift为引用对象引入Optional类型的概念,只有Optional类型的对象才能被设置为nil,否则就会编译为类型错误,当对Optional类型的对象为nil值的情况下仍强行访问该对象就会导致程序的Crash,也就是强制解包Opional类型对象值为nil的情况,这也是写Swift代码中要极力避免的.</p>
+<p>为了保证OC程序的安全性以及更安全地向Swift进行桥接,OC出现nonnull,_Nonnull和nullable,_Nullable等一系列Nullability关键字,而这也对应在Swift中表示了非Optional和Optional的对象.现在(<code>Xcode 7之后</code>)无论声明属性还是声明变量,使用新增的这几个关键字,就能显示告诉编译器哪个对象可以被赋为nil,哪个不能被赋值为nil.</p>
+<p>首先来看看是使用在代码中使用这些关键字的吧.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Employee</span> : <span class="title">NSObject</span></span></span><br><span class="line"><span class="keyword">@property</span> (nonnull, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>)<span class="built_in">NSString</span> *name;</span><br><span class="line"><span class="keyword">@property</span> (nullable, <span class="keyword">nonatomic</span>, <span class="keyword">copy</span>)<span class="built_in">NSString</span> *company;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)workInPlace:(<span class="built_in">NSString</span> * _Nonnull)place;</span><br><span class="line">- (nullable instancetype)initWithName:(<span class="built_in">NSString</span> * _Nonnull)name company:(<span class="built_in">NSString</span> * _Nullable)company;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>这里nonnull和nullable是针对属性,返回值声明Nullability的关键字,声明时与nonatomic和copy一样都为属性的修饰符;而_Nonnull和_Nullable是针对局部变量, 参数变量来声明时使用的,注意的是该类关键字<strong>声明顺序一定要在指针符号<code>*</code>的后面</strong>, 否则编译器无法识别该关键字.</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/25/0804/#more" rel="contents">
+            <a class="btn" href="/2016/08/21/2016-08-21/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -468,6 +473,134 @@
 <p><br><br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/25/0807/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/25/0804/" itemprop="url">
+                  View Controller Programming Guide For iOS (一)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-25T20:03:05+08:00" content="2016-07-25">
+              2016-07-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/25/0804/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/0804/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="控制器总览"><a href="#控制器总览" class="headerlink" title="控制器总览"></a>控制器总览</h1><h2 id="控制器的作用"><a href="#控制器的作用" class="headerlink" title="控制器的作用"></a>控制器的作用</h2><p>iOS中ViewControllers分两种:</p>
+<ul>
+<li>内容控制器,管理自己根视图上的内容.</li>
+<li>容器控制器,管理子控制器和控制子控制器间的切换</li>
+</ul>
+<p><br></p>
+<h3 id="视图管理"><a href="#视图管理" class="headerlink" title="视图管理"></a>视图管理</h3><p>对于内容控制器来说,控制器管理着属于自己根视图的所有层次视图,控制器通过对其根视图和所有子视图进行强引用来管来每一个视图对象.<br>而容器控制器只管理自己的根视图以及子控制器的根视图尺寸和位置,不管理子控制器上的视图内容,如系统的容器控制器SplitViewController<br><img src="/media/14694492144655.png" alt="视图管理"><br><br><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/25/0804/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -811,156 +944,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/06/更好地理解,利用习惯 -《习惯的力量》/" itemprop="url">
-                  更好地理解,利用习惯 -《习惯的力量》
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-06T21:38:02+08:00" content="2016-07-06">
-              2016-07-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/book/" itemprop="url" rel="index">
-                    <span itemprop="name">阅读</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/06/更好地理解,利用习惯 -《习惯的力量》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/06/更好地理解,利用习惯 -《习惯的力量》/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="《习惯的力量》"><a href="#《习惯的力量》" class="headerlink" title="《习惯的力量》"></a>《习惯的力量》</h1><h2 id="文摘"><a href="#文摘" class="headerlink" title="文摘"></a>文摘</h2><p><strong>习惯的规则</strong></p>
-<blockquote>
-<p>大脑存在由三步组成的习惯回路.第一步,存在着暗示,能让大脑进入某种自动行为模式,并决定使用某种习惯.第二,存在一个惯常行为,比如身体,思维或者情感方面的.第三步则是奖赏,让大脑辨别出是否应该记下这个回路,以备将来之用.</p>
-</blockquote>
-<p><br><br><strong>习惯的产生</strong></p>
-<blockquote>
-<p>习惯的形成:把暗示,惯性行为和奖赏拼在一起,然后培养一种渴求来驱动这样一回路.</p>
-<p>暗示除了能够触发惯性行为,还必须能够触发人对即将到来的奖赏的渴求.而渴求在驱动着习惯,找到触发渴求的方式让创造新习惯变得更容易.</p>
-</blockquote>
-<p><br><br><strong>习惯产生的渴求</strong></p>
-<blockquote>
-<p>习惯如此强大的原因: 能够创造出神经渴求,在大部分时间里,渴求是逐渐产生的,而我们确实没有意识到它们的存在,所以往往看不到他们的影响.</p>
-<p>暗示除了能够触发惯常行为,还必须能够触发人对即将到来的奖赏的渴求.</p>
-<p>渴求在驱动着习惯,找到触发渴求的方式让创造新习惯变得更容易,</p>
-</blockquote>
-<p><br><br><strong>习惯的改变</strong></p>
-<blockquote>
-<p>习惯是不能被消除,而只能被代替</p>
-<p>改变习惯,你必须留住就旧习惯回路中的暗示,提供旧回路中的奖赏,但要插入一个新的惯常行为.</p>
-</blockquote>
-<p><br><br><strong>习惯中的信仰</strong></p>
-<blockquote>
-<p>为了保持住一种新的习惯,必须相信改变是可能的,形成一种信仰.而信仰往往是在群体中培养出来的.</p>
-<p>信仰是将改造过的习惯回路变成永久性行为的要素.</p>
-</blockquote>
-<h2 id="实践指南"><a href="#实践指南" class="headerlink" title="实践指南"></a>实践指南</h2><h1 id=""><a href="#" class="headerlink" title=""></a><img src="media/screenshot%202.png" alt="screenshot 2"></h1><ul>
-<li>找出旧的惯常行为,设计新的惯常行为.</li>
-<li>用奖赏试验,不同奖赏触发不同程度的渴求,寻找最合适的奖赏</li>
-<li>将暗示隔离地点,时间,情绪状态,其他人,之前紧挨的动作;</li>
-<li>制定计划</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1006,7 +989,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1023,7 +1006,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
