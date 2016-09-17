@@ -327,83 +327,24 @@
 
       
         
-          
-            <p><img src="http://o9or2y9io.bkt.clouddn.com/2016-09-17-screenshot-1.png" alt="screenshot-w404"></p>
+          <p><img src="http://o9or2y9io.bkt.clouddn.com/2016-09-17-screenshot-1.png" alt="screenshot-w404"></p>
 <h2 id="Chapter-1-Scope"><a href="#Chapter-1-Scope" class="headerlink" title="Chapter 1:Scope"></a>Chapter 1:Scope</h2><h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><ul>
 <li>编写JavaScript程序时,JavaScript作为动态解释型语言, 同样是先编译成可执行的代码<em>(JavaScript引擎优化使得编译速度极快)</em>,然后再执行.</li>
 <li>JavaScript程序的编译过程由编译器先一步完成,其次执行过程由JavaScript引擎完成.</li>
 </ul>
-<p><br></p>
+<p><br/></p>
 <h3 id="运行Javascript程序的三要素"><a href="#运行Javascript程序的三要素" class="headerlink" title="运行Javascript程序的三要素"></a>运行Javascript程序的三要素</h3><ul>
 <li><strong>JavaScript引擎</strong> : 负责整个过程的编译,以及程序的执行.</li>
 <li><strong>编译器</strong> : 处理词法解析和代码生成的过程</li>
 <li><strong>作用域</strong> : 收集和持有一个向上查找的列表,其包含声明过的变量;以及设定了各个变量的访问范围的规则.</li>
 </ul>
 <p><strong>赋值语句<code>var a = 2</code>的程序解释</strong><br>首先,编译器声明变量a,如果a之前已声明过则跳过;然后执行引擎在作用域查找变量a,如果找到赋值为2.(如果最终查找不到,引擎会给出引用错误<code>ReferenceError</code>)</p>
-<p><br></p>
-<h3 id="LHS-和-RHS-Reference"><a href="#LHS-和-RHS-Reference" class="headerlink" title="LHS 和 RHS Reference"></a>LHS 和 RHS Reference</h3><blockquote>
-<p>LHS/RHS : “left/right-hand side of an assignment”</p>
-</blockquote>
-<ul>
-<li>LHS Reference: 表示对赋值表达式中目标的引用,例如赋值语句中<code>var a = 2</code>的<code>a=</code>为LHS Reference.</li>
-<li>所有函数的调用都被为RHS引用, 函数的传值视为LHS引用.</li>
-</ul>
-<p><strong>Note</strong>: 函数的声明不被视为LHS引用.</p>
-<p><br></p>
-<h3 id="作用域嵌套"><a href="#作用域嵌套" class="headerlink" title="作用域嵌套"></a>作用域嵌套</h3><ul>
-<li><p>块代码和函数都能自己的作用域,而生成的作用域都嵌套在外部作用域内,引擎进行变量查找时,会从当前代码执行所处的作用域开始一层层向上查找,直到找到该变量或者寻至全局作用域后仍未找到会停止.<br><img src="http://o9or2y9io.bkt.clouddn.com/2016-09-17-14733436086673.png" alt="作用域嵌套关系-w349"></p>
-</li>
-<li><p>整个作用域查找变量过程中,如果是RHS查找但是没有找到,执行引擎会抛出ReferenceError;如果是LHS查找没有找到,非strict模式下会自动创建其为全局变量,若其值无效(undefined/null)则抛出TypeError.</p>
-</li>
-</ul>
-<p><br><br><strong>ReferenceError与TypeError区别</strong></p>
-<ul>
-<li>ReferenceError 说明作用域解析失败</li>
-<li>TypeError 说明作用域解析成功,但执行结果非法</li>
-</ul>
-<h2 id="Chapter-2-Lexical-Scope"><a href="#Chapter-2-Lexical-Scope" class="headerlink" title="Chapter 2:Lexical Scope"></a>Chapter 2:Lexical Scope</h2><h3 id="什么叫Lexical-Scope"><a href="#什么叫Lexical-Scope" class="headerlink" title="什么叫Lexical Scope ?"></a>什么叫Lexical Scope ?</h3><p>词法域,也叫静态作用域;表示在进行编写代码(函数定义时)就生成的变量使用范围,词法域会包含当前已声明的变量和函数标识符,保证后期代码执行使用变量和函数时在进行所词法域内查找.</p>
-<p><br></p>
-<h3 id="作用域嵌套和标识符查找"><a href="#作用域嵌套和标识符查找" class="headerlink" title="作用域嵌套和标识符查找"></a>作用域嵌套和标识符查找</h3><p>Lexical Scope 会进行嵌套,标识符查找规则只允许内部访问外部的作用域,一旦遇到所要的标识符就终止向外作用域的查找.</p>
-<h3 id="改变-Lexical-Scope的两个方法"><a href="#改变-Lexical-Scope的两个方法" class="headerlink" title="改变 Lexical Scope的两个方法"></a>改变 Lexical Scope的两个方法</h3><ul>
-<li><code>eval()</code>能修改已存在的Lexical Scope下的变量和方法.</li>
-<li><code>with()</code>能创建一个新的Lexical Scope,并把对象传入这个Scope内.</li>
-</ul>
-<blockquote>
-<p>Note: <code>eval()</code>和<code>with()</code>改变 Lexical Scope的行为会阻止Javascript 引擎在作用域查找时的编译优化,产生性能问题.<strong>避免使用 !</strong></p>
-</blockquote>
-<h2 id="Capter-3-函数作用域与块作用域"><a href="#Capter-3-函数作用域与块作用域" class="headerlink" title="Capter 3: 函数作用域与块作用域"></a>Capter 3: 函数作用域与块作用域</h2><p><strong>关于作用域</strong>: 作用域包含了当前域下已声明的变量和函数标识符,且能够内外嵌套,而嵌套关系在编写期间就确定了.</p>
-<p><br></p>
-<h3 id="函数域"><a href="#函数域" class="headerlink" title="函数域"></a>函数域</h3><p>作为JavasSript作用域存在的主要形式,函数体都会创建一个相对应的函数域,关联内部的变量和函数标识符;而外部的作用域无法访问到这些标识符.</p>
-<ul>
-<li>函数作用域可以用来封装变量和函数,防止外部访问,以及避免命名冲突,全局变量污染.</li>
-</ul>
-<blockquote>
-<p><strong>Tip:如何取反函数声明和函数表达式</strong><br>在函数相关语句<code>function</code>首行最先出现的就是函数的声明;其余都是函数表达式(允许匿名);</p>
-</blockquote>
-<p><strong>IIEF</strong><br>函数名可以省略,整个作用域在(..)内,不影响外部作用域;并且会立即执行.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">IIFE</span>(<span class="params">global</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;(<span class="built_in">window</span>))</span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h3 id="块作用域"><a href="#块作用域" class="headerlink" title="块作用域"></a>块作用域</h3><p>通常有<code>{...}</code>包含代码块而形成的作用域,常见if语句,循环语句;块作用域下变量,函数外部无法访问,会在作用域结束后销毁;而<strong>JavaScript不支持完整的块作用域</strong>,这也表示在JavaScript中,for语句,循环语句等语句内var声明的变量,函数,仍被视为外部作用域的关联标识符,被外部访问.而try-catch的catch代码块会生成块作用域,外部无法访问catch内部代码.</p>
-<p><strong>let/const</strong><br>ES6新增的用来声明变量修饰符,所声明的变量下都会创建一个JavaScript支持的块作用域,外部无法访问.</p>
-<h2 id="Chapter-4-声明提前"><a href="#Chapter-4-声明提前" class="headerlink" title="Chapter 4:声明提前"></a>Chapter 4:声明提前</h2><p><strong>变量与作用域</strong>: 在作用域内声明的任何变量都会关联到该作用域下,允许访问.</p>
-<ul>
-<li><p>语句<code>var a = 2</code>由JavaScript引擎执行时,首先在编译阶段处理<code>var a</code>变量声明;然后在运行阶段处理<code>a=2</code>赋值.</p>
-</li>
-<li><p>在JavaScript中变量,函数的声明都会被提至当前作用域的最前面优先执行;而赋值和表达式都会在原来的位置等待顺序执行.</p>
-</li>
-</ul>
-<p><br></p>
-<h2 id="Capter-5-Scope-Closure"><a href="#Capter-5-Scope-Closure" class="headerlink" title="Capter 5: Scope Closure"></a>Capter 5: Scope Closure</h2><p>闭包: 在所声明的静态作用域之外执行,仍能访问自己的静态作用域的函数;由函数和相关的作用域链两部分组成.</p>
-<p>闭包函数执行时仍引用其静态作用域即最初定义时创建的作用域,防止内部使用的变量被回收.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> baz = foo();</span><br><span class="line">baz() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<h4 id="闭包作用"><a href="#闭包作用" class="headerlink" title="闭包作用"></a>闭包作用</h4><ul>
-<li>循环语句中保留外部变量</li>
-<li>模块封装</li>
-</ul>
-<p><br></p>
-<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><p><strong>函数对象的创建</strong><br>函数定义时就创建函数对象;执行函数表达式时也会创建函数对象,而函数对象创建后就会保存当前静态作用域引用.<br><img src="http://o9or2y9io.bkt.clouddn.com/2016-09-17-screenshot-2.png" alt="screenshot"></p>
-
-          
+<p><br/><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/17/记《You Don't Know JS: Scope & Closures》/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
