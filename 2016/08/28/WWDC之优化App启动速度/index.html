@@ -92,14 +92,14 @@
 <meta property="og:site_name" content="One Word">
 <meta property="og:description" content="前言
 在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
-<meta property="og:image" content="http://www.yoursite.com/./media/screenshot-6.png">
-<meta property="og:image" content="http://www.yoursite.com/./media/14723544941522.png">
-<meta property="og:updated_time" content="2016-09-24T12:06:00.000Z">
+<meta property="og:image" content="http://www.yoursite.com/media/screenshot-6.png">
+<meta property="og:image" content="http://www.yoursite.com/media/14723544941522.png">
+<meta property="og:updated_time" content="2016-09-24T12:09:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WWDC之优化App启动速度">
 <meta name="twitter:description" content="前言
 在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
-<meta name="twitter:image" content="http://www.yoursite.com/./media/screenshot-6.png">
+<meta name="twitter:image" content="http://www.yoursite.com/media/screenshot-6.png">
 
 
 
@@ -328,7 +328,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="./media/screenshot-6.png" alt="title-pic"></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="/media/screenshot-6.png" alt="title-pic"></p>
 <p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行<code>main()</code>前究竟干了些什么.而通过这个Session,你会了解到以下内容:</p>
 <ul>
 <li>如何获得应用加载的时间</li>
@@ -336,7 +336,7 @@
 <li>如何优化App的加载时间</li>
 </ul>
 <a id="more"></a>
-<h2 id="测量Pre-main-Time"><a href="#测量Pre-main-Time" class="headerlink" title="测量Pre-main Time"></a>测量Pre-main Time</h2><p>一个App在执行main函数前包括app delegate的系列方法如<code>applicationWillFinishLaunching</code>时,会做许多系统级别的准备.而在iOS10之前,开发者很难清楚自己App为何启动加载慢.而通过在工程的scheme中添加环境变量<strong>DYLD_PRINT_STATISTICS</strong>,设置Value为1,App启动加载时就会有启动过程的日志输出. 现在<em>(iOS 10之后)</em>Apple对DYLD_PRINT_STATISTICS的日志输出结果进行了简化,使得更容易让开发者理解.<br><img src="./media/14723544941522.png" alt="指定Scheme上添加DYLD_PRINT_STATISTICS环境变量"></p>
+<h2 id="测量Pre-main-Time"><a href="#测量Pre-main-Time" class="headerlink" title="测量Pre-main Time"></a>测量Pre-main Time</h2><p>一个App在执行main函数前包括app delegate的系列方法如<code>applicationWillFinishLaunching</code>时,会做许多系统级别的准备.而在iOS10之前,开发者很难清楚自己App为何启动加载慢.而通过在工程的scheme中添加环境变量<strong>DYLD_PRINT_STATISTICS</strong>,设置Value为1,App启动加载时就会有启动过程的日志输出. 现在<em>(iOS 10之后)</em>Apple对DYLD_PRINT_STATISTICS的日志输出结果进行了简化,使得更容易让开发者理解.<br><img src="/media/14723544941522.png" alt="指定Scheme上添加DYLD_PRINT_STATISTICS环境变量"></p>
 <p>尝试在iPad上对一个纯OC项目设置该环境变量后,有了以下输出信息.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Total pre-main time:  <span class="number">74.37</span> milliseconds (<span class="number">100.0</span>%)</span><br><span class="line">       dylib loading time:  <span class="number">41.05</span> milliseconds (<span class="number">55.2</span>%)</span><br><span class="line">      rebase/binding time:   <span class="number">8.10</span> milliseconds (<span class="number">10.9</span>%)</span><br><span class="line">          ObjC setup time:   <span class="number">9.87</span> milliseconds (<span class="number">13.2</span>%)</span><br><span class="line">         initializer time:  <span class="number">15.23</span> milliseconds (<span class="number">20.4</span>%)</span><br><span class="line">         slowest intializers :</span><br><span class="line">           libSystem.B.dylib :   <span class="number">6.58</span> milliseconds (<span class="number">8.8</span>%)</span><br><span class="line"> libBacktraceRecording.dylib :   <span class="number">6.27</span> milliseconds (<span class="number">8.4</span>%)</span><br></pre></td></tr></table></figure>
 <p>输出内容展示了系统调用main()函前主要进行的工作内容和时间花费,Session上也对每一阶段加载过程具体内容进行了详细的叙述,有兴趣地可观看该Session.</p>
