@@ -84,22 +84,19 @@
 
 
 
-<meta name="description" content="ΩWA我`    
-前言软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Sessi">
+<meta name="description" content="前言软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Te">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WWDC之Testing in Xcode6">
 <meta property="og:url" content="http://www.yoursite.com/2016/09/03/WWDC之Testing in Xcode6/index.html">
 <meta property="og:site_name" content="One Word">
-<meta property="og:description" content="ΩWA我`    
-前言软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Sessi">
+<meta property="og:description" content="前言软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Te">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/260190-17cfcaf9c28bde74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/260190-84b31072155dfd49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-09-05T12:45:53.000Z">
+<meta property="og:updated_time" content="2016-09-24T12:00:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WWDC之Testing in Xcode6">
-<meta name="twitter:description" content="ΩWA我`    
-前言软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Sessi">
+<meta name="twitter:description" content="前言软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Te">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -329,7 +326,7 @@
       
 
       
-        <p><img src="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screenshot.png">ΩWA我`    </p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/260190-5a669d9809db8e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screenshot.png"></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>软件工程中测试一直是很重要的组成部分,影响着软件的质量和开发的效率.作为iOS开发也毫不例外,虽然在移动设备上的代码测试在国内还没有大范围普及,但许多大型公司或者优秀的创业公司都对代码测试有很高的要求和看重,最近也在想如何去减少App开发中带来的各种Bug和如何去更好地提高App质量,心里第一个想法就是写测试,用测试来说明代码的执行结果,用测试来验证代码的功能.该Session虽然是关于Testting in Xcode6,但所涉及的内容在Xcode7都没有太多变化, Xcode7主要是增加了UI Test和查看测试覆盖率的功能, 所以该Session对了解如何在现在Xcode写单元测试还是很有参考价值.</p>
 <h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h3 id="一-为什么要测试"><a href="#一-为什么要测试" class="headerlink" title="一. 为什么要测试"></a>一. 为什么要测试</h3><ul>
 <li><p><strong>发现Bug</strong><br>帮助开发者尽早地尽多地发现程序中的Bug,并且提前去修复它,而不是将程序发布给客户后,由客户反馈各样的Bug,再去进行修复.</p>
@@ -352,7 +349,7 @@
 <li>写能通过测试的代码</li>
 <li>重构通过测试的代码去实现功能</li>
 </ol>
-<p>测试通过就会测试用例的代码呈现绿色状态,而测试失败就会呈现红色状态.<br><img src="http://upload-images.jianshu.io/upload_images/260190-17cfcaf9c28bde74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Test State"><br><br></p>
+<p>测试通过就会测试用例的代码呈现绿色状态,而测试失败就会呈现红色状态.<br><img src="http://upload-images.jianshu.io/upload_images/260190-17cfcaf9c28bde74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Test State"></p>
 <h3 id="三-如何在Xcode进行测试"><a href="#三-如何在Xcode进行测试" class="headerlink" title="三.如何在Xcode进行测试"></a>三.如何在Xcode进行测试</h3><p><strong>使用XCTest</strong></p>
 <p>XCTest Framework是Xcode的测试框架,在Xcode5发布时推出.它提供一个类XCTestCase作为开发者自己实现测试的基类, 在继承此类的基础上实现自己的测试方法, 方法的命名要符合以test开头的规范,尽量让测试方法的名字表达测试的功能和期望的行为,例如testDocumentOpening; 提供了assertion API比如XCTAssertEqual, XCTAssertNotNil…来帮助判断测试的失败还是成功.</p>
 <p><br><br><strong>使用 Test Target</strong><br><img src="http://upload-images.jianshu.io/upload_images/260190-84b31072155dfd49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Test Target"><br>Xcode中独立的Test Target进行对测试用例代码的管理, 类似与一般程序的Target, Test Target进行自己的包资源和测试代码的管理,每个Target都是独立,互不干扰,新建工程时,Xcode都会默认了配置一个Unit Test Target,(Xcode 7后有多了一个UI Test Target),也允许在原有的工程上直接添加一个或者多个Test Target.</p>
