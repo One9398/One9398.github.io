@@ -258,6 +258,143 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/26/iOS10新变化之废弃的openURL/" itemprop="url">
+                  iOS10新变化之废弃的openURL
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-26T14:34:57+08:00" content="2016-09-26">
+              2016-09-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/26/iOS10新变化之废弃的openURL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/26/iOS10新变化之废弃的openURL/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为UIApplication单例对象的方法<code>openURL:</code>在iOS开发中经常用来实现在当前应用打开外部链接的需求比如跳转到其他应用,跳转应用隐私设置界面;还有相关API<code>canOpenURL:</code>进行跳转前判断.而这个古老(iOS2时出现)的<code>openURL</code> 方法将被现今iOS10出现的新API<code>openURL:options:completionHandler:</code>所替代.</p>
+<p>虽然关于该API的官方文档补充完全,但所提供的信息足够能让开发者简单了解使用最新API打开外部链接的API究有何异同.</p>
+<h2 id="新API的官方描述"><a href="#新API的官方描述" class="headerlink" title="新API的官方描述"></a>新API的官方描述</h2><p>首先来看官方文档对iOS10的<a href="https://developer.apple.com/library/content/releasenotes/General/WhatsNewIniOS/Articles/iOS10.html" target="_blank" rel="external">What’s New in iOS</a>UIKit部分对新API的描述</p>
+<blockquote>
+<p>The new UIApplication method openURL:options:completionHandler:, which is executed asynchronously and calls the specified completion handler on the main queue (this method replaces openURL:).</p>
+</blockquote>
+<p>这段话清楚地指明了新API的两个特点:异步执行open操作和主线程执行回调.</p>
+<h2 id="新API的代码描述"><a href="#新API的代码描述" class="headerlink" title="新API的代码描述"></a>新API的代码描述</h2><p>接下来再看看具体的接口代码,可以看出判断链接打开是否成功的方式也从以前的根据<code>openURL</code>调用return的布尔值变成了查询completion的success参数;</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// old</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)openURL:(<span class="built_in">NSURL</span>*)url </span><br><span class="line"><span class="comment">// new</span></span><br><span class="line">- (<span class="keyword">void</span>)openURL:(<span class="built_in">NSURL</span>*)url options:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, <span class="keyword">id</span>&gt; *)options completionHandler:(<span class="keyword">void</span> (^ __nullable)(<span class="built_in">BOOL</span> success))completion</span><br></pre></td></tr></table></figure>
+<p>并且额外地提供了一个用来URL处理的options字典参数,没有限定值时就要传空字典,就像下方代码一样调用.</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">UIApplication</span> sharedApplication] openURL:URL options:@&#123;&#125; completionHandler:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
+<p>options目前可传入参数Key在UIApplication头文件只有一个:UIApplicationOpenURLOptionUniversalLinksOnly,其对应的Value为布尔值,默认为False.如该Key对应的Value为True,那么打开所传入的Universal Link时,只允许通过这个Link所代表的iOS应用跳转的方式打开这个链接,否则就会返回success为false,也就是说只有安装了Link所对应的App的情况下才能打开这个Universal Link,而不是通过启动Safari方式打开这个Link的代表的网站.</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[application openURL:URL options:@&#123;<span class="built_in">UIApplicationOpenURLOptionUniversalLinksOnly</span> : @YES&#125; completionHandler:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
+<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><ul>
+<li><a href="https://developer.apple.com/library/content/releasenotes/General/WhatsNewIniOS/Articles/iOS10.html" target="_blank" rel="external">What’s New in iOS10</a></li>
+</ul>
+<hr>
+<p>[1] Universal Link: 一种能够方便的通过HTTP来启动对应APP, 使用相同的网址打开网站和APP的链接. <a href="https://developer.apple.com/library/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2" target="_blank" rel="external">More: Support Universal Links</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/17/记《You Don't Know JS: Scope & Closures》/" itemprop="url">
                   记《You Don't Know JS/ Scope & Closures》
                 </a>
@@ -766,139 +903,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/WWDC之优化App启动速度/" itemprop="url">
-                  WWDC之优化App启动速度
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T12:26:54+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/28/WWDC之优化App启动速度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/WWDC之优化App启动速度/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="/media/screenshot-6.png" alt="title-pic"></p>
-<p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行<code>main()</code>前究竟干了些什么.而通过这个Session,你会了解到以下内容:</p>
-<ul>
-<li>如何获得应用加载的时间</li>
-<li>执行程序入门的代码前App加载过程中的流程</li>
-<li>如何优化App的加载时间</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/28/WWDC之优化App启动速度/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -939,7 +948,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
