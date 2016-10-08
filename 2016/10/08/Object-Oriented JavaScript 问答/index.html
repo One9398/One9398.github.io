@@ -84,15 +84,25 @@
 
 
 
-<meta name="description" content="Keep learning, keep going.">
-<meta property="og:type" content="website">
+<meta name="description" content="本文是针对Object-Oriented JavaScript一书的阅读记录,前后看了两遍想到尝试用问答的形式帮助自己记忆和巩固一些Javascript中面向对象的知识点,也方便以后对此内容的回顾,书上的部分内容现在还不能完全理解,只能靠自己实践中去积累过后再去挖掘了.
+
+Primitive Data TypesQ: 请说出Javascript的五个基本数据类型A: Number, String">
+<meta property="og:type" content="article">
 <meta property="og:title" content="One Word">
-<meta property="og:url" content="http://www.yoursite.com/index.html">
+<meta property="og:url" content="http://www.yoursite.com/2016/10/08/Object-Oriented JavaScript 问答/index.html">
 <meta property="og:site_name" content="One Word">
-<meta property="og:description" content="Keep learning, keep going.">
+<meta property="og:description" content="本文是针对Object-Oriented JavaScript一书的阅读记录,前后看了两遍想到尝试用问答的形式帮助自己记忆和巩固一些Javascript中面向对象的知识点,也方便以后对此内容的回顾,书上的部分内容现在还不能完全理解,只能靠自己实践中去积累过后再去挖掘了.
+
+Primitive Data TypesQ: 请说出Javascript的五个基本数据类型A: Number, String">
+<meta property="og:image" content="http://o9or2y9io.bkt.clouddn.com/2016-10-08-screenshot-3.png">
+<meta property="og:image" content="http://o9or2y9io.bkt.clouddn.com/2016-10-08-screenshot-4.png">
+<meta property="og:updated_time" content="2016-10-08T02:42:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="One Word">
-<meta name="twitter:description" content="Keep learning, keep going.">
+<meta name="twitter:description" content="本文是针对Object-Oriented JavaScript一书的阅读记录,前后看了两遍想到尝试用问答的形式帮助自己记忆和巩固一些Javascript中面向对象的知识点,也方便以后对此内容的回顾,书上的部分内容现在还不能完全理解,只能靠自己实践中去积累过后再去挖掘了.
+
+Primitive Data TypesQ: 请说出Javascript的五个基本数据类型A: Number, String">
+<meta name="twitter:image" content="http://o9or2y9io.bkt.clouddn.com/2016-10-08-screenshot-3.png">
 
 
 
@@ -113,9 +123,9 @@
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2016/10/08/Object-Oriented JavaScript 问答/"/>
 
-  <title> One Word </title>
+  <title>  | One Word </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,9 +156,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,9 +243,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -258,9 +266,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/08/Object-Oriented JavaScript 问答/" itemprop="url">
-                  未命名
-                </a>
               
             
           </h1>
@@ -307,9 +312,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>本文是针对Object-Oriented JavaScript一书的阅读记录,前后看了两遍想到尝试用问答的形式帮助自己记忆和巩固一些Javascript中面向对象的知识点,也方便以后对此内容的回顾,书上的部分内容现在还不能完全理解,只能靠自己实践中去积累过后再去挖掘了.</p>
 </blockquote>
 <h2 id="Primitive-Data-Types"><a href="#Primitive-Data-Types" class="headerlink" title="Primitive Data Types"></a>Primitive Data Types</h2><h3 id="Q-请说出Javascript的五个基本数据类型"><a href="#Q-请说出Javascript的五个基本数据类型" class="headerlink" title="Q: 请说出Javascript的五个基本数据类型"></a>Q: 请说出Javascript的五个基本数据类型</h3><p>A: Number, String, Boolean, Undefined, Null</p>
@@ -360,16 +363,19 @@
 <h3 id="Q-如何实现结合闭包利用构造方法创建单例对象"><a href="#Q-如何实现结合闭包利用构造方法创建单例对象" class="headerlink" title="Q: 如何实现结合闭包利用构造方法创建单例对象?"></a>Q: 如何实现结合闭包利用构造方法创建单例对象?</h3><p>A: </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Logger = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> instance;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance) &#123;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        instance = <span class="keyword">this</span>;        </span><br><span class="line">    &#125;;   </span><br><span class="line">&#125;());</span><br><span class="line"><span class="keyword">new</span> Logger() === <span class="keyword">new</span> Logger() <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -377,557 +383,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/25/iOS10新变化之废弃的openURL/" rel="next" title="iOS10新变化之废弃的openURL">
+                <i class="fa fa-chevron-left"></i> iOS10新变化之废弃的openURL
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/09/25/iOS10新变化之废弃的openURL/" itemprop="url">
-                  iOS10新变化之废弃的openURL
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-25T00:00:00+08:00" content="2016-09-25">
-              2016-09-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/25/iOS10新变化之废弃的openURL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/25/iOS10新变化之废弃的openURL/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为UIApplication单例对象的方法<code>openURL:</code>在iOS开发中经常用来实现在当前应用打开外部链接的需求比如跳转到其他应用,跳转应用隐私设置界面;还有相关API<code>canOpenURL:</code>进行跳转前判断.而这个古老(iOS2时出现)的<code>openURL</code> 方法将被现今iOS10出现的新API<code>openURL:options:completionHandler:</code>所替代.</p>
-<p>虽然关于该API的官方文档补充完全,但所提供的信息足够能让开发者简单了解使用最新API打开外部链接的API究有何异同.</p>
-<h2 id="新API的官方描述"><a href="#新API的官方描述" class="headerlink" title="新API的官方描述"></a>新API的官方描述</h2><p>首先来看官方文档对iOS10的<a href="https://developer.apple.com/library/content/releasenotes/General/WhatsNewIniOS/Articles/iOS10.html" target="_blank" rel="external">What’s New in iOS</a>UIKit部分对新API的描述</p>
-<blockquote>
-<p>The new UIApplication method openURL:options:completionHandler:, which is executed asynchronously and calls the specified completion handler on the main queue (this method replaces openURL:).</p>
-</blockquote>
-<p>这段话清楚地指明了新API的两个特点:异步执行open操作和主线程执行回调.</p>
-<h2 id="新API的代码描述"><a href="#新API的代码描述" class="headerlink" title="新API的代码描述"></a>新API的代码描述</h2><p>接下来再看看具体的接口代码,可以看出判断链接打开是否成功的方式也从以前的根据<code>openURL</code>调用return的布尔值变成了查询completion的success参数;</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// old</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)openURL:(<span class="built_in">NSURL</span>*)url </span><br><span class="line"><span class="comment">// new</span></span><br><span class="line">- (<span class="keyword">void</span>)openURL:(<span class="built_in">NSURL</span>*)url options:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, <span class="keyword">id</span>&gt; *)options completionHandler:(<span class="keyword">void</span> (^ __nullable)(<span class="built_in">BOOL</span> success))completion</span><br></pre></td></tr></table></figure>
-<p>并且额外地提供了一个用来URL处理的options字典参数,没有限定值时就要传空字典,就像下方代码一样调用.</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="built_in">UIApplication</span> sharedApplication] openURL:URL options:@&#123;&#125; completionHandler:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
-<p>options目前可传入参数Key在UIApplication头文件只有一个:UIApplicationOpenURLOptionUniversalLinksOnly,其对应的Value为布尔值,默认为False.如该Key对应的Value为True,那么打开所传入的Universal Link时,只允许通过这个Link所代表的iOS应用跳转的方式打开这个链接,否则就会返回success为false,也就是说只有安装了Link所对应的App的情况下才能打开这个Universal Link,而不是通过启动Safari方式打开这个Link的代表的网站.</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[application openURL:URL options:@&#123;<span class="built_in">UIApplicationOpenURLOptionUniversalLinksOnly</span> : @YES&#125; completionHandler:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure>
-<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><ul>
-<li><a href="https://developer.apple.com/library/content/releasenotes/General/WhatsNewIniOS/Articles/iOS10.html" target="_blank" rel="external">What’s New in iOS10</a></li>
-</ul>
-<hr>
-<p>[1] Universal Link: 一种能够方便的通过HTTP来启动对应APP, 使用相同的网址打开网站和APP的链接. <a href="https://developer.apple.com/library/content/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2" target="_blank" rel="external">More: Support Universal Links</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/17/记《You Don't Know JS: Scope & Closures》/" itemprop="url">
-                  记《You Don't Know JS/ Scope & Closures》
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T17:37:17+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/17/记《You Don't Know JS: Scope & Closures》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/17/记《You Don't Know JS: Scope & Closures》/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://o9or2y9io.bkt.clouddn.com/2016-09-17-screenshot-1.png" alt="screenshot-w404"></p>
-<h2 id="Chapter-1-Scope"><a href="#Chapter-1-Scope" class="headerlink" title="Chapter 1:Scope"></a>Chapter 1:Scope</h2><h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><ul>
-<li>编写JavaScript程序时,JavaScript作为动态解释型语言, 同样是先编译成可执行的代码<em>(JavaScript引擎优化使得编译速度极快)</em>,然后再执行.</li>
-<li>JavaScript程序的编译过程由编译器先一步完成,其次执行过程由JavaScript引擎完成.</li>
-</ul>
-<p><br/></p>
-<h3 id="运行Javascript程序的三要素"><a href="#运行Javascript程序的三要素" class="headerlink" title="运行Javascript程序的三要素"></a>运行Javascript程序的三要素</h3><ul>
-<li><strong>JavaScript引擎</strong> : 负责整个过程的编译,以及程序的执行.</li>
-<li><strong>编译器</strong> : 处理词法解析和代码生成的过程</li>
-<li><strong>作用域</strong> : 收集和持有一个向上查找的列表,其包含声明过的变量;以及设定了各个变量的访问范围的规则.</li>
-</ul>
-<p><strong>赋值语句<code>var a = 2</code>的程序解释</strong><br>首先,编译器声明变量a,如果a之前已声明过则跳过;然后执行引擎在作用域查找变量a,如果找到赋值为2.(如果最终查找不到,引擎会给出引用错误<code>ReferenceError</code>)</p>
-<p><br/><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/记《You Don't Know JS: Scope & Closures》/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/11/记布局方案/" itemprop="url">
-                  记网页布局方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T15:45:53+08:00" content="2016-09-11">
-              2016-09-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/11/记布局方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/11/记布局方案/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="水平居中的处理"><a href="#水平居中的处理" class="headerlink" title="水平居中的处理"></a>水平居中的处理</h2><p><strong>方案一: inline-block+text-aligin</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.Parent</span> &#123;</span><br><span class="line">	<span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">	<span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Note: text-align只针对当前元素下的子元素为inline/inline-block元素有效;inline-block元素的宽度根据内容决定.</p>
-</blockquote>
-<p><br/><br><strong>方案二: table+margin</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">	<span class="attribute">display</span>:table;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">0</span> auto;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Note: display为table的元素行为上与block元素类似,但是宽度变为内容宽度;类似Block元素,margin:0 auto可以使得宽度确定的元素,自动计算左右margin而水平居中</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/11/记布局方案/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/08/记《Position in CSS》/" itemprop="url">
-                  记《Position in CSS》
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-08T21:07:47+08:00" content="2016-09-08">
-              2016-09-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/08/记《Position in CSS》/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/08/记《Position in CSS》/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p><img src="http://o9or2y9io.bkt.clouddn.com/2016-09-08-screenshot.png" alt="screenshot"></p>
-<h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><ul>
-<li>CSS属性position不会被继承</li>
-<li>绝对定位的元素会脱离正常文档流, 并生成<a href="https://www.w3.org/TR/CSS2/visuren.html#block-boxes">Block-level box</a>. </li>
-</ul>
-<h2 id="Offset"><a href="#Offset" class="headerlink" title="Offset"></a>Offset</h2><ul>
-<li>常用属性:left,right,top,bottom 描述定位元素在Containing Block各个边的偏移量.</li>
-<li>每个属性都单独针对一个边</li>
-</ul>
-<h2 id="Width-and-Height"><a href="#Width-and-Height" class="headerlink" title="Width and Height"></a>Width and Height</h2><ul>
-<li>浮动元素都设置了有效的left,right,top,bottom后能自动计算出元素的宽高.
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/08/记《Position in CSS》/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -935,6 +416,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/08/Object-Oriented JavaScript 问答/"
+           data-title="" data-url="http://www.yoursite.com/2016/10/08/Object-Oriented JavaScript 问答/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -954,8 +443,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars2.githubusercontent.com/u/17493209?v=3&u=fc0d3d59931920d0724ad6ac8d7a5312b15920d2&s=140"
@@ -1005,6 +503,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Primitive-Data-Types"><span class="nav-number">1.</span> <span class="nav-text">Primitive Data Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-请说出Javascript的五个基本数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">Q: 请说出Javascript的五个基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-typeof与instanceof分别的作用是什么"><span class="nav-number">1.2.</span> <span class="nav-text">Q: typeof与instanceof分别的作用是什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Javascript中字符串表示的数字使用运算符时一定会被转换成数字进行计算吗"><span class="nav-number">1.3.</span> <span class="nav-text">Q: Javascript中字符串表示的数字使用运算符时一定会被转换成数字进行计算吗?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Javascript的表示false的值有哪几种"><span class="nav-number">1.4.</span> <span class="nav-text">Q: Javascript的表示false的值有哪几种?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Undefined-与-Null-区别"><span class="nav-number">1.5.</span> <span class="nav-text">Q: Undefined 与 Null 区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function"><span class="nav-number">2.</span> <span class="nav-text">Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-函数中隐藏参数arguements是数组吗"><span class="nav-number">2.1.</span> <span class="nav-text">Q: 函数中隐藏参数arguements是数组吗?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-函数encodeURI-与encodeURIComponent-区别是什么"><span class="nav-number">2.2.</span> <span class="nav-text">Q: 函数encodeURI()与encodeURIComponent()区别是什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-怎样算是JavaScript的回调函数"><span class="nav-number">2.3.</span> <span class="nav-text">Q: 怎样算是JavaScript的回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-闭包函数有什么特点"><span class="nav-number">2.4.</span> <span class="nav-text">Q: 闭包函数有什么特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">3.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-创建对象的方式有哪两种"><span class="nav-number">3.1.</span> <span class="nav-text">Q: 创建对象的方式有哪两种</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-调用构造函数但没有使用new关键字的情况下-使用this关键字会发生什么情况"><span class="nav-number">3.2.</span> <span class="nav-text">Q: 调用构造函数但没有使用new关键字的情况下, 使用this关键字会发生什么情况?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-对象的constructor属性表示什么"><span class="nav-number">3.3.</span> <span class="nav-text">Q: 对象的constructor属性表示什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Javascript中对象的比较时什么情况下相同"><span class="nav-number">3.4.</span> <span class="nav-text">Q: Javascript中对象的比较时什么情况下相同?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-为什么不推荐将Javascript代码作为字符串进行传递"><span class="nav-number">3.5.</span> <span class="nav-text">Q: 为什么不推荐将Javascript代码作为字符串进行传递?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-prototype是哪类对象属性-有其他对象引用它吗"><span class="nav-number">3.6.</span> <span class="nav-text">Q: prototype是哪类对象属性,有其他对象引用它吗?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Function对象的方法call与apply的主要区别"><span class="nav-number">3.7.</span> <span class="nav-text">Q: Function对象的方法call与apply的主要区别?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prototype"><span class="nav-number">4.</span> <span class="nav-text">Prototype</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-Javascript的对象以怎样的方式传递-对原型对象进行扩展会有什么影响"><span class="nav-number">4.1.</span> <span class="nav-text">Q: Javascript的对象以怎样的方式传递,对原型对象进行扩展会有什么影响?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-对象属性的查找机制是怎么样的"><span class="nav-number">4.2.</span> <span class="nav-text">Q: 对象属性的查找机制是怎么样的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何判断对象的属性为自定义的属性-而不是原型对象的属性"><span class="nav-number">4.3.</span> <span class="nav-text">Q: 如何判断对象的属性为自定义的属性,而不是原型对象的属性?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-isPrototypeOf方法的作用是什么"><span class="nav-number">4.4.</span> <span class="nav-text">Q: isPrototypeOf方法的作用是什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何从一个对象获知它的原型对象"><span class="nav-number">4.5.</span> <span class="nav-text">Q: 如何从一个对象获知它的原型对象?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-proto与prototype有什么不同"><span class="nav-number">4.6.</span> <span class="nav-text">Q: proto与prototype有什么不同?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-直接替换prototype对象-会对创建实例对象造成什么影响-如何避免这样的影响"><span class="nav-number">4.7.</span> <span class="nav-text">Q: 直接替换prototype对象,会对创建实例对象造成什么影响?如何避免这样的影响?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inheritance"><span class="nav-number">5.</span> <span class="nav-text">Inheritance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-原型链是怎样形成的"><span class="nav-number">5.1.</span> <span class="nav-text">Q: 原型链是怎样形成的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-在Prototype对象上进行扩展的好处有哪些"><span class="nav-number">5.2.</span> <span class="nav-text">Q: 在Prototype对象上进行扩展的好处有哪些?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-创建原型继承关系的函数是怎么的"><span class="nav-number">5.3.</span> <span class="nav-text">Q: 创建原型继承关系的函数是怎么的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-对象的浅复制会有什么影响"><span class="nav-number">5.4.</span> <span class="nav-text">Q: 对象的浅复制会有什么影响?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何实现对象深拷贝"><span class="nav-number">5.5.</span> <span class="nav-text">Q: 如何实现对象深拷贝?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-请写下可以替代Object-create的兼容性方法"><span class="nav-number">5.6.</span> <span class="nav-text">Q: 请写下可以替代Object.create的兼容性方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何让对象实现多继承"><span class="nav-number">5.7.</span> <span class="nav-text">Q: 如何让对象实现多继承?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-什么叫寄生继承"><span class="nav-number">5.8.</span> <span class="nav-text">Q: 什么叫寄生继承?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Browser-Environment"><span class="nav-number">6.</span> <span class="nav-text">Browser Environment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-全局属性screen的height与availHeight有什么区别"><span class="nav-number">6.1.</span> <span class="nav-text">Q: 全局属性screen的height与availHeight有什么区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何获取窗口屏幕的像素比"><span class="nav-number">6.2.</span> <span class="nav-text">Q: 如何获取窗口屏幕的像素比?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-DOM对象的hasChildNodes会包含哪些"><span class="nav-number">6.3.</span> <span class="nav-text">Q: DOM对象的hasChildNodes会包含哪些?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-DOM的cloneNode方法时深拷贝与浅拷贝有什么区别"><span class="nav-number">6.4.</span> <span class="nav-text">Q: DOM的cloneNode方法时深拷贝与浅拷贝有什么区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-DOM对象事件处理的阶段是怎样的"><span class="nav-number">6.5.</span> <span class="nav-text">Q: DOM对象事件处理的阶段是怎样的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何实现简单AJAX请求-考虑兼容性"><span class="nav-number">6.6.</span> <span class="nav-text">Q: 如何实现简单AJAX请求(考虑兼容性)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pattern"><span class="nav-number">7.</span> <span class="nav-text">Pattern</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何对网页实行行为分离"><span class="nav-number">7.1.</span> <span class="nav-text">Q: 如何对网页实行行为分离?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何实现Javascript函数的链式调用"><span class="nav-number">7.2.</span> <span class="nav-text">Q: 如何实现Javascript函数的链式调用?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何实现单例模式"><span class="nav-number">7.3.</span> <span class="nav-text">Q: 如何实现单例模式?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q-如何实现结合闭包利用构造方法创建单例对象"><span class="nav-number">7.4.</span> <span class="nav-text">Q: 如何实现结合闭包利用构造方法创建单例对象?</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1108,6 +617,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

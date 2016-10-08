@@ -258,6 +258,151 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/09/ViewProgrammingGuideForiOS Part5/" itemprop="url">
+                  View Programming Guide For iOS (五)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-09T10:58:41+08:00" content="2016-07-09">
+              2016-07-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/09/ViewProgrammingGuideForiOS Part5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/09/ViewProgrammingGuideForiOS Part5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h1><p>iOS程序中,UIKit和Core Animation为视图提供了丰富的动画来表现视图变化效果.无论是针对UIView还是CALayer对象,在许多属性上提供动画效果.<br><strong>UIView的可动画属性</strong></p>
+<ul>
+<li>frame</li>
+<li>bounds</li>
+<li>center</li>
+<li>transform</li>
+<li>alpha</li>
+<li>backgroundColor</li>
+<li>contentStretch</li>
+</ul>
+<p><strong>CALayer的可动画属性</strong></p>
+<ul>
+<li>size</li>
+<li>center</li>
+<li>position</li>
+<li>z-order</li>
+<li>shadow</li>
+<li>opacity</li>
+<li>content</li>
+</ul>
+<p><strong>视图的动画代理</strong><br>通过UIView的<code>setAnimationDelegate:</code>方法就能让动画代理对象根据动画代理方法监听动画开始和结束的情况</p>
+<pre><code>- (void)animationWillStart:(NSString *)animationID context:(void *)context;
+- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context;
+</code></pre><blockquote>
+<p>Tips: 通过设置<code>repeatCount</code>为0.5可以让执行动画视图保存新状态,而不是回到旧的状态.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/06/ViewProgrammingGuideForiOS Part4/" itemprop="url">
                   View Programming Guide For iOS (四)
                 </a>
@@ -859,152 +1004,6 @@ UIWindowDidResignKeyNotification
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/05/ViewProgrammingGuideForiOS Part1/" itemprop="url">
-                  View Programming Guide For iOS (一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-05T18:38:29+08:00" content="2016-07-05">
-              2016-07-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/05/ViewProgrammingGuideForiOS Part1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/05/ViewProgrammingGuideForiOS Part1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Window-与-View"><a href="#Window-与-View" class="headerlink" title="Window 与 View"></a>Window 与 View</h1><p>在iOS中, Window对象只是作为View对象的容器,本身没有任何可视化的内容展示在屏幕上.而屏幕上展示的文字,图片,形状等都是在View对象中添加的,然后将View对象添加到Window对象上,让视图内容展现到屏幕上,并且View对象间可以进行嵌套和组合形成一定的视图层次关系让最终呈现内容更加复杂.</p>
-<blockquote>
-<p>iOS程序一启动,Appdelegate对象都初始化一个主Window对象,一般我们配置视图后都被添加在主Window对象,然后呈现到屏幕上.</p>
-</blockquote>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>一个View就是UIView或者其子类的实例对象,主要负责了三个方面: <strong>内容绘制</strong>, <strong>事件处理</strong>, <strong>布局管理</strong></p>
-<ul>
-<li>内容绘制: 在iOS中绘制View所采用的绘制技术主要Core Graphic, OpenGL ES, UIKit.</li>
-<li>事件处理: 响应各种手势事件,Touch事件</li>
-<li>布局管理: 使用frame/bound 或者autolayout来进行自己subViews中各视图的位置和尺寸设置, 父视图可以动态地调整子视图布局来响应各种条件变化如动画,旋转等</li>
-</ul>
-<blockquote>
-<p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/WindowsandViews/WindowsandViews.html" target="_blank" rel="external">View and Window Architecture</a></p>
-</blockquote>
-<h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><p>一个Window就是UIWindow的实例,处理iOS程序的用户界面在设备上整体的呈现,管理和交互添加在Window的View对象,来改变屏幕的呈现内容.常规地,程序中大多时候都只存在一个Window对象用于内容的展示,也可以创建一个的Window对象并且加入当前的Window层次中,添加View内容后呈现在屏幕上.</p>
-<blockquote>
-<p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/CreatingWindows/CreatingWindows.html#//apple_ref/doc/uid/TP40009503-CH4-SW1" target="_blank" rel="external">Windows</a></p>
-</blockquote>
-<h2 id="Animations"><a href="#Animations" class="headerlink" title="Animations"></a>Animations</h2><p>动画主要行为就是用可视化的反馈效果来表现View层次变化或者自身样式的变化,主要的动画技术有UIKit动画, Core Animation.</p>
-<blockquote>
-<p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/AnimatingViews/AnimatingViews.html#//apple_ref/doc/uid/TP40009503-CH6-SW1" target="_blank" rel="external">Animations</a></p>
-</blockquote>
-<h2 id="Relevant"><a href="#Relevant" class="headerlink" title="Relevant"></a>Relevant</h2><ul>
-<li>视图控制器与视图关系<a href="https://developer.apple.com/library/ios/featuredarticles/ViewControllerPGforiPhoneOS/index.html#//apple_ref/doc/uid/TP40007457" target="_blank" rel="external">View Controller Programming Guide for iOS</a></li>
-<li>视图如何处理事件 <a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009541" target="_blank" rel="external">Event Handling Guide for iOS</a></li>
-<li>自定义视图如何使用绘制技术渲染内容 <a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010156" target="_blank" rel="external">Drawing and Printing Guide for iOS</a></li>
-<li>视图如何使用有效,合适的动画 <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514" target="_blank" rel="external">Core Animation Programming for iOS</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1050,7 +1049,7 @@ UIWindowDidResignKeyNotification
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
