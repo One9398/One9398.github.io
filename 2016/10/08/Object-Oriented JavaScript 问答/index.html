@@ -96,7 +96,7 @@ Primitive Data TypesQ: 请说出Javascript的五个基本数">
 Primitive Data TypesQ: 请说出Javascript的五个基本数">
 <meta property="og:image" content="http://o9or2y9io.bkt.clouddn.com/2016-10-08-screenshot-3.png">
 <meta property="og:image" content="http://o9or2y9io.bkt.clouddn.com/2016-10-08-screenshot-4.png">
-<meta property="og:updated_time" content="2016-10-08T02:48:23.000Z">
+<meta property="og:updated_time" content="2016-10-08T10:58:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Object-Oriented JavaScript》问答">
 <meta name="twitter:description" content="本文是针对Object-Oriented JavaScript一书的阅读记录,前后看了两遍想到尝试用问答的形式帮助自己记忆和巩固一些Javascript中面向对象的知识点,也方便以后对此内容的回顾,书上的部分内容现在还不能完全理解,只能靠自己实践中去积累过后再去挖掘了.如果发现哪里有描述不对的地方,欢迎交流.
@@ -349,7 +349,7 @@ Primitive Data TypesQ: 请说出Javascript的五个基本数">
 <h3 id="Q-Javascript中对象的比较时什么情况下相同"><a href="#Q-Javascript中对象的比较时什么情况下相同" class="headerlink" title="Q: Javascript中对象的比较时什么情况下相同?"></a>Q: Javascript中对象的比较时什么情况下相同?</h3><p>A: 当两个对象的引用同一块内存空间时,该两对象相同.</p>
 <h3 id="Q-为什么不推荐将Javascript代码作为字符串进行传递"><a href="#Q-为什么不推荐将Javascript代码作为字符串进行传递" class="headerlink" title="Q: 为什么不推荐将Javascript代码作为字符串进行传递?"></a>Q: 为什么不推荐将Javascript代码作为字符串进行传递?</h3><p>A: 涉及安全问题,字符串形式的执行代码容易被恶意代码覆盖.</p>
 <h3 id="Q-prototype是哪类对象属性-有其他对象引用它吗"><a href="#Q-prototype是哪类对象属性-有其他对象引用它吗" class="headerlink" title="Q: prototype是哪类对象属性,有其他对象引用它吗?"></a>Q: prototype是哪类对象属性,有其他对象引用它吗?</h3><p>A: prototype是函数对象的固有属性,尤其针对构造函数来说表示该函数代表的原型对象;所有通过构造函数创建的对象通过<strong>proto</strong>属性引用这函数对象prototype属性所表示的对象</p>
-<h3 id="Q-Function对象的方法call与apply的主要区别"><a href="#Q-Function对象的方法call与apply的主要区别" class="headerlink" title="Q: Function对象的方法call与apply的主要区别?"></a>Q: Function对象的方法call与apply的主要区别?</h3><p>A: apply传入参数时采用数组形式;而call直接依次传入.</p>
+<h3 id="Q-Function对象的方法call与apply的主要区别"><a href="#Q-Function对象的方法call与apply的主要区别" class="headerlink" title="Q: Function对象的方法call与apply的主要区别?"></a>Q: Function对象的方法call与apply的主要区别?</h3><p>A: apply传入参数时采用数组形式;而call以参数列表形式传入.</p>
 <h2 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h2><h3 id="Q-Javascript的对象以怎样的方式传递-对原型对象进行扩展会有什么影响"><a href="#Q-Javascript的对象以怎样的方式传递-对原型对象进行扩展会有什么影响" class="headerlink" title="Q: Javascript的对象以怎样的方式传递,对原型对象进行扩展会有什么影响?"></a>Q: Javascript的对象以怎样的方式传递,对原型对象进行扩展会有什么影响?</h3><p>A: 对象使用通过引用传递.在原型对象上进行属性修改时,会影响到所有直接或者间接指向该原型对象的实例对象.</p>
 <h3 id="Q-对象属性的查找机制是怎么样的"><a href="#Q-对象属性的查找机制是怎么样的" class="headerlink" title="Q: 对象属性的查找机制是怎么样的?"></a>Q: 对象属性的查找机制是怎么样的?</h3><p>A: 首先在对象自身定义的属性集合中进行查找,若未找到在其指向的原型对象的属性集合中查找,而原型对象也会指向其他原型对象或者null值,直到查到null为止,若没有结果就返回undefined.</p>
 <h3 id="Q-如何判断对象的属性为自定义的属性-而不是原型对象的属性"><a href="#Q-如何判断对象的属性为自定义的属性-而不是原型对象的属性" class="headerlink" title="Q: 如何判断对象的属性为自定义的属性,而不是原型对象的属性?"></a>Q: 如何判断对象的属性为自定义的属性,而不是原型对象的属性?</h3><p>A: 使用<code>hasOwnProperty</code>方法</p>
@@ -421,6 +421,10 @@ Primitive Data TypesQ: 请说出Javascript的五个基本数">
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/02/02/我的2017年目标清单/" rel="prev" title="我的2017年目标清单">
+                我的2017年目标清单 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -491,7 +495,7 @@ Primitive Data TypesQ: 请说出Javascript的五个基本数">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -499,7 +503,7 @@ Primitive Data TypesQ: 请说出Javascript的五个基本数">
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -556,7 +560,7 @@ Primitive Data TypesQ: 请说出Javascript的五个基本数">
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
