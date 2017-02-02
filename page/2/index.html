@@ -783,8 +783,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/25/0807/" itemprop="url">
-                  View Controller Programming Guide For iOS (二)
+                <a class="post-title-link" href="/2016/07/25/0804/" itemprop="url">
+                  View Controller Programming Guide For iOS (一)
                 </a>
               
             
@@ -827,8 +827,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/25/0807/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/0807/" itemprop="commentsCount"></span>
+                <a href="/2016/07/25/0804/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/0804/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -852,19 +852,15 @@
 
       
         
-          <h2 id="子类化控制器定制"><a href="#子类化控制器定制" class="headerlink" title="子类化控制器定制"></a>子类化控制器定制</h2><h3 id="自定义界面UI"><a href="#自定义界面UI" class="headerlink" title="自定义界面UI"></a>自定义界面UI</h3><p>官方推荐使用Storyboard文件以可视化方式进行控制器的UI定制,来对应多种尺寸环境,并且方便快速地调整和查看.</p>
-<p><br></p>
-<h3 id="处理用户交互"><a href="#处理用户交互" class="headerlink" title="处理用户交互"></a>处理用户交互</h3><p>通常,控制器主要处理交互事件方式有三种:</p>
+          <h1 id="控制器总览"><a href="#控制器总览" class="headerlink" title="控制器总览"></a>控制器总览</h1><h2 id="控制器的作用"><a href="#控制器的作用" class="headerlink" title="控制器的作用"></a>控制器的作用</h2><p>iOS中ViewControllers分两种:</p>
 <ul>
-<li>由视图指定为Target的动作事件和手势事件</li>
-<li>系统或者其他对象发送的通知事件处理</li>
-<li>作为其他对象的数据源和代理事件处理</li>
+<li>内容控制器,管理自己根视图上的内容.</li>
+<li>容器控制器,管理子控制器和控制子控制器间的切换</li>
 </ul>
 <p><br></p>
-<h3 id="运行时展示视图"><a href="#运行时展示视图" class="headerlink" title="运行时展示视图"></a>运行时展示视图</h3><p>当控制器加载视图后会调用<code>viewWillAppear:</code>方法让控制器知道将要呈现在屏幕上的视图,然后更新视图布局,展示视图到屏幕上,然后就调用<code>viewDidAppear:</code>.<br>当动态地添加,删除或修改视图时需要对应地进行约束布局调整.</p>
-<p><br><br>
+<h3 id="视图管理"><a href="#视图管理" class="headerlink" title="视图管理"></a>视图管理</h3><p>对于内容控制器来说,控制器管理着属于自己根视图的所有层次视图,控制器通过对其根视图和所有子视图进行强引用来管来每一个视图对象.<br>而容器控制器只管理自己的根视图以及子控制器的根视图尺寸和位置,不管理子控制器上的视图内容,如系统的容器控制器SplitViewController<br><img src="/media/14694492144655.png" alt="视图管理"><br><br><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/25/0807/#more" rel="contents">
+            <a class="btn" href="/2016/07/25/0804/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
