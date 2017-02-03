@@ -258,6 +258,137 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/11/记布局方案/" itemprop="url">
+                  记网页布局方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-11T15:45:53+08:00" content="2016-09-11">
+              2016-09-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/11/记布局方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/11/记布局方案/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="水平居中的处理"><a href="#水平居中的处理" class="headerlink" title="水平居中的处理"></a>水平居中的处理</h2><p><strong>方案一: inline-block+text-aligin</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.Parent</span> &#123;</span><br><span class="line">	<span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">	<span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note: text-align只针对当前元素下的子元素为inline/inline-block元素有效;inline-block元素的宽度根据内容决定.</p>
+</blockquote>
+<p><br/><br><strong>方案二: table+margin</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">	<span class="attribute">display</span>:table;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">0</span> auto;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note: display为table的元素行为上与block元素类似,但是宽度变为内容宽度;类似Block元素,margin:0 auto可以使得宽度确定的元素,自动计算左右margin而水平居中</p>
+</blockquote>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/11/记布局方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/08/记《Position in CSS》/" itemprop="url">
                   记《Position in CSS》
                 </a>
@@ -762,134 +893,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/25/0804/" itemprop="url">
-                  View Controller Programming Guide For iOS (一)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-25T20:03:05+08:00" content="2016-07-25">
-              2016-07-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/25/0804/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/0804/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="控制器总览"><a href="#控制器总览" class="headerlink" title="控制器总览"></a>控制器总览</h1><h2 id="控制器的作用"><a href="#控制器的作用" class="headerlink" title="控制器的作用"></a>控制器的作用</h2><p>iOS中ViewControllers分两种:</p>
-<ul>
-<li>内容控制器,管理自己根视图上的内容.</li>
-<li>容器控制器,管理子控制器和控制子控制器间的切换</li>
-</ul>
-<p><br></p>
-<h3 id="视图管理"><a href="#视图管理" class="headerlink" title="视图管理"></a>视图管理</h3><p>对于内容控制器来说,控制器管理着属于自己根视图的所有层次视图,控制器通过对其根视图和所有子视图进行强引用来管来每一个视图对象.<br>而容器控制器只管理自己的根视图以及子控制器的根视图尺寸和位置,不管理子控制器上的视图内容,如系统的容器控制器SplitViewController<br><img src="/media/14694492144655.png" alt="视图管理"><br><br><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/25/0804/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -935,7 +938,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -943,7 +946,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

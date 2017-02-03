@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS," />
+  <meta name="keywords" content="Hexo, Word" />
 
 
 
@@ -84,22 +84,34 @@
 
 
 
-<meta name="description" content="前言
-在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
+<meta name="description" content="第一次尝试下 ORID, 花了30分钟左右,感觉还是挺费时的.不过将一天自己的学习回顾和想法写下来的好处很快在持续一段时间后才会看到,坚持试试
+
+Objective 客观事实
+学了今天的课程.我记得什么
+
+
+老师介绍了JavaWeb 的课程体系,到最后会用 Servlet + JSP 做一个项目, 讲了 C/S 和 B/S 表示什么,各自有什么优缺点,当前主流时什么, 还讲了什么是 Tomcat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WWDC之优化App启动速度">
-<meta property="og:url" content="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/index.html">
+<meta property="og:title" content="0203 ORID 学习日记">
+<meta property="og:url" content="http://www.yoursite.com/2017/02/03/2017-02-03/index.html">
 <meta property="og:site_name" content="One Word">
-<meta property="og:description" content="前言
-在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
-<meta property="og:image" content="http://www.yoursite.com/media/screenshot-6.png">
-<meta property="og:image" content="http://www.yoursite.com/media/14723544941522.png">
-<meta property="og:updated_time" content="2016-09-24T12:09:25.000Z">
+<meta property="og:description" content="第一次尝试下 ORID, 花了30分钟左右,感觉还是挺费时的.不过将一天自己的学习回顾和想法写下来的好处很快在持续一段时间后才会看到,坚持试试
+
+Objective 客观事实
+学了今天的课程.我记得什么
+
+
+老师介绍了JavaWeb 的课程体系,到最后会用 Servlet + JSP 做一个项目, 讲了 C/S 和 B/S 表示什么,各自有什么优缺点,当前主流时什么, 还讲了什么是 Tomcat">
+<meta property="og:updated_time" content="2017-02-03T13:58:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WWDC之优化App启动速度">
-<meta name="twitter:description" content="前言
-在WWDC 2016上首次提到了关于App应用启动速度优化的话题:Session 406 Optimizing App Startup Time .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行main()前究竟干了些">
-<meta name="twitter:image" content="http://www.yoursite.com/media/screenshot-6.png">
+<meta name="twitter:title" content="0203 ORID 学习日记">
+<meta name="twitter:description" content="第一次尝试下 ORID, 花了30分钟左右,感觉还是挺费时的.不过将一天自己的学习回顾和想法写下来的好处很快在持续一段时间后才会看到,坚持试试
+
+Objective 客观事实
+学了今天的课程.我记得什么
+
+
+老师介绍了JavaWeb 的课程体系,到最后会用 Servlet + JSP 做一个项目, 讲了 C/S 和 B/S 表示什么,各自有什么优缺点,当前主流时什么, 还讲了什么是 Tomcat">
 
 
 
@@ -120,9 +132,9 @@
 
 
 
-  <link rel="canonical" href="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/"/>
+  <link rel="canonical" href="http://www.yoursite.com/2017/02/03/2017-02-03/"/>
 
-  <title> WWDC之优化App启动速度 | One Word </title>
+  <title> 0203 ORID 学习日记 | One Word </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +274,7 @@
             
             
               
-                WWDC之优化App启动速度
+                0203 ORID 学习日记
               
             
           </h1>
@@ -274,8 +286,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T12:26:54+08:00" content="2016-08-28">
-              2016-08-28
+            <time itemprop="dateCreated" datetime="2017-02-03T21:52:25+08:00" content="2017-02-03">
+              2017-02-03
             </time>
           </span>
 
@@ -288,8 +300,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
+                  <a href="/categories/学习日记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习日记</span>
                   </a>
                 </span>
 
@@ -304,8 +316,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/28/WWDC之优化App启动速度/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/WWDC之优化App启动速度/" itemprop="commentsCount"></span>
+                <a href="/2017/02/03/2017-02-03/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/03/2017-02-03/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,42 +340,64 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><img src="/media/screenshot-6.png" alt="title-pic"></p>
-<p>在WWDC 2016上首次提到了关于App应用启动速度优化的话题:<a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">Session 406 Optimizing App Startup Time</a> .该Session上Apple建议一个App完整的启动时间应该保证400ms之内,而若超过20s后还未完全启动App,那么App进程就会被系统杀死.而如何Debug和优化应用启动的时间,官方提出一系列方法来关注应用启动时执行<code>main()</code>前究竟干了些什么.而通过这个Session,你会了解到以下内容:</p>
+        <blockquote>
+<p>第一次尝试下 ORID, 花了30分钟左右,感觉还是挺费时的.不过将一天自己的学习回顾和想法写下来的好处很快在持续一段时间后才会看到,坚持试试</p>
+</blockquote>
+<h2 id="Objective-客观事实"><a href="#Objective-客观事实" class="headerlink" title="Objective 客观事实"></a>Objective 客观事实</h2><blockquote>
+<p>学了今天的课程.我记得什么</p>
+</blockquote>
 <ul>
-<li>如何获得应用加载的时间</li>
-<li>执行程序入门的代码前App加载过程中的流程</li>
-<li>如何优化App的加载时间</li>
+<li>老师介绍了JavaWeb 的课程体系,到最后会用 Servlet + JSP 做一个项目, 讲了 C/S 和 B/S 表示什么,各自有什么优缺点,当前主流时什么, 还讲了什么是 Tomcat 服务器, 并且如何安装启动配置 Tomcat 服务器,以及常见的问题;</li>
+<li>如何多种方式部署 Web 项目:    普通拷贝方式, 配置文件路径链接方式</li>
+<li>如何利用插件快速操作 Tomcat 服务器程序</li>
+<li>下午开始讲了HTTP 协议, 它是什么,有什么用,和一些关于请求和响应信息的内容介绍,以及 GET/POST 基本区别和简单使用</li>
 </ul>
-<a id="more"></a>
-<h2 id="测量Pre-main-Time"><a href="#测量Pre-main-Time" class="headerlink" title="测量Pre-main Time"></a>测量Pre-main Time</h2><p>一个App在执行main函数前包括app delegate的系列方法如<code>applicationWillFinishLaunching</code>时,会做许多系统级别的准备.而在iOS10之前,开发者很难清楚自己App为何启动加载慢.而通过在工程的scheme中添加环境变量<strong>DYLD_PRINT_STATISTICS</strong>,设置Value为1,App启动加载时就会有启动过程的日志输出. 现在<em>(iOS 10之后)</em>Apple对DYLD_PRINT_STATISTICS的日志输出结果进行了简化,使得更容易让开发者理解.<br><img src="/media/14723544941522.png" alt="指定Scheme上添加DYLD_PRINT_STATISTICS环境变量"></p>
-<p>尝试在iPad上对一个纯OC项目设置该环境变量后,有了以下输出信息.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Total pre-main time:  <span class="number">74.37</span> milliseconds (<span class="number">100.0</span>%)</span><br><span class="line">       dylib loading time:  <span class="number">41.05</span> milliseconds (<span class="number">55.2</span>%)</span><br><span class="line">      rebase/binding time:   <span class="number">8.10</span> milliseconds (<span class="number">10.9</span>%)</span><br><span class="line">          ObjC setup time:   <span class="number">9.87</span> milliseconds (<span class="number">13.2</span>%)</span><br><span class="line">         initializer time:  <span class="number">15.23</span> milliseconds (<span class="number">20.4</span>%)</span><br><span class="line">         slowest intializers :</span><br><span class="line">           libSystem.B.dylib :   <span class="number">6.58</span> milliseconds (<span class="number">8.8</span>%)</span><br><span class="line"> libBacktraceRecording.dylib :   <span class="number">6.27</span> milliseconds (<span class="number">8.4</span>%)</span><br></pre></td></tr></table></figure>
-<p>输出内容展示了系统调用main()函前主要进行的工作内容和时间花费,Session上也对每一阶段加载过程具体内容进行了详细的叙述,有兴趣地可观看该Session.</p>
-<h2 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h2><p>那么如何尽可能的减少pre-main花费的时间呢,主要就从输出日志给出的四个阶段下手:</p>
+<blockquote>
+<p>我完成了什么</p>
+</blockquote>
 <ul>
-<li><p><strong>对动态库加载的时间优化.</strong>每个App都进行动态库加载,其中系统级别的动态库占据了绝大数,而针对系统级别的动态库都是经过系统高度优化的,不用担心时间的花费.开发者应该关注于自己集成到App的那些动态库,这也是最能消耗加载时间的地方.对此Apple建议<strong>减少在App里开发者的动态库集成或者有可能地将其多个动态库最终集成一个动态库后进行导入, 尽量保证将App现有的非系统级的动态库个数保证在6个以内</strong>.</p>
-</li>
-<li><p><strong>减少Appp的Objective-C类,分类和的唯一Selector的个数.</strong>这样做主要是为了加快程序的整个动态链接, 在进行动态库的重定位和绑定<em>(Rebase/binding)</em>过程中减少指针修正的使用,加快程序机器码的生成.</p>
-</li>
-<li><p><strong>减少Objc运行初始化的时间花费.</strong>主要是类的注册,分类的注册,唯一选择器的存在,以及涉及子父类内存布局的<code>Non Fragile ivars</code>偏移的更新,都会影响Objective-C运行时初始化的时间消耗.</p>
-</li>
-<li><p><strong>使用initialize方法</strong>进行必要的初始化工作.用<code>+initialize</code>方法替换调用原先在OC的<code>+load</code>方法中执行初始代码工作,从而加快所有类文件的加载速度.</p>
-</li>
+<li>在电脑上安装好了 Tomcat服务器, 并且能运行 Web 项目</li>
+<li>给 Eclipse 安装了合适的 Tomcat 插件来快捷操作Tomcat服务器</li>
+<li>在Eclipse上创建一个普通 Java 工程,修改设置后成功部署了Web 项目</li>
+<li>安装了 Firework 浏览器,并且装了 FireBug 插件</li>
+<li>对这天课程的内容进行了简单的笔记总结</li>
 </ul>
-<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>最后演讲者对加载启动优化的整体概括了Session所要传达的内容:</p>
+<h2 id="Reflective-我的感受"><a href="#Reflective-我的感受" class="headerlink" title="Reflective 我的感受"></a>Reflective 我的感受</h2><blockquote>
+<p>你要如何形容今天的情绪</p>
+</blockquote>
+<p>感觉第一天的内容不多,掌握起来挺容易, 更多地是记忆和操作</p>
+<blockquote>
+<p>今天的高峰是什么?</p>
+</blockquote>
 <ul>
-<li>使用<strong>DYLD_PRINT_STATISTICS</strong>测试启动加载时间</li>
-<li>减少自定义的动态库集成</li>
-<li>精简原有的Objective-C类和代码</li>
-<li>移除静态的初始化操作</li>
-<li>使用更多的Swift代码</li>
+<li>下午在安装 Tomcat 插件后,开启Tomcat 服务器时打印台报错: 无权限访问日志文件, 通过Google 解决了并且进行了截图记录</li>
 </ul>
-<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><ul>
-<li><a href="https://developer.apple.com/videos/play/wwdc2016/406/" target="_blank" rel="external">WWDC 2016 Session 406 Optimizing App Startup Time</a></li>
-<li><a href="http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/" target="_blank" rel="external">Objective-C Runtime
-</a></li>
+<blockquote>
+<p>今天的低点是什么?</p>
+</blockquote>
+<ul>
+<li>中午休息放松时有点焦虑, 不知道该怎么去休息</li>
 </ul>
+<h2 id="Interpretive-解释反思"><a href="#Interpretive-解释反思" class="headerlink" title="Interpretive 解释反思"></a>Interpretive 解释反思</h2><blockquote>
+<p>我今天学到了什么?</p>
+</blockquote>
+<ul>
+<li>学到了两个高频小套路</li>
+</ul>
+<blockquote>
+<p>今天一个重要的领悟是什么?</p>
+</blockquote>
+<ul>
+<li>遇到问题, 即使去搜索, 想办法自己解决, 不要依赖老师, 并且解决后要记录下来,帮助以后或者其他同学出现这问题时如何解决</li>
+</ul>
+<h2 id="Decisional-决定行动"><a href="#Decisional-决定行动" class="headerlink" title="Decisional 决定行动"></a>Decisional 决定行动</h2><blockquote>
+<p>我会如何用一句话形容今天的工作</p>
+</blockquote>
+<p>今天学的内容没有代码, 要求了解和会操作偏多, 完成起来比较顺利; 但在假期阶段学习还是有点散漫,没能控制好时间</p>
+<blockquote>
+<p>有哪些工作需要明天继续努力?</p>
+</blockquote>
+<p>对 HTML/CSS 那些标签进行回顾下,代码实现他们的样式和属性,做好预习工作</p>
 
       
     </div>
@@ -383,28 +417,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/iOS/" rel="tag">#iOS</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/21/2016-08-21/" rel="next" title="Swift时代下的Objective-C新特性">
-                <i class="fa fa-chevron-left"></i> Swift时代下的Objective-C新特性
+              <a href="/2017/02/02/我的2017年目标清单/" rel="next" title="我的2017年目标清单">
+                <i class="fa fa-chevron-left"></i> 我的2017年目标清单
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/03/WWDC之Testing in Xcode6/" rel="prev" title="WWDC之Testing in Xcode6">
-                WWDC之Testing in Xcode6 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -430,8 +454,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/28/WWDC之优化App启动速度/"
-           data-title="WWDC之优化App启动速度" data-url="http://www.yoursite.com/2016/08/28/WWDC之优化App启动速度/">
+      <div class="ds-thread" data-thread-key="2017/02/03/2017-02-03/"
+           data-title="0203 ORID 学习日记" data-url="http://www.yoursite.com/2017/02/03/2017-02-03/">
       </div>
     
   </div>
@@ -522,7 +546,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测量Pre-main-Time"><span class="nav-number">2.</span> <span class="nav-text">测量Pre-main Time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动优化"><span class="nav-number">3.</span> <span class="nav-text">启动优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结尾"><span class="nav-number">4.</span> <span class="nav-text">结尾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展"><span class="nav-number">5.</span> <span class="nav-text">拓展</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Objective-客观事实"><span class="nav-number">1.</span> <span class="nav-text">Objective 客观事实</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reflective-我的感受"><span class="nav-number">2.</span> <span class="nav-text">Reflective 我的感受</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpretive-解释反思"><span class="nav-number">3.</span> <span class="nav-text">Interpretive 解释反思</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Decisional-决定行动"><span class="nav-number">4.</span> <span class="nav-text">Decisional 决定行动</span></a></li></ol></div>
             
           </div>
         </section>
